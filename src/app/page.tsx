@@ -316,10 +316,12 @@ function Solucoes() {
       </div>
 
       {/* ── Carousel container ── */}
-      <div className="relative overflow-hidden group/carousel">
-
+      <div
+        className="relative overflow-x-auto group/carousel cursor-grab active:cursor-grabbing scrollbar-hide"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         {/* Scrolling track */}
-        <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch">
+        <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2">
           {allCards.map((sol, i) => (
             <div
               key={`${sol.title}-${i}`}
