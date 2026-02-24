@@ -794,51 +794,91 @@ export default function Home() {
       <MissaoVisaoValores />
       <Depoimentos />
       {/* ═══ Instagram Section ═══ */}
-      <section className="bg-gray-50 section-padding">
-        <div className="container-main text-center">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
-            Instagram
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Nos siga no Instagram
-          </h2>
-          <p className="text-gray-500 max-w-md mx-auto mb-10 text-sm md:text-base">
-            Acompanhe nosso dia a dia, novidades da frota e obras que atendemos.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
-            {/* Video Esquerdo — Perfil */}
-            <div className="relative rounded-3xl overflow-hidden bg-black aspect-[9/16] sm:aspect-[9/14] shadow-xl">
-              <video
-                src="/subfooter-esquerdo.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-            {/* Video Direito — Reels */}
-            <div className="relative rounded-3xl overflow-hidden bg-black aspect-[9/16] sm:aspect-[9/14] shadow-xl">
-              <video
-                src="/subfooter-direito.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <a
-            href="https://instagram.com/jacolocacaomaquinas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-8 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-8 py-3.5 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-lg"
-          >
-            <FaInstagram className="text-lg" />
-            @jacolocacaomaquinas
-          </a>
+      <section className="bg-[#fafaf9] py-20 md:py-28 relative overflow-hidden">
+        {/* Subtle background blurs */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-[10%] w-[400px] h-[400px] bg-lime/[0.06] rounded-full blur-[120px] -translate-y-1/2" />
+          <div className="absolute top-1/2 right-[10%] w-[350px] h-[350px] bg-forest/[0.04] rounded-full blur-[120px] -translate-y-1/2" />
         </div>
+
+        <div className="container-main relative">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-10">
+
+            {/* Left Video Card */}
+            <div className="hidden md:flex flex-col gap-4 w-60 shrink-0">
+              <div className="relative group">
+                <div className="absolute -inset-3 bg-lime/15 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04]">
+                  <video
+                    src="/subfooter-esquerdo.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Center Content */}
+            <div className="flex-1 text-center relative z-10 max-w-xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-forest/[0.06] rounded-full px-5 py-2 mb-8">
+                <div className="w-1.5 h-1.5 bg-lime rounded-full" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-forest/70">Desde 2010 · São Paulo, SP</span>
+              </div>
+
+              <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3.2rem] leading-[1.05] font-bold text-dark tracking-tight">
+                Nos siga no<br />
+                <span className="text-forest">Instagram.</span>
+              </h2>
+
+              <p className="text-gray-500 mt-6 max-w-md mx-auto leading-relaxed text-sm md:text-base">
+                Acompanhe nosso dia a dia, novidades da frota e as obras que atendemos pelo Brasil.
+              </p>
+
+              <a
+                href="https://www.instagram.com/jacolocacao?igsh=MWZ5ZGxkNHRnc2w4dg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-10 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-8 py-4 rounded-2xl font-bold text-sm hover:scale-[1.02] hover:shadow-xl transition-all duration-300 shadow-md"
+              >
+                <FaInstagram className="text-lg" />
+                @jacolocacao
+              </a>
+
+              {/* Mobile videos — shown only on mobile */}
+              <div className="flex md:hidden gap-4 mt-10">
+                <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+                  <video src="/subfooter-esquerdo.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover object-center" />
+                </div>
+                <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+                  <video src="/subfooter-direito.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Video Card */}
+            <div className="hidden md:flex flex-col gap-4 w-64 shrink-0">
+              <div className="relative group">
+                <div className="absolute -inset-3 bg-forest/10 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04]">
+                  <video
+                    src="/subfooter-direito.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </section>
     </main>
   );
