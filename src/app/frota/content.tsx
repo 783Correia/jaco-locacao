@@ -57,9 +57,37 @@ export default function ProdutosContent() {
       <section className="flex-grow py-12 relative z-10 bg-gray-50">
         <div className="container-main">
 
+          {/* Mobile: horizontal search + category pills */}
+          <div className="lg:hidden mb-8 space-y-4">
+            <div className="relative flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all shadow-sm">
+              <FaSearch className="ml-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Buscar equipamento..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-transparent text-gray-900 placeholder-gray-400 px-3 py-3 focus:outline-none text-sm"
+              />
+            </div>
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1 -mx-2 px-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border ${activeCategory === cat
+                    ? "bg-primary text-white border-primary shadow-md"
+                    : "text-gray-600 border-gray-200 bg-white hover:border-primary hover:text-primary"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            {/* Sidebar */}
-            <aside className="lg:col-span-1 space-y-8">
+            {/* Desktop Sidebar — hidden on mobile */}
+            <aside className="hidden lg:block lg:col-span-1 space-y-8">
               <div className="sticky top-24">
                 {/* Search */}
                 <div className="relative mb-8">

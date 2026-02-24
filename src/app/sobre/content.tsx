@@ -64,7 +64,7 @@ export default function SobreContent() {
                 </div>
               </div>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed md:text-justify italic font-medium">
-                "Atingir êxitos duradouros em nossos negócios e empreendimentos, assegurando a máxima eficiência no uso dos recursos e a satisfação de nossos clientes, funcionários e a sociedade onde desenvolvemos nossas atividades. A conscientização de todo pessoal próprio e contratado sobre a prevenção de riscos, as operações de acordo com o ambiente, sistema de qualidade e os cuidados e remediação do meio ambiente."
+                &ldquo;Atingir êxitos duradouros em nossos negócios e empreendimentos, assegurando a máxima eficiência no uso dos recursos e a satisfação de nossos clientes, funcionários e a sociedade onde desenvolvemos nossas atividades. A conscientização de todo pessoal próprio e contratado sobre a prevenção de riscos, as operações de acordo com o ambiente, sistema de qualidade e os cuidados e remediação do meio ambiente.&rdquo;
               </p>
             </motion.div>
 
@@ -102,13 +102,13 @@ export default function SobreContent() {
           </h2>
           <div className="space-y-6 text-gray-600 text-base md:text-lg leading-loose italic md:text-justify font-medium">
             <p>
-              "Uma atitude de constante monitoramento e antecipação das necessidades do mercado, de andamento e suporte confiável nos projetos de nossos clientes, de constante melhoramento em nossos padrões de produtividade, qualidade, saúde, segurança e proteção do meio ambiente têm possibilitado um crescimento constante e sustentado de nossa atividade."
+              &ldquo;Uma atitude de constante monitoramento e antecipação das necessidades do mercado, de andamento e suporte confiável nos projetos de nossos clientes, de constante melhoramento em nossos padrões de produtividade, qualidade, saúde, segurança e proteção do meio ambiente têm possibilitado um crescimento constante e sustentado de nossa atividade.&rdquo;
             </p>
             <p>
-              "O alcançado até hoje, constitui somente uma base de apoio para a constante procura de melhoramento e crescimento de nossa Organização. A consolidação de nossos negócios, com vínculos de longo prazo com nossos clientes e a participação em novos mercados constitui um objetivo que estamos atingindo com decisão e convicção."
+              &ldquo;O alcançado até hoje, constitui somente uma base de apoio para a constante procura de melhoramento e crescimento de nossa Organização. A consolidação de nossos negócios, com vínculos de longo prazo com nossos clientes e a participação em novos mercados constitui um objetivo que estamos atingindo com decisão e convicção.&rdquo;
             </p>
             <p>
-              "Acreditamos nas possibilidades de desenvolvimento sustentável da Região e de nossa Organização. Temos confiança na criatividade, entusiasmo e compromisso das pessoas que a integram, que continuarão refletindo-se em benefício de nossos clientes, nossas famílias e da comunidade."
+              &ldquo;Acreditamos nas possibilidades de desenvolvimento sustentável da Região e de nossa Organização. Temos confiança na criatividade, entusiasmo e compromisso das pessoas que a integram, que continuarão refletindo-se em benefício de nossos clientes, nossas famílias e da comunidade.&rdquo;
             </p>
           </div>
         </motion.div>

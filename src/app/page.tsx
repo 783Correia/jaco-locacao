@@ -180,28 +180,43 @@ function StatsBar() {
         transition={{ duration: 0.6 }}
         className="container-main"
       >
-        <div className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 flex flex-wrap md:flex-nowrap justify-between items-center gap-4 md:gap-8 shadow-2xl mx-auto max-w-5xl">
-          {[
-            { target: 15, suffix: "+", label: "Marcas Parceiras" },
-            { target: 100, suffix: "%", label: "Equipamentos Revisados" },
-            { target: 1000, suffix: "+", label: "Obras Atendidas" },
-          ].map((stat, index) => (
-            <div key={index} className="flex-1 text-center md:text-left md:border-r last:border-0 border-gray-200 md:pr-8 last:pr-0">
-              <div className="text-xl md:text-2xl font-extrabold text-primary mb-0.5">
-                <AnimatedCounter target={stat.target} suffix={stat.suffix} duration={1800 + index * 400} />
+        <div className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 shadow-2xl mx-auto max-w-5xl">
+          <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 md:gap-8">
+            {[
+              { target: 15, suffix: "+", label: "Marcas Parceiras" },
+              { target: 100, suffix: "%", label: "Equipamentos Revisados" },
+              { target: 1000, suffix: "+", label: "Obras Atendidas" },
+            ].map((stat, index) => (
+              <div key={index} className="flex-1 text-center md:text-left md:border-r last:border-0 border-gray-200 md:pr-8 last:pr-0">
+                <div className="text-xl md:text-2xl font-extrabold text-primary mb-0.5">
+                  <AnimatedCounter target={stat.target} suffix={stat.suffix} duration={1800 + index * 400} />
+                </div>
+                <div className="text-[10px] md:text-sm text-gray-500 font-medium uppercase tracking-wide">{stat.label}</div>
               </div>
-              <div className="text-[10px] md:text-sm text-gray-500 font-medium uppercase tracking-wide">{stat.label}</div>
-            </div>
-          ))}
+            ))}
 
-          {/* Brand Carousel — hidden on mobile */}
-          <div className="hidden md:flex flex-[1.5] md:w-80 overflow-hidden relative group h-20 items-center">
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-            <div className="flex animate-infinite-scroll w-max hover:[animation-play-state:paused] items-center">
+            {/* Brand Carousel — desktop (inside stats bar) */}
+            <div className="hidden md:flex flex-[1.5] md:w-80 overflow-hidden relative group h-20 items-center">
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+              <div className="flex animate-infinite-scroll w-max hover:[animation-play-state:paused] items-center">
+                {carouselBrands.map((brand, index) => (
+                  <div key={`${brand.name}-${index}`} className="flex items-center justify-center mx-8 shrink-0 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+                    <Image src={brand.src} alt={brand.name} width={120} height={50} unoptimized className="h-10 w-auto object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Brand Carousel — mobile only (below stats) */}
+          <div className="md:hidden mt-4 pt-4 border-t border-gray-100 overflow-hidden relative h-12">
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            <div className="flex animate-infinite-scroll w-max items-center">
               {carouselBrands.map((brand, index) => (
-                <div key={`${brand.name}-${index}`} className="flex items-center justify-center mx-8 shrink-0 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                  <Image src={brand.src} alt={brand.name} width={120} height={50} unoptimized className="h-10 w-auto object-contain" />
+                <div key={`mob-${brand.name}-${index}`} className="flex items-center justify-center mx-5 shrink-0 opacity-50 grayscale">
+                  <Image src={brand.src} alt={brand.name} width={80} height={32} unoptimized className="h-7 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -317,7 +332,7 @@ function Solucoes() {
 
       {/* ── Carousel container ── */}
       <div
-        className="relative overflow-x-auto group/carousel cursor-grab active:cursor-grabbing scrollbar-hide"
+        className="relative overflow-x-auto group/carousel cursor-grab active:cursor-grabbing scrollbar-hide pl-4 md:pl-0"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         {/* Scrolling track */}
@@ -494,7 +509,7 @@ function ProdutosDestaque() {
               </p>
             </motion.div>
 
-            <div className="flex flex-wrap items-center gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8">
               {current.slug && (
                 <Link href={`/frota/${current.slug}`} className="btn-outline">
                   Ver Mais Detalhes
