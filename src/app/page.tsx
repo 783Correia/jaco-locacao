@@ -158,6 +158,7 @@ function Hero() {
         </div>
         <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-medium mt-1 [writing-mode:vertical-rl] rotate-180">scroll</span>
       </div>
+
     </section>
   );
 }
@@ -408,6 +409,7 @@ function ProdutosDestaque() {
       description:
         "Compactação eficiente de solos e asfalto com tecnologia de amortecimento otimizada. Rendimento impecável para grandes áreas e obras rodoviárias.",
       image: "/frota/rolo-compactador-1.5t.jpg",
+      video: "/frota/rolo-compactador-video.mp4",
       badge: "Eficiência",
       slug: "rolo-compactador-1-5t",
     },
@@ -440,14 +442,25 @@ function ProdutosDestaque() {
               transition={{ duration: 0.6 }}
               className="relative rounded-3xl overflow-hidden aspect-[16/10] md:aspect-[4/3]"
             >
-              <Image
-                src={current.image}
-                alt={current.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 60vw"
-                unoptimized
-              />
+              {current.video ? (
+                <video
+                  src={current.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={current.image}
+                  alt={current.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  unoptimized
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
 
               <div className="absolute top-4 left-4 md:top-6 md:left-6">
