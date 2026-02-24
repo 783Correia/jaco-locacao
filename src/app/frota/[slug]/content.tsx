@@ -310,7 +310,7 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
                             Ideal para
                         </h2>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                             {produto.applications.map((app) => (
                                 <div
                                     key={app}
