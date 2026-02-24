@@ -261,7 +261,7 @@ function Solucoes() {
       title: "Escavadeiras",
       subtitle: "8 a 21 toneladas",
       href: "/frota",
-      image: "/frota/cat-320.jpg",
+      video: "/frota/escavadeiras-video.mp4",
     },
     {
       title: "Mini Escavadeiras",
