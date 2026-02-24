@@ -57,11 +57,11 @@ function Hero() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover"
           src="/hero-video.mp4"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/60 via-forest/80 to-forest-dark/90" />
-        <div className="absolute inset-0 bg-forest/30 bg-gradient-to-t from-forest via-transparent to-forest/20" />
+        {/* Subtle overlay to guarantee text readability without hiding the video */}
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/60 via-black/30 to-forest-dark/80" />
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
       </div>
