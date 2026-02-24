@@ -3,7 +3,6 @@
 import { getWhatsAppLink } from "@/utils/whatsapp";
 import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
-import NewsletterSection from "@/components/NewsletterSection";
 import {
   FaHandshake,
   FaAward,
@@ -16,6 +15,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaWrench,
+  FaInstagram,
 } from "react-icons/fa";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
@@ -793,7 +793,53 @@ export default function Home() {
       <Diferenciais />
       <MissaoVisaoValores />
       <Depoimentos />
-      <NewsletterSection />
+      {/* ═══ Instagram Section ═══ */}
+      <section className="bg-gray-50 section-padding">
+        <div className="container-main text-center">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
+            Instagram
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Nos siga no Instagram
+          </h2>
+          <p className="text-gray-500 max-w-md mx-auto mb-10 text-sm md:text-base">
+            Acompanhe nosso dia a dia, novidades da frota e obras que atendemos.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+            {/* Video Esquerdo — Perfil */}
+            <div className="relative rounded-3xl overflow-hidden bg-black aspect-[9/16] sm:aspect-[9/14] shadow-xl">
+              <video
+                src="/subfooter-esquerdo.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+            {/* Video Direito — Reels */}
+            <div className="relative rounded-3xl overflow-hidden bg-black aspect-[9/16] sm:aspect-[9/14] shadow-xl">
+              <video
+                src="/subfooter-direito.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <a
+            href="https://instagram.com/jacolocacaomaquinas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-8 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-8 py-3.5 rounded-full font-bold text-sm hover:scale-105 transition-all shadow-lg"
+          >
+            <FaInstagram className="text-lg" />
+            @jacolocacaomaquinas
+          </a>
+        </div>
+      </section>
     </main>
   );
 }
