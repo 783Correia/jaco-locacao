@@ -15,12 +15,7 @@ import {
   FaQuoteLeft,
   FaChevronLeft,
   FaChevronRight,
-  FaHardHat,
-  FaTools,
-  FaTractor,
-  FaTruckMoving,
   FaWrench,
-  FaCog,
 } from "react-icons/fa";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
@@ -376,8 +371,7 @@ function ProdutosDestaque() {
       brand: "CASE",
       description:
         "Equipamento versátil com a força líder de mercado, proporcionando ciclos rápidos de carregamento e elevação de classe mundial. Excelente para espaços reduzidos.",
-      icon: FaTractor,
-      color: "from-orange-900 to-dark",
+      image: "/frota/bobcat-s650.jpg",
       badge: "Mais Locada",
       slug: "retroescavadeira-case-580n",
     },
@@ -386,38 +380,34 @@ function ProdutosDestaque() {
       brand: "Caterpillar",
       description:
         "Escavadeira robusta da classe de 20 toneladas. Alta capacidade de carga, escavação profunda e força de desagregação ideal para infraestrutura pesada.",
-      icon: FaTruckMoving,
-      color: "from-yellow-900 to-dark",
+      image: "/frota/cat-320.jpg",
       badge: "Alta Performance",
       slug: "cat-320",
     },
     {
-      name: "Plataforma Articulada Genie Z-45",
+      name: "Plataforma Articulada Diesel 16m",
       brand: "Genie",
       description:
         "Segurança superior para trabalhos em altura. Excelente envelope de trabalho e operação silenciosa. O equipamento ideal para manutenções industriais e prediais.",
-      icon: FaHardHat,
-      color: "from-sky-900 to-dark",
+      image: "/frota/plataforma-articulada-diesel-16m.jpg",
       badge: "Trabalho Seguro",
-      slug: "plataforma-articulada-diesel-16m", // closest conceptual
+      slug: "plataforma-articulada-diesel-16m",
     },
     {
-      name: "Pá Carregadeira Hyundai HL757",
-      brand: "Hyundai",
+      name: "Mini Escavadeira 3.5t",
+      brand: "Yanmar",
       description:
-        "Força e agilidade em um único equipamento. Cabine ergonômica e motor potente para enfrentar os terrenos mais desafiadores com estabilidade e confiança.",
-      icon: FaTools,
-      color: "from-green-900 to-dark",
-      badge: "Potência",
-      slug: "pa-carregadeira-hyundai-hl757",
+        "Compacta e poderosa. Ideal para espaços confinados, paisagismo e obras urbanas. Alta precisão de movimento e fácil transporte entre canteiros.",
+      image: "/frota/mini-escavadeira-3.5t.jpg",
+      badge: "Compacta",
+      slug: "mini-escavadeira-3-5t",
     },
     {
-      name: "Rolo Compactador Dynapac",
+      name: "Rolo Compactador 1.5t",
       brand: "Dynapac",
       description:
         "Compactação eficiente de solos e asfalto com tecnologia de amortecimento otimizada. Rendimento impecável para grandes áreas e obras rodoviárias.",
-      icon: FaCog,
-      color: "from-zinc-800 to-dark",
+      image: "/frota/rolo-compactador-1.5t.jpg",
       badge: "Eficiência",
       slug: "rolo-compactador-1-5t",
     },
@@ -450,22 +440,23 @@ function ProdutosDestaque() {
               transition={{ duration: 0.6 }}
               className="relative rounded-3xl overflow-hidden aspect-[16/10] md:aspect-[4/3]"
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${current.color} flex flex-col items-center justify-center gap-4`}
-              >
-                <div className="w-24 h-24 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                  <current.icon className="text-lime text-5xl" />
-                </div>
-                <span className="text-white/30 text-xs font-bold uppercase tracking-widest">{current.name}</span>
-              </div>
+              <Image
+                src={current.image}
+                alt={current.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 60vw"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
 
-              <div className="absolute top-6 left-6">
-                <span className="text-white/20 text-[6rem] font-extrabold leading-none tracking-tighter">
+              <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                <span className="text-white/30 text-[4rem] md:text-[6rem] font-extrabold leading-none tracking-tighter">
                   {String(active + 1).padStart(2, "0")}
                 </span>
               </div>
 
-              <div className="absolute top-6 right-6">
+              <div className="absolute top-4 right-4 md:top-6 md:right-6">
                 <span className="bg-lime text-forest text-[11px] font-bold uppercase tracking-wider px-4 py-2 rounded-full">
                   {current.badge}
                 </span>
