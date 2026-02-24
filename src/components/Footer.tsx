@@ -102,9 +102,9 @@ export default function Footer() {
                 <li className="flex items-start gap-2.5">
                   <FaMapMarkerAlt className="mt-1 text-lime shrink-0 text-xs" />
                   <span className="text-white/40 text-sm">
-                    Sua Localização
+                    BR 101, KM 213, Nº 100 - Centro
                     <br />
-                    São Paulo - SP
+                    Palhoça - SC
                   </span>
                 </li>
                 <li>
@@ -140,7 +140,7 @@ export default function Footer() {
               direitos reservados.
             </p>
             <p className="text-white/15 text-xs">
-              São Paulo, SP
+              Palhoça, SC
             </p>
           </div>
         </div>

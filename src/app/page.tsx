@@ -515,15 +515,15 @@ function ProdutosDestaque() {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8">
               {current.slug && (
-                <Link href={`/frota/${current.slug}`} className="btn-outline">
+                <Link href={`/frota/${current.slug}`} className="btn-outline text-center whitespace-nowrap">
                   Ver Mais Detalhes
                 </Link>
               )}
               <a
-                href={`https://wa.me/5511900000000?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
+                href={`https://wa.me/5548999250605?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-lime"
+                className="btn-lime text-center whitespace-nowrap"
               >
                 <FaWhatsapp className="text-lg" />
                 Pedir Orçamento
