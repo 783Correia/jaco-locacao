@@ -258,10 +258,34 @@ function SolucaoCard({ sol }: { sol: { title: string; subtitle: string; href: st
 function Solucoes() {
   const cards = [
     {
-      title: "Escavadeira Cat 320",
-      subtitle: "Padrão Caterpillar",
-      href: "/frota/cat-320",
+      title: "Escavadeiras",
+      subtitle: "8 a 21 toneladas",
+      href: "/frota",
       image: "/frota/cat-320.jpg",
+    },
+    {
+      title: "Mini Escavadeiras",
+      subtitle: "1 a 5,5 toneladas",
+      href: "/frota",
+      image: "/frota/mini-escavadeira-5.5t.jpg",
+    },
+    {
+      title: "Mini Carregadeiras",
+      subtitle: "Bobcat e Manitou",
+      href: "/frota",
+      image: "/frota/bobcat-s650.jpg",
+    },
+    {
+      title: "Manipuladores",
+      subtitle: "12 a 17 metros",
+      href: "/frota",
+      image: "/frota/manipulador-17m.jpg",
+    },
+    {
+      title: "Plataformas Articuladas",
+      subtitle: "Diesel e Elétricas",
+      href: "/frota",
+      image: "/frota/plataforma-articulada-diesel-20m.jpg",
     },
     {
       title: "Plataformas Tesoura",
@@ -270,45 +294,9 @@ function Solucoes() {
       video: "/frota/plataforma-tesoura-video.mp4",
     },
     {
-      title: "Mini Escavadeira 5,5t",
-      subtitle: "Compacta e Potente",
-      href: "/frota/mini-escavadeira-5-5t",
-      image: "/frota/mini-escavadeira-5.5t.jpg",
-    },
-    {
-      title: "Bobcat S-650",
-      subtitle: "Mini Carregadeira Cabinada",
-      href: "/frota/bobcat-s650",
-      image: "/frota/bobcat-s650.jpg",
-    },
-    {
-      title: "Plataforma Articulada 20m",
-      subtitle: "Diesel 4x4",
-      href: "/frota/plataforma-articulada-diesel-20m",
-      image: "/frota/plataforma-articulada-diesel-20m.jpg",
-    },
-    {
-      title: "Plataforma Tesoura 14m",
-      subtitle: "Todo Terreno",
-      href: "/frota/plataforma-tesoura-14m-todo-terreno",
-      image: "/frota/plataforma-tesoura-14m-todo-terreno.jpg",
-    },
-    {
-      title: "Manipulador Telescópico 17m",
-      subtitle: "Alcance Máximo",
-      href: "/frota/manipulador-17m",
-      image: "/frota/manipulador-17m.jpg",
-    },
-    {
-      title: "Escavadeira Cat 313D2L",
-      subtitle: "13 Toneladas",
-      href: "/frota/cat-313d2l",
-      image: "/frota/cat-313d2l.jpg",
-    },
-    {
-      title: "Rolo Compactador 1,5t",
+      title: "Rolos Compactadores",
       subtitle: "Asfalto e Terra",
-      href: "/frota/rolo-compactador-1-5t",
+      href: "/frota",
       image: "/frota/rolo-compactador-1.5t.jpg",
     },
   ];
