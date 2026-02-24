@@ -84,12 +84,12 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(2rem,5vw,3.8rem)] font-bold text-white leading-[1.1] tracking-tight mb-4">
+          <h1 className="text-[clamp(1.6rem,5vw,3.8rem)] font-bold text-white leading-[1.1] tracking-tight mb-4">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="block whitespace-nowrap"
+              className="block"
             >
               Locação de máquinas pesadas
             </motion.span>
@@ -440,7 +440,7 @@ function ProdutosDestaque() {
   return (
     <section className="bg-white section-padding overflow-hidden">
       <div className="container-main">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Image — 60% (3 cols) */}
           <div className="lg:col-span-3 relative">
             <motion.div
@@ -448,7 +448,7 @@ function ProdutosDestaque() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3]"
+              className="relative rounded-3xl overflow-hidden aspect-[16/10] md:aspect-[4/3]"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${current.color} flex flex-col items-center justify-center gap-4`}

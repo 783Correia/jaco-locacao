@@ -148,7 +148,7 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
 
                             {/* Quick Specs */}
                             {quickSpecs.length > 0 && (
-                                <div className="grid grid-cols-3 gap-4 mb-8">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
                                     {quickSpecs.map(
                                         (spec) =>
                                             spec && (
@@ -156,10 +156,10 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
                                                     key={spec.label}
                                                     className="bg-white border border-gray-200 rounded-2xl p-4 text-center shadow-sm"
                                                 >
-                                                    <div className="text-lg font-extrabold text-primary">
+                                                    <div className="text-sm sm:text-lg font-extrabold text-primary leading-tight">
                                                         {spec.value}
                                                     </div>
-                                                    <div className="text-[10px] text-gray-400 uppercase tracking-wider mt-1 font-medium">
+                                                    <div className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-wider mt-1 font-medium leading-tight">
                                                         {spec.label}
                                                     </div>
                                                 </div>
