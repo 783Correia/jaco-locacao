@@ -306,9 +306,9 @@ function Solucoes() {
     },
     {
       title: "Rolos Compactadores",
-      subtitle: "Asfalto e Terra",
+      subtitle: "Veja em ação",
       href: "/frota",
-      image: "/frota/rolo-compactador-1.5t.jpg",
+      video: "/frota/rolo-compactador-video.mp4",
     },
   ];
 
