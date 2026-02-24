@@ -37,9 +37,58 @@ export const products: Product[] = [
         name: "Escavadeira Cat 320",
         brand: "Caterpillar",
         category: "Escavadeiras",
-        description: "Padrão premium com menor consumo de combustível e capacidades aprimoradas para produtividade máxima na sua obra.",
+        description: "Escavadeira robusta da classe de 20 toneladas. Alta capacidade de carga, escavação profunda e força de desagregação ideal para infraestrutura pesada.",
         image: "/frota/cat-320.jpg",
         slug: "cat-320",
+        overview: "A Escavadeira Cat 320 é a escolha ideal para locação em obras de grande porte que exigem força bruta e precisão. Desenvolvida para encarar condições severas, este equipamento proporciona alto rendimento diário em movimentos de terra, mineração, demolição e abertura de valas profundas.",
+        highlights: [
+            "Peso operacional na faixa de 22.500 kg",
+            "Profundidade máxima de escavação de 6,72 metros",
+            "Alcance máximo ao nível do solo de 9,86 metros",
+            "Força de escavação excepcional"
+        ],
+        benefits: [
+            {
+                title: "Alta Capacidade de Produção",
+                description: "Caçamba de grande volume (1,19 m³) aliada a ciclos hidráulicos rápidos, garantindo o transporte e escavação de grandes volumes de material em menos tempo."
+            },
+            {
+                title: "Robustez para Terrenos Severos",
+                description: "Material rodante reforçado e estrutura super-resistente que suportam as demandas mais extremas de canteiros irregulares e pedreiras."
+            },
+            {
+                title: "Alcance e Profundidade",
+                description: "Permite escavações profundas para fundações e valas de grande porte, além de longo alcance para carga e descarga de caminhões."
+            }
+        ],
+        specs: {
+            motor: [
+                { label: "Modelo", value: "Cat C4.4 ACERT" },
+                { label: "Potência Líquida", value: "159 HP (119 kW)" },
+            ],
+            hidraulica: [
+                { label: "Vazão Máxima do Sistema", value: "429 L/min" },
+                { label: "Pressão Máxima - Equipamento", value: "35.000 kPa" }
+            ],
+            dimensoes: [
+                { label: "Peso Operacional", value: "22.500 kg" },
+                { label: "Profundidade Máxima de Escavação", value: "6.720 mm" },
+                { label: "Alcance Máximo no Nível do Solo", value: "9.860 mm" },
+                { label: "Altura Máxima de Corte", value: "9.450 mm" },
+                { label: "Altura Máxima de Carga", value: "6.490 mm" }
+            ],
+            capacidades: [
+                { label: "Capacidade da Caçamba", value: "1,19 m³" },
+                { label: "Tanque de Combustível", value: "345 L" }
+            ]
+        },
+        applications: [
+            "Terraplanagem e movimentação massiva de terra",
+            "Abertura de valas para saneamento e infraestrutura",
+            "Demolição mecanizada pesada",
+            "Mineração e pedreiras",
+            "Carregamento de caminhões basculantes de alta capacidade"
+        ]
     },
     {
         id: "esc-cat-313d2l",
@@ -125,6 +174,28 @@ export const products: Product[] = [
         description: "A maior da linha mini, com capacidade próxima de uma escavadeira convencional e acesso a espaços restritos.",
         image: "/frota/mini-escavadeira-5.5t.jpg",
         slug: "mini-escavadeira-5-5t",
+    },
+
+    // ═══════════════════════════════════════
+    //  RETROESCAVADEIRAS E PÁS CARREGADEIRAS
+    // ═══════════════════════════════════════
+    {
+        id: "retro-case-580n",
+        name: "Retroescavadeira Case 580N",
+        brand: "CASE",
+        category: "Retroescavadeiras",
+        description: "Equipamento versátil líder de mercado, proporcionando ciclos rápidos de carregamento e elevação.",
+        image: "/frota/retroescavadeira-case-580n.jpg",
+        slug: "retroescavadeira-case-580n",
+    },
+    {
+        id: "pa-hyundai-hl757",
+        name: "Pá Carregadeira Hyundai HL757",
+        brand: "Hyundai",
+        category: "Pás Carregadeiras",
+        description: "Força e agilidade em um único equipamento. Motor potente para os terrenos mais desafiadores.",
+        image: "/frota/pa-carregadeira-hyundai-hl757.jpg",
+        slug: "pa-carregadeira-hyundai-hl757",
     },
 
     // ═══════════════════════════════════════

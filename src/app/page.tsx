@@ -364,15 +364,17 @@ function ProdutosDestaque() {
       icon: FaTractor,
       color: "from-orange-900 to-dark",
       badge: "Mais Locada",
+      slug: "retroescavadeira-case-580n",
     },
     {
       name: "Escavadeira Cat 320",
       brand: "Caterpillar",
       description:
-        "O padrão para a nova geração de escavadeiras. Menor consumo de combustível e custos de manutenção reduzidos, garantindo produtividade máxima na sua obra.",
+        "Escavadeira robusta da classe de 20 toneladas. Alta capacidade de carga, escavação profunda e força de desagregação ideal para infraestrutura pesada.",
       icon: FaTruckMoving,
       color: "from-yellow-900 to-dark",
       badge: "Alta Performance",
+      slug: "cat-320",
     },
     {
       name: "Plataforma Articulada Genie Z-45",
@@ -382,6 +384,7 @@ function ProdutosDestaque() {
       icon: FaHardHat,
       color: "from-sky-900 to-dark",
       badge: "Trabalho Seguro",
+      slug: "plataforma-articulada-diesel-16m", // closest conceptual
     },
     {
       name: "Pá Carregadeira Hyundai HL757",
@@ -391,6 +394,7 @@ function ProdutosDestaque() {
       icon: FaTools,
       color: "from-green-900 to-dark",
       badge: "Potência",
+      slug: "pa-carregadeira-hyundai-hl757",
     },
     {
       name: "Rolo Compactador Dynapac",
@@ -400,6 +404,7 @@ function ProdutosDestaque() {
       icon: FaCog,
       color: "from-zinc-800 to-dark",
       badge: "Eficiência",
+      slug: "rolo-compactador-1-5t",
     },
   ];
 
@@ -489,15 +494,22 @@ function ProdutosDestaque() {
               </p>
             </motion.div>
 
-            <a
-              href={`https://wa.me/5511900000000?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-lime mt-8"
-            >
-              <FaWhatsapp className="text-lg" />
-              Pedir Orçamento via WhatsApp
-            </a>
+            <div className="flex flex-wrap items-center gap-4 mt-8">
+              {current.slug && (
+                <Link href={`/frota/${current.slug}`} className="btn-outline">
+                  Ver Mais Detalhes
+                </Link>
+              )}
+              <a
+                href={`https://wa.me/5511900000000?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-lime"
+              >
+                <FaWhatsapp className="text-lg" />
+                Pedir Orçamento
+              </a>
+            </div>
 
             <div className="flex gap-2 mt-8">
               {destaques.map((_, i) => (
