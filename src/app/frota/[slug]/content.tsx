@@ -101,9 +101,9 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
 
     // Quick specs for hero section
     const quickSpecs = [
-        produto.specs.motor.find((s) => s.label.includes("Potência")),
-        produto.specs.capacidades.find((s) => s.label.includes("Peso")),
-        produto.specs.capacidades.find(
+        produto.specs?.motor?.find((s) => s.label.includes("Potência")),
+        produto.specs?.capacidades?.find((s) => s.label.includes("Peso")),
+        produto.specs?.capacidades?.find(
             (s) =>
                 s.label.includes("Prof.") ||
                 s.label.includes("Altura de Trabalho") ||
@@ -230,7 +230,7 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
 
                         {/* Highlights */}
                         <div className="grid sm:grid-cols-2 gap-4">
-                            {produto.highlights.map((h) => (
+                            {produto.highlights?.map((h) => (
                                 <div key={h} className="flex items-start gap-3">
                                     <FaCheckCircle className="text-lime mt-1 shrink-0 text-sm" />
                                     <span className="text-white/80 text-sm">{h}</span>
@@ -254,7 +254,7 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-6">
-                        {produto.benefits.map((benefit, i) => {
+                        {produto.benefits?.map((benefit, i) => {
                             const BenefitIcon = benefitIcons[i % benefitIcons.length];
                             return (
                                 <motion.div
@@ -296,20 +296,20 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
                     <div className="max-w-3xl space-y-3">
                         <SpecAccordion
                             title="Motor"
-                            specs={produto.specs.motor}
+                            specs={produto.specs?.motor || []}
                             defaultOpen={true}
                         />
                         <SpecAccordion
                             title="Capacidades e Pesos"
-                            specs={produto.specs.capacidades}
+                            specs={produto.specs?.capacidades || []}
                         />
                         <SpecAccordion
                             title="Dimensões"
-                            specs={produto.specs.dimensoes}
+                            specs={produto.specs?.dimensoes || []}
                         />
                         <SpecAccordion
                             title="Sistema Hidráulico"
-                            specs={produto.specs.hidraulica}
+                            specs={produto.specs?.hidraulica || []}
                         />
                     </div>
                 </div>
@@ -328,7 +328,7 @@ export default function ProdutoContent({ produto }: { produto: Product }) {
                     </h2>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {produto.applications.map((app) => (
+                        {produto.applications?.map((app) => (
                             <div
                                 key={app}
                                 className="flex items-center gap-3 bg-white/[0.04] border border-white/[0.08] rounded-2xl px-5 py-4 hover:bg-white/[0.08] hover:border-lime/20 transition-all duration-300"
