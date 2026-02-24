@@ -808,14 +808,14 @@ export default function Home() {
             <div className="hidden md:flex flex-col gap-4 w-60 shrink-0">
               <div className="relative group">
                 <div className="absolute -inset-3 bg-lime/15 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04]">
+                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04] bg-black">
                   <video
                     src="/subfooter-esquerdo.mp4"
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                 </div>
               </div>
@@ -849,8 +849,8 @@ export default function Home() {
 
               {/* Mobile videos — shown only on mobile */}
               <div className="flex md:hidden gap-4 mt-10">
-                <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
-                  <video src="/subfooter-esquerdo.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover object-center" />
+                <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg bg-black">
+                  <video src="/subfooter-esquerdo.mp4" autoPlay muted loop playsInline className="w-full h-full object-contain" />
                 </div>
                 <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
                   <video src="/subfooter-direito.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
