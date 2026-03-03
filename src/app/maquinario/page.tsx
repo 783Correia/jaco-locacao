@@ -93,64 +93,61 @@ const WaIcon = ({ size = 16 }: { size?: number }) => (
    ═══════════════════════════════════════ */
 
 const MachineCard = ({ m }: { m: Model }) => {
-    const [expanded, setExpanded] = useState(false);
-
     return (
         <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
-            className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
-            <div className="relative h-56 overflow-hidden bg-white flex-shrink-0 cursor-pointer" onClick={() => setExpanded(!expanded)}>
-                <Image src={m.image} alt={m.fullName} fill className="object-contain p-6 transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
-                <div className="absolute top-4 right-4 px-3 py-1.5 text-white text-xs font-bold rounded-lg bg-primary shadow-lg">{m.weight}</div>
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-wider uppercase rounded-full bg-white/90 text-gray-900 shadow-sm backdrop-blur-sm">
-                        {m.category.replace(/-/g, ' ')}
-                    </span>
-                    <button className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}><path d="m6 9 6 6 6-6" /></svg>
-                    </button>
+            className="group rounded-3xl bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden">
+
+            {/* Edge-to-edge Image Container */}
+            <div className="relative h-60 w-full overflow-hidden bg-gray-100 flex-shrink-0">
+                <Image
+                    src={m.image}
+                    alt={m.fullName}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw"
+                />
+                {/* Top Badge (similar to 'Active') */}
+                <div className="absolute top-4 left-4 px-3 py-1.5 bg-white/95 backdrop-blur-sm shadow-sm rounded-full flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    <span className="text-xs font-semibold text-gray-800 tracking-wide capitalize">{m.category.replace(/-/g, ' ')}</span>
                 </div>
             </div>
 
-            <div className="p-6 flex flex-col flex-grow border-t border-gray-50/50">
-                <div className="mb-4">
-                    <h3 className="text-xl font-extrabold text-gray-900 mb-1 leading-tight">{m.fullName}</h3>
-                    <p className="text-sm font-medium text-gray-500">{m.application}</p>
+            <div className="p-5 flex flex-col flex-grow">
+                {/* Header Row: Title & Subtitle */}
+                <div className="flex justify-between items-start mb-4">
+                    <div className="flex-1 pr-3">
+                        <h3 className="text-lg font-bold text-gray-900 leading-tight mb-1">{m.fullName}</h3>
+                        <p className="text-sm font-medium text-gray-500">{m.application}</p>
+                    </div>
+                    {/* Following the professional UI 'Property Price' side */}
+                    <div className="text-right flex-shrink-0">
+                        <p className="text-[11px] font-semibold text-gray-400 mb-0.5">Peso Oper.</p>
+                        <p className="text-xl font-bold text-[#45B2B4]">{m.weight}</p>
+                    </div>
                 </div>
 
-                <AnimatePresence>
-                    {expanded && (
-                        <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                        >
-                            <div className="bg-gray-50/80 rounded-2xl p-4 mb-5 border border-gray-100/50">
-                                <ul className="space-y-3">
-                                    {m.specs.map((spec, i) => (
-                                        <li key={i} className="flex justify-between items-center text-[13px]">
-                                            <span className="font-semibold text-gray-500">{spec.label}</span>
-                                            <span className="font-bold text-gray-900 text-right">{spec.value}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <div className="mt-auto">
-                    <a href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.fullName)}.`} target="_blank" rel="noopener noreferrer"
-                        className="flex w-full items-center justify-center gap-2 py-3.5 text-sm font-bold text-white rounded-xl bg-primary hover:shadow-[0_8px_20px_rgba(44,158,75,0.25)] hover:scale-[1.02] transition-all duration-300">
-                        <WaIcon size={16} /> Fazer Orçamento
-                    </a>
-
-                    {!expanded && (
-                        <button onClick={() => setExpanded(true)} className="w-full mt-3 py-2 text-xs font-semibold text-gray-400 hover:text-gray-700 transition-colors flex items-center justify-center gap-1.5">
-                            Ver especificações completas <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
-                        </button>
-                    )}
+                {/* Stats Box (similar to Token price / IRR) */}
+                <div className="bg-gray-50/80 rounded-2xl p-4 flex justify-between items-center mb-5 mt-auto">
+                    {m.specs.slice(0, 2).map((spec, index) => (
+                        <div key={index} className="flex-1 text-center">
+                            <p className="text-[11px] font-semibold text-gray-500 mb-1 leading-tight">{spec.label}</p>
+                            <p className="text-xs font-bold text-[#45B2B4] leading-tight">{spec.value}</p>
+                        </div>
+                    ))}
+                    {m.specs.length > 2 && m.specs.slice(2).map((spec, index) => (
+                        <div key={index + 2} className="flex-1 text-center">
+                            <p className="text-[11px] font-semibold text-gray-500 mb-1 leading-tight">{spec.label}</p>
+                            <p className="text-xs font-bold text-[#45B2B4] leading-tight">{spec.value}</p>
+                        </div>
+                    ))}
                 </div>
+
+                {/* Call to Action - matching elegant minimal style but keeping green WA brand */}
+                <a href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.fullName)}.`} target="_blank" rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2 py-3.5 text-[14px] font-bold text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-colors duration-300">
+                    <WaIcon size={18} /> Pedir Orçamento
+                </a>
             </div>
         </motion.div>
     );

@@ -11,12 +11,14 @@ export default function ProdutosContent() {
 
   const categories = [
     "Todos",
-    "Escavadeiras",
-    "Mini Escavadeiras",
-    "Mini Carregadeiras",
-    "Manipuladores",
     "Plataformas Articuladas",
     "Plataformas Tesoura",
+    "Escavadeiras",
+    "Mini Escavadeiras",
+    "Retroescavadeiras",
+    "Pás Carregadeiras",
+    "Mini Carregadeiras",
+    "Manipuladores",
     "Rolos Compactadores",
   ];
 

@@ -12,9 +12,8 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
     return (
-        <Link
-            href={`/frota/${product.slug}`}
-            className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full w-full"
+        <div
+            className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full w-full"
         >
             {/* Image */}
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
@@ -41,18 +40,26 @@ function ProductCard({ product }: ProductCardProps) {
                     {product.description}
                 </p>
 
-                {/* Footer */}
+                {/* Footer and Specs */}
                 <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-3">
                     <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
                         {product.category}
                     </span>
-                    <span className="inline-flex items-center justify-center gap-2 bg-primary text-white w-full py-2.5 rounded-xl font-bold text-xs group-hover:bg-primary-dark transition-all duration-300 text-center">
-                        Ver Detalhes
-                        <FaArrowRight className="text-[10px]" />
-                    </span>
+
+                    {/* Display Extracted Specs */}
+                    {product.cardSpecs && (
+                        <div className="grid grid-cols-2 gap-2 mt-2">
+                            {Object.entries(product.cardSpecs).map(([key, value]) => (
+                                <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
+                                    <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
+                                    <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
 
