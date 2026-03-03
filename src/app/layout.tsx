@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SmoothScroll from "@/components/SmoothScroll";
 import Script from "next/script";
+import { headers } from "next/headers";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -63,11 +64,19 @@ const localBusinessSchema = {
   },
   priceRange: "$$$",
 };
-export default function RootLayout({
+
+// LP routes that should NOT show the main site header/footer
+const LP_ROUTES = ["/maquinario", "/plataformaselevatorias"];
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-next-pathname") || headersList.get("x-invoke-path") || "";
+  const isLP = LP_ROUTES.some(route => pathname.startsWith(route));
+
   return (
     <html lang="pt-BR">
       <head>
@@ -81,10 +90,10 @@ export default function RootLayout({
       </head>
       <body className={`${dmSans.variable} font-sans antialiased`}>
         <SmoothScroll>
-          <Header />
+          {!isLP && <Header />}
           <main>{children}</main>
-          <Footer />
-          <WhatsAppButton />
+          {!isLP && <Footer />}
+          {!isLP && <WhatsAppButton />}
         </SmoothScroll>
       </body>
     </html>
