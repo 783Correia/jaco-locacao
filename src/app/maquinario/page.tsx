@@ -20,24 +20,35 @@ const HERO_MACHINES = [
     { name: "Telescópico 12,8m", type: "Manipulador", weight: "3.5t", image: "/frota/manipulador-12m.jpg" },
 ];
 
-interface Model { name: string; fullName: string; weight: string; application: string; category: string; image: string; }
+interface Model {
+    name: string;
+    fullName: string;
+    weight: string;
+    application: string;
+    category: string;
+    image: string;
+    specs: {
+        label: string;
+        value: string;
+    }[];
+}
 
 const MODELS: Model[] = [
-    { name: "CAT 320", fullName: "Escavadeira Caterpillar 320", weight: "20t", application: "Escavações de grande porte", category: "escavadeira", image: "/frota/cat-320.jpg" },
-    { name: "XCMG XE150BR", fullName: "Escavadeira XCMG XE150BR", weight: "15t", application: "Escavações médias", category: "escavadeira", image: "/frota/xe150br.jpg" },
-    { name: "CAT 313D2L", fullName: "Escavadeira Caterpillar 313D2L", weight: "13t", application: "Versatilidade em obras", category: "escavadeira", image: "/frota/cat-313d2l.jpg" },
-    { name: "Escavadeira 8t", fullName: "Escavadeira 8 Toneladas", weight: "8t", application: "Obras compactas", category: "escavadeira", image: "/frota/escavadeira-8t.jpg" },
-    { name: "Mini Escav. 1t", fullName: "Mini Escavadeira 1 Tonelada", weight: "1t", application: "Espaços ultra confinados", category: "mini-escavadeira", image: "/frota/mini-escavadeira-1t.jpg" },
-    { name: "Mini Escav. 2t", fullName: "Mini Escavadeira 2 Toneladas", weight: "2t", application: "Obras residenciais", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2t.jpg" },
-    { name: "Mini Escav. 2,7t", fullName: "Mini Escavadeira 2,7 Toneladas", weight: "2,7t", application: "Escavações leves", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2.7t.jpg" },
-    { name: "Mini Escav. 3t", fullName: "Mini Escavadeira 3 Toneladas", weight: "3t", application: "Obras e terraplanagem", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3t.jpg" },
-    { name: "Mini Escav. 3,5t", fullName: "Mini Escavadeira 3,5 Toneladas", weight: "3,5t", application: "Fundações e valas", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3.5t.jpg" },
-    { name: "Mini Escav. 5,5t", fullName: "Mini Escavadeira 5,5 Toneladas", weight: "5,5t", application: "Obras de médio porte", category: "mini-escavadeira", image: "/frota/mini-escavadeira-5.5t.jpg" },
-    { name: "Bobcat S-650", fullName: "Mini Carregadeira Bobcat S-650", weight: "650kg", application: "Carregamento e remoção", category: "mini-carregadeira", image: "/frota/bobcat-s650.jpg" },
-    { name: "Manitou 1650R", fullName: "Mini Carregadeira Manitou 1650R", weight: "1650kg", application: "Carregamento pesado", category: "mini-carregadeira", image: "/frota/manitou-1650r.jpg" },
-    { name: "Telescópico 12,8m", fullName: "Manipulador Telescópico 12,8m", weight: "3,5t", application: "Movimentação em altura", category: "manipulador", image: "/frota/manipulador-12m.jpg" },
-    { name: "Telescópico 17m", fullName: "Manipulador Telescópico 17m", weight: "4t", application: "Grandes alturas", category: "manipulador", image: "/frota/manipulador-17m.jpg" },
-    { name: "Rolo 1,5t Liso", fullName: "Rolo Compactador 1,5 Ton Liso", weight: "1,5t", application: "Compactação de solo", category: "rolo", image: "/frota/rolo-compactador-1.5t.jpg" },
+    { name: "CAT 320", fullName: "Escavadeira Caterpillar 320", weight: "20t", application: "Escavações de grande porte", category: "escavadeira", image: "/frota/cat-320.jpg", specs: [{ label: "Prof. de Escavação", value: "6,7m (aprox.)" }, { label: "Dimensões (LxCxA)", value: "3,18 x 9,53 x 3,13m" }] },
+    { name: "XCMG XE150BR", fullName: "Escavadeira XCMG XE150BR", weight: "15t", application: "Escavações médias", category: "escavadeira", image: "/frota/xe150br.jpg", specs: [{ label: "Prof. de Escavação", value: "5,54m" }, { label: "Dimensões (LxCxA)", value: "2,59 x 7,82 x 2,87m" }] },
+    { name: "CAT 313D2L", fullName: "Escavadeira Caterpillar 313D2L", weight: "13t", application: "Versatilidade em obras", category: "escavadeira", image: "/frota/cat-313d2l.jpg", specs: [{ label: "Prof. de Escavação", value: "5,55m" }, { label: "Dimensões (LxCxA)", value: "2,59 x 7,62 x 2,83m" }] },
+    { name: "Escavadeira 8t", fullName: "Escavadeira 8 Toneladas", weight: "8t", application: "Obras compactas", category: "escavadeira", image: "/frota/escavadeira-8t.jpg", specs: [{ label: "Prof. de Escavação", value: "4,40m" }, { label: "Dimensões (LxCxA)", value: "2,27 x 6,46 x 2,68m" }] },
+    { name: "Mini Escav. 1t", fullName: "Mini Escavadeira 1 Tonelada", weight: "1t", application: "Espaços ultra confinados", category: "mini-escavadeira", image: "/frota/mini-escavadeira-1t.jpg", specs: [{ label: "Prof. de Escavação", value: "1,82m" }, { label: "Dimensões (LxCxA)", value: "0,71 x 2,75 x 2,00m" }] },
+    { name: "Mini Escav. 2t", fullName: "Mini Escavadeira 2 Toneladas", weight: "2t", application: "Obras residenciais", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2t.jpg", specs: [{ label: "Prof. de Escavação", value: "2,20m" }, { label: "Dimensões (LxCxA)", value: "0,95 x 3,45 x 2,30m" }] },
+    { name: "Mini Escav. 2,7t", fullName: "Mini Escavadeira 2,7 Toneladas", weight: "2,7t", application: "Escavações leves", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2.7t.jpg", specs: [{ label: "Prof. de Escavação", value: "2,54m" }, { label: "Dimensões (LxCxA)", value: "1,50 x 4,10 x 2,53m" }] },
+    { name: "Mini Escav. 3t", fullName: "Mini Escavadeira 3 Toneladas", weight: "3t", application: "Obras e terraplanagem", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3t.jpg", specs: [{ label: "Prof. de Escavação", value: "2,97m" }, { label: "Dimensões (LxCxA)", value: "1,55 x 4,47 x 2,50m" }] },
+    { name: "Mini Escav. 3,5t", fullName: "Mini Escavadeira 3,5 Toneladas", weight: "3,5t", application: "Fundações e valas", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3.5t.jpg", specs: [{ label: "Prof. de Escavação", value: "3,41m" }, { label: "Dimensões (LxCxA)", value: "1,75 x 4,82 x 2,42m" }] },
+    { name: "Mini Escav. 5,5t", fullName: "Mini Escavadeira 5,5 Toneladas", weight: "5,5t", application: "Obras de médio porte", category: "mini-escavadeira", image: "/frota/mini-escavadeira-5.5t.jpg", specs: [{ label: "Prof. de Escavação", value: "3,60m" }, { label: "Dimensões (LxCxA)", value: "1,96 x 5,55 x 2,53m" }] },
+    { name: "Bobcat S-650", fullName: "Mini Carregadeira Bobcat S-650", weight: "4.550kg", application: "Carregamento e remoção", category: "mini-carregadeira", image: "/frota/bobcat-s650.jpg", specs: [{ label: "Capacidade Carga", value: "1.791 kg" }, { label: "Dimensões (LxCxA)", value: "1,88 x 3,47 x 2,65m" }] },
+    { name: "Manitou 1650R", fullName: "Mini Carregadeira Manitou 1650R", weight: "2.796kg", application: "Carregamento pesado", category: "mini-carregadeira", image: "/frota/manitou-1650r.jpg", specs: [{ label: "Capacidade Carga", value: "748 kg" }, { label: "Dimensões (LxCxA)", value: "1,55 x 3,10 x 1,95m" }] },
+    { name: "Telescópico 12,8m", fullName: "Manipulador Telescópico 12,8m", weight: "11.500kg", application: "Movimentação em altura", category: "manipulador", image: "/frota/manipulador-12m.jpg", specs: [{ label: "Altura de Trabalho", value: "12,8m" }, { label: "Cap./Dimensões", value: "3.800kg / 2,52x5,64x2,52m" }] },
+    { name: "Telescópico 17m", fullName: "Manipulador Telescópico 17m", weight: "12.400kg", application: "Grandes alturas", category: "manipulador", image: "/frota/manipulador-17m.jpg", specs: [{ label: "Altura de Trabalho", value: "17m" }, { label: "Cap./Dimensões", value: "4.500kg / 2,59x6,06x2,54m" }] },
+    { name: "Rolo 1,5t Liso", fullName: "Rolo Compactador 1,5 Ton Liso", weight: "2.796kg", application: "Compactação de solo", category: "rolo", image: "/frota/rolo-compactador-1.5t.jpg", specs: [{ label: "Força de Compac.", value: "1.500 kg" }, { label: "Dimensões (LxCxA)", value: "0,98 x 2,13 x 2,33m" }] },
 ];
 
 const TABS = [
@@ -185,18 +196,34 @@ export default function MaquinarioLP() {
                         <AnimatePresence mode="popLayout">
                             {filtered.map((m) => (
                                 <motion.div key={m.name} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
-                                    className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                    <div className="relative h-52 overflow-hidden bg-white">
+                                    className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                                    <div className="relative h-52 overflow-hidden bg-white flex-shrink-0">
                                         <Image src={m.image} alt={m.fullName} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
                                         <div className="absolute top-3 right-3 px-3 py-1.5 text-white text-xs font-bold rounded-lg bg-primary shadow-lg">{m.weight}</div>
                                     </div>
-                                    <div className="p-5">
-                                        <h3 className="text-base font-bold text-gray-900 mb-1.5">{m.fullName}</h3>
-                                        <span className="inline-block px-3 py-1 text-[10px] font-semibold rounded-full mb-4 capitalize text-primary-dark bg-primary/10">{m.category.replace(/-/g, ' ')} · {m.application}</span>
-                                        <a href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.fullName)}.`} target="_blank" rel="noopener noreferrer"
-                                            className="block py-3 text-center text-sm font-semibold text-white rounded-full bg-primary hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-                                            <span className="flex items-center justify-center gap-2"><WaIcon size={14} /> Pedir Orçamento</span>
-                                        </a>
+                                    <div className="p-6 flex flex-col flex-grow border-t border-gray-50">
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{m.fullName}</h3>
+                                            <span className="inline-block px-3 py-1 text-[10px] font-semibold rounded-full capitalize text-primary-dark bg-primary/10">{m.category.replace(/-/g, ' ')} · {m.application}</span>
+                                        </div>
+
+                                        <div className="bg-gray-50 rounded-xl p-4 mb-5 flex-grow">
+                                            <ul className="space-y-2.5">
+                                                {m.specs.map((spec, i) => (
+                                                    <li key={i} className="flex justify-between items-center text-xs">
+                                                        <span className="font-semibold text-gray-500">{spec.label}</span>
+                                                        <span className="font-bold text-gray-800 text-right">{spec.value}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="mt-auto">
+                                            <a href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.fullName)}.`} target="_blank" rel="noopener noreferrer"
+                                                className="flex w-full items-center justify-center gap-2 py-3.5 text-sm font-bold text-white rounded-xl bg-primary hover:shadow-[0_8px_20px_rgba(44,158,75,0.25)] hover:scale-[1.02] transition-all duration-300">
+                                                <WaIcon size={16} /> Pedir Orçamento
+                                            </a>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}
