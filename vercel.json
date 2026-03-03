@@ -2,19 +2,19 @@
     "rewrites": [
         {
             "source": "/maquinario",
-            "destination": "https://lp-maquina-rio-jacolocadora.vercel.app/maquinario"
+            "destination": "https://lp-maquina-rio-jacolocadora.vercel.app/"
         },
         {
             "source": "/maquinario/:path*",
-            "destination": "https://lp-maquina-rio-jacolocadora.vercel.app/maquinario/:path*"
+            "destination": "https://lp-maquina-rio-jacolocadora.vercel.app/:path*"
         },
         {
             "source": "/plataformaselevatorias",
-            "destination": "https://plataformaselevatoriasjacolocadora.vercel.app/plataformaselevatorias"
+            "destination": "https://plataformaselevatoriasjacolocadora.vercel.app/"
         },
         {
             "source": "/plataformaselevatorias/:path*",
-            "destination": "https://plataformaselevatoriasjacolocadora.vercel.app/plataformaselevatorias/:path*"
+            "destination": "https://plataformaselevatoriasjacolocadora.vercel.app/:path*"
         }
     ]
 }
