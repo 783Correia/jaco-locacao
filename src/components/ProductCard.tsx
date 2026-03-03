@@ -46,15 +46,57 @@ function ProductCard({ product }: ProductCardProps) {
 
                     {/* Display Extracted Specs */}
                     {product.cardSpecs && (
-                        <div className="grid grid-cols-2 gap-2 mt-2">
-                            {Object.entries(product.cardSpecs).map(([key, value]) => (
-                                <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
-                                    <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
-                                    <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
+                        <div className="flex flex-col gap-2 mt-2">
+                            {/* Regular Specs in a Grid */}
+                            <div className="grid grid-cols-2 gap-2">
+                                {Object.entries(product.cardSpecs)
+                                    .filter(([key]) => key !== "Dimensões")
+                                    .map(([key, value]) => (
+                                        <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
+                                            <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
+                                            <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
+                                        </div>
+                                    ))}
+                            </div>
+
+                            {/* Dimensions Expanded Box */}
+                            {product.cardSpecs["Dimensões"] && product.cardSpecs["Dimensões"] !== "n/a" && product.cardSpecs["Dimensões"] !== "-" && (
+                                <div className="flex flex-col bg-gray-50 p-3 rounded-md border border-gray-100 mt-1">
+                                    <span className="text-[9px] text-gray-400 font-semibold uppercase text-center mb-2">Dimensões (m)</span>
+                                    <div className="flex justify-between items-center text-center">
+                                        {/* Parse format: 0,81x1,40x1,88m */}
+                                        {product.cardSpecs["Dimensões"].replace("m", "").split("x").map((val, idx) => {
+                                            const labels = ["Largura", "Comp.", "Altura"];
+                                            return (
+                                                <div key={idx} className="flex flex-col flex-1">
+                                                    <span className="text-[8px] text-gray-400 uppercase">{labels[idx]}</span>
+                                                    <span className="text-xs text-gray-800 font-bold">{val}</span>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                            ))}
+                            )}
+
+                            {product.cardSpecs["Dimensões"] && (product.cardSpecs["Dimensões"] === "n/a" || product.cardSpecs["Dimensões"] === "-") && (
+                                <div className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100 mt-1 text-center">
+                                    <span className="text-[9px] text-gray-400 font-semibold uppercase">Dimensões</span>
+                                    <span className="text-xs text-gray-800 font-bold mt-0.5">Sob Consulta</span>
+                                </div>
+                            )}
                         </div>
                     )}
+
+                    {/* WhatsApp Button */}
+                    <a
+                        href={`https://wa.me/554899250605?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20máquina%20${encodeURIComponent(product.name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 w-full bg-[#25D366] hover:bg-[#1ebd5c] text-white flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-sm"
+                    >
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="css-i6dzq1"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        Orçar Pelo WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
