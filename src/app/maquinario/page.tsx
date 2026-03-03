@@ -1,5 +1,5 @@
 'use client';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -93,32 +93,27 @@ export default function MaquinarioLP() {
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-30 pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(44,158,75,0.15), transparent 65%)' }} />
 
                 <div className="relative z-10 pt-20 pb-12 text-center max-w-4xl mx-auto px-6">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-8 border border-primary/30 bg-primary/10">
+                    <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-8 border border-primary/30 bg-primary/10">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">Locação de Máquinas Pesadas</span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
                         Aluguel de máquinas<br />pesadas <span className="text-primary">em SC.</span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
-                        className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed text-gray-400">
+                    <p className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed text-gray-400">
                         Escavadeiras, mini escavadeiras, manipuladores e mais. Entrega rápida em todo o estado de Santa Catarina.
-                    </motion.p>
+                    </p>
 
-                    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
-                        <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-white text-lg bg-primary transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(44,158,75,0.35)]">
-                            <WaIcon size={20} /> Solicitar orçamento
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12H19M19 12L12 5M19 12L12 19" /></svg>
-                        </a>
-                    </motion.div>
+                    <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-white text-lg bg-primary transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(44,158,75,0.35)]">
+                        <WaIcon size={20} /> Solicitar orçamento
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12H19M19 12L12 5M19 12L12 19" /></svg>
+                    </a>
                 </div>
 
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.7 }} className="relative z-10 pb-16">
+                <div className="relative z-10 pb-16">
                     <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 z-20 pointer-events-none" style={{ background: 'linear-gradient(to right, #0a0a0a, transparent)' }} />
                     <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 z-20 pointer-events-none" style={{ background: 'linear-gradient(to left, #0a0a0a, transparent)' }} />
 
@@ -127,7 +122,7 @@ export default function MaquinarioLP() {
                             <a key={m.name} href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.name)}.`} target="_blank" rel="noopener noreferrer"
                                 className="flex-shrink-0 w-[240px] sm:w-[260px] rounded-3xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-white/10">
                                 <div className="relative h-[200px] sm:h-[220px] overflow-hidden bg-white">
-                                    <Image src={m.image} alt={m.name} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-110" sizes="260px" />
+                                    <Image src={m.image} alt={m.name} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-105" sizes="260px" />
                                 </div>
                                 <div className="px-5 py-4 bg-white/[0.06]">
                                     <h3 className="text-base font-bold text-white mb-1">{m.name}</h3>
@@ -138,69 +133,61 @@ export default function MaquinarioLP() {
                             </a>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </section>
 
             {/* ── COMO FUNCIONA ── */}
             <section className="py-16 lg:py-20 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-                    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
+                    <div className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
                         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-primary-dark">Processo Simples</span>
-                    </motion.div>
-                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">Como funciona a locação</motion.h2>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">Como funciona a locação</h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                        {STEPS.map((s, i) => (
-                            <motion.div key={s.num} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }}
-                                transition={{ duration: 0.5, delay: i * 0.06 }}
-                                className="rounded-3xl p-7 bg-white border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        {STEPS.map((s) => (
+                            <div key={s.num} className="rounded-3xl p-7 bg-white border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                                 <div className="text-4xl mb-5">{s.icon}</div>
                                 <div className="text-xs font-bold mb-2 uppercase tracking-wider text-primary">{s.num}</div>
                                 <h3 className="text-lg font-bold mb-2 text-gray-900">{s.title}</h3>
                                 <p className="text-sm leading-relaxed text-gray-500">{s.desc}</p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
-                    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.5 }} className="mt-10">
+                    <div className="mt-10">
                         <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-white bg-primary hover:scale-[1.03] hover:shadow-lg transition-all duration-300">
                             <WaIcon /> Solicitar orçamento agora
                         </a>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* ── FROTA ── */}
             <section className="py-16 lg:py-20 bg-gray-50" id="frota-maquinario">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-                    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
+                    <div className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
                         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-primary-dark">Frota de Máquinas Pesadas</span>
-                    </motion.div>
-                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Equipamentos de ponta para<br />todo tipo de obra</motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">Máquinas das melhores marcas com suporte técnico especializado.</motion.p>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Equipamentos de ponta para<br />todo tipo de obra</h2>
+                    <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">Máquinas das melhores marcas com suporte técnico especializado.</p>
 
-                    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.5 }}
-                        className="flex flex-wrap justify-center gap-3 mb-10">
+                    <div className="flex flex-wrap justify-center gap-3 mb-10">
                         {TABS.map(tab => (
                             <button key={tab.value} onClick={() => setActive(tab.value)}
-                                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-[1.03] ${active === tab.value ? 'bg-primary text-white border border-primary shadow-[0_4px_16px_rgba(44,158,75,0.3)]' : 'bg-white text-gray-500 border border-gray-200'}`}>
+                                className={`px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 ${active === tab.value ? 'bg-primary text-white border border-primary shadow-[0_4px_16px_rgba(44,158,75,0.3)]' : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300'}`}>
                                 {tab.label}
                             </button>
                         ))}
-                    </motion.div>
+                    </div>
 
-                    <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-left">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-left">
                         <AnimatePresence mode="popLayout">
                             {filtered.map((m) => (
-                                <motion.div key={m.name} layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.35 }}
+                                <motion.div key={m.name} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
                                     className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div className="relative h-52 overflow-hidden bg-white">
-                                        <Image src={m.image} alt={m.fullName} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
+                                        <Image src={m.image} alt={m.fullName} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
                                         <div className="absolute top-3 right-3 px-3 py-1.5 text-white text-xs font-bold rounded-lg bg-primary shadow-lg">{m.weight}</div>
                                     </div>
                                     <div className="p-5">
@@ -214,25 +201,21 @@ export default function MaquinarioLP() {
                                 </motion.div>
                             ))}
                         </AnimatePresence>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* ── DEPOIMENTOS ── */}
             <section className="py-16 lg:py-20 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-                    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
+                    <div className="inline-flex items-center px-5 py-2 rounded-full mb-6 bg-primary/10 border border-primary/20">
                         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-primary-dark">Depoimentos</span>
-                    </motion.div>
-                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">Quem constrói com a Jaco<br />recomenda</motion.h2>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">Quem constrói com a Jaco<br />recomenda</h2>
 
                     <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5 text-left">
                         {TESTIMONIALS.map((t, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }}
-                                transition={{ duration: 0.5, delay: i * 0.05 }}
-                                className="break-inside-avoid rounded-2xl p-6 bg-white border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                            <div key={i} className="break-inside-avoid rounded-2xl p-6 bg-white border border-gray-100 hover:shadow-lg transition-all duration-300">
                                 <Stars />
                                 <p className="text-sm leading-relaxed mb-5 text-gray-800">{t.text}</p>
                                 <div className="flex items-center gap-3">
@@ -242,7 +225,7 @@ export default function MaquinarioLP() {
                                         <p className="text-xs text-gray-500">{t.company}</p>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
