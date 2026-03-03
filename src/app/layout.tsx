@@ -81,7 +81,9 @@ export default async function RootLayout({
     <html lang="pt-BR">
       <head>
         {/* Google Tag Manager */}
-        <script
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -94,8 +96,10 @@ export default async function RootLayout({
         />
         {/* End Google Tag Manager */}
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3CDLTLXVP" />
-        <script
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3CDLTLXVP" strategy="afterInteractive" />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

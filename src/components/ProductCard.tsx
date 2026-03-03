@@ -1,9 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { FaArrowRight } from "react-icons/fa";
 import { Product } from "@/data/products";
-import Link from "next/link";
 import Image from "next/image";
 
 interface ProductCardProps {
