@@ -43,6 +43,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-diesel-12m",
         cardSpecs: {
             "Altura Trab.": "12,5m",
+            "Alc. Horiz.": "6,78m",
             "Capacidade": "227kg",
             "Dimensões": "1,85x5,66x2,06m",
             "Peso": "4990kg"
@@ -58,6 +59,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-diesel-16m",
         cardSpecs: {
             "Altura Trab.": "16m",
+            "Alc. Horiz.": "9,1m",
             "Capacidade": "227kg",
             "Dimensões": "2,40x6,80x2,20m",
             "Peso": "7000kg"
@@ -73,6 +75,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-diesel-20m",
         cardSpecs: {
             "Altura Trab.": "20m",
+            "Alc. Horiz.": "12,2m",
             "Capacidade": "227kg",
             "Dimensões": "2,44x8,83x2,54m",
             "Peso": "10500kg"
@@ -88,6 +91,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-eletrica-12m",
         cardSpecs: {
             "Altura Trab.": "12m",
+            "Alc. Horiz.": "4,57m",
             "Capacidade": "200kg",
             "Dimensões": "1,50x4,17x1,98m",
             "Peso": "3671kg"
@@ -103,6 +107,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-eletrica-15m",
         cardSpecs: {
             "Altura Trab.": "15m",
+            "Alc. Horiz.": "8,65m",
             "Capacidade": "227kg",
             "Dimensões": "1,50x6,65x2,10m",
             "Peso": "7000kg"
@@ -118,6 +123,7 @@ export const products: Product[] = [
         slug: "plataforma-articulada-eletrica-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
+            "Alc. Horiz.": "9,43m",
             "Capacidade": "230kg",
             "Dimensões": "1,70x6,90x2,10m",
             "Peso": "7130kg"
@@ -133,6 +139,7 @@ export const products: Product[] = [
         slug: "plataforma-telescopica-diesel-28m",
         cardSpecs: {
             "Altura Trab.": "28m",
+            "Alc. Horiz.": "22,9m",
             "Capacidade": "227kg",
             "Dimensões": "2,49x12,19x3,05m",
             "Peso": "16732kg"
@@ -152,6 +159,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-6-6m",
         cardSpecs: {
             "Altura Trab.": "6,3m",
+            "Alc. Horiz.": "0,6m",
             "Capacidade": "227kg",
             "Dimensões": "0,81x1,40x1,88m",
             "Peso": "900kg"
@@ -167,6 +175,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-8m",
         cardSpecs: {
             "Altura Trab.": "8m",
+            "Alc. Horiz.": "0,7m",
             "Capacidade": "227kg",
             "Dimensões": "0,81x2,07x2,02m",
             "Peso": "1500kg"
@@ -182,6 +191,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-10m-compacta",
         cardSpecs: {
             "Altura Trab.": "10m",
+            "Alc. Horiz.": "0,9m",
             "Capacidade": "250kg",
             "Dimensões": "0,81x2,32x2,15m",
             "Peso": "1850kg"
@@ -197,6 +207,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-10m",
         cardSpecs: {
             "Altura Trab.": "10m",
+            "Alc. Horiz.": "1,27m",
             "Capacidade": "450kg",
             "Dimensões": "1,18x2,40x1,97m",
             "Peso": "2150kg"
@@ -212,6 +223,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-12m",
         cardSpecs: {
             "Altura Trab.": "12m",
+            "Alc. Horiz.": "0,9m",
             "Capacidade": "320kg",
             "Dimensões": "1,22x2,40x2,41m",
             "Peso": "2600kg"
@@ -227,6 +239,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-14m",
         cardSpecs: {
             "Altura Trab.": "14m",
+            "Alc. Horiz.": "0,91m",
             "Capacidade": "320kg",
             "Dimensões": "1,14x2,71x2,53m",
             "Peso": "3500kg"
@@ -242,6 +255,7 @@ export const products: Product[] = [
         slug: "plataforma-tesoura-14m-todo-terreno",
         cardSpecs: {
             "Altura Trab.": "14m",
+            "Alc. Horiz.": "0,91m",
             "Capacidade": "360kg",
             "Dimensões": "1,75x3,15x2,83m",
             "Peso": "4500kg"

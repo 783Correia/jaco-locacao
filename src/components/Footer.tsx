@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaMapMarkerAlt,
   FaPhoneAlt,
+  FaEnvelope,
 } from "react-icons/fa";
 import { getWhatsAppLink } from "@/utils/whatsapp";
 
@@ -76,7 +77,10 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {[
                   { href: "/frota#escavadeiras", label: "Escavadeiras" },
+                  { href: "/frota#mini-escavadeiras", label: "Mini Escavadeiras" },
                   { href: "/frota#plataformas", label: "Plataformas Elevatórias" },
+                  { href: "/frota#mini-carregadeiras", label: "Mini Carregadeiras" },
+                  { href: "/frota#manipuladores", label: "Manipuladores" },
                   { href: "/frota#rolos", label: "Rolos Compactadores" },
                 ].map((item) => (
                   <li key={item.href}>
@@ -107,22 +111,31 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="tel:+555133330000"
+                    href="tel:+5548999250605"
                     className="flex items-center gap-2.5 text-white/40 hover:text-lime text-sm transition-colors"
                   >
                     <FaPhoneAlt className="text-lime text-xs" />
-                    (11) 90000-0000
+                    (48) 99925-0605
                   </a>
                 </li>
                 <li>
                   <a
-                    href={getWhatsAppLink()}
+                    href="https://wa.me/5548988054958"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 text-white/40 hover:text-lime text-sm transition-colors"
                   >
                     <FaWhatsapp className="text-lime text-xs" />
-                    (11) 90000-0000
+                    (48) 98805-4958
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:contato@jacolocadora.com.br"
+                    className="flex items-center gap-2.5 text-white/40 hover:text-lime text-sm transition-colors"
+                  >
+                    <FaEnvelope className="text-lime text-xs" />
+                    contato@jacolocadora.com.br
                   </a>
                 </li>
               </ul>
