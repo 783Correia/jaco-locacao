@@ -66,7 +66,7 @@ function Hero() {
       <div className="hidden md:block absolute bottom-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] z-10 opacity-50" />
 
       <div className="container-main relative z-20 text-center pt-24 md:pt-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto px-2">
           {/* Tag */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -79,7 +79,7 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(1.8rem,4.5vw,3.8rem)] font-extrabold text-white leading-[1.35] tracking-normal mb-6 drop-shadow-2xl py-2 max-w-5xl mx-auto">
+          <h1 className="text-[clamp(1.8rem,4vw,3.8rem)] font-extrabold text-white leading-[1.3] tracking-normal mb-6 drop-shadow-2xl py-2 w-full mx-auto">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-sm md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
+            className="text-sm md:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
           >
             Especialistas em locação de plataformas elevatórias (articuladas e tesoura) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
