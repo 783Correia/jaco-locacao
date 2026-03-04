@@ -16,23 +16,30 @@ const HERO_MACHINES = [
     { name: "Tesoura 14m TT", type: "Tesoura Todo Terreno", height: "14m", image: "/frota/plataforma-tesoura-14m-todo-terreno.jpg" },
 ];
 
-interface Model { name: string; fullName: string; height: string; capacity: string; application: string; category: string; image: string; }
+interface Model {
+    name: string;
+    fullName: string;
+    description: string;
+    category: string;
+    image: string;
+    cardSpecs: Record<string, string>;
+}
 
 const MODELS: Model[] = [
-    { name: "Tesoura 6,6m", fullName: "Plataforma Tesoura Elétrica 6,6m Compacta", height: "6,6m", capacity: "230kg", application: "Ambientes internos", category: "tesoura", image: "/frota/plataforma-tesoura-6.6m-compacta.jpg" },
-    { name: "Tesoura 8m", fullName: "Plataforma Tesoura Elétrica 8m", height: "8m", capacity: "350kg", application: "Manutenção predial", category: "tesoura", image: "/frota/plataforma-tesoura-8m.jpg" },
-    { name: "Tesoura 10m Comp.", fullName: "Plataforma Tesoura Elétrica 10m Compacta", height: "10m", capacity: "230kg", application: "Áreas internas", category: "tesoura", image: "/frota/plataforma-tesoura-10m-compacta.jpg" },
-    { name: "Tesoura 10m", fullName: "Plataforma Tesoura Elétrica 10m", height: "10m", capacity: "450kg", application: "Uso geral", category: "tesoura", image: "/frota/plataforma-tesoura-10m.jpg" },
-    { name: "Tesoura 12m", fullName: "Plataforma Tesoura Elétrica 12m", height: "12m", capacity: "450kg", application: "Instalações industriais", category: "tesoura", image: "/frota/plataforma-tesoura-12m.jpg" },
-    { name: "Tesoura 14m", fullName: "Plataforma Tesoura Elétrica 14m", height: "14m", capacity: "450kg", application: "Alto alcance interno", category: "tesoura", image: "/frota/plataforma-tesoura-14m.jpg" },
-    { name: "Tesoura 14m TT", fullName: "Plataforma Tesoura 14m Todo Terreno", height: "14m", capacity: "700kg", application: "Uso externo", category: "tesoura", image: "/frota/plataforma-tesoura-14m-todo-terreno.jpg" },
-    { name: "Articulada Diesel 12m", fullName: "Plataforma Articulada Diesel 12,5m", height: "12,5m", capacity: "230kg", application: "Ambientes externos", category: "articulada", image: "/frota/plataforma-articulada-diesel-12m.jpg" },
-    { name: "Articulada Diesel 16m", fullName: "Plataforma Articulada Diesel 4x4 16m", height: "16m", capacity: "230kg", application: "Terrenos irregulares", category: "articulada", image: "/frota/plataforma-articulada-diesel-16m.jpg" },
-    { name: "Articulada Diesel 20m", fullName: "Plataforma Articulada Diesel 4x4 20m", height: "20m", capacity: "230kg", application: "Construção e montagem", category: "articulada", image: "/frota/plataforma-articulada-diesel-20m.jpg" },
-    { name: "Articulada Elétrica 12m", fullName: "Plataforma Articulada Elétrica 12m", height: "12m", capacity: "230kg", application: "Ambientes internos", category: "articulada", image: "/frota/plataforma-articulada-eletrica-12m.jpg" },
-    { name: "Articulada Elétrica 15m", fullName: "Plataforma Articulada Elétrica 15m", height: "15m", capacity: "230kg", application: "Galpões e shoppings", category: "articulada", image: "/frota/plataforma-articulada-eletrica-15m.jpg" },
-    { name: "Articulada Elétrica 17m", fullName: "Plataforma Articulada Elétrica 17m", height: "17m", capacity: "230kg", application: "Operação limpa", category: "articulada", image: "/frota/plataforma-articulada-eletrica-17m.jpg" },
-    { name: "Telescópica 28m", fullName: "Plataforma Telescópica Diesel 28m", height: "28m", capacity: "230kg", application: "Torres e fachadas", category: "articulada", image: "/frota/plataforma-telescopica-diesel-28m.png" },
+    { name: "Tesoura 6,6m", fullName: "Plataforma Tesoura Elétrica 6,6m Compacta", description: "Ultra compacta para trabalhos internos com 6,6 metros de altura. Passa por portas e corredores estreitos.", category: "tesoura", image: "/frota/plataforma-tesoura-6.6m-compacta.jpg", cardSpecs: { "Altura Trab.": "6,3m", "Alc. Horiz.": "0,6m", "Capacidade": "227kg", "Peso": "900kg", "Dimensões": "0,81x1,40x1,88m" } },
+    { name: "Tesoura 8m", fullName: "Plataforma Tesoura Elétrica 8m", description: "Plataforma tesoura com 8 metros de altura de trabalho. Ideal para manutenção predial e instalações elétricas.", category: "tesoura", image: "/frota/plataforma-tesoura-8m.jpg", cardSpecs: { "Altura Trab.": "8m", "Alc. Horiz.": "0,7m", "Capacidade": "227kg", "Peso": "1500kg", "Dimensões": "0,81x2,07x2,02m" } },
+    { name: "Tesoura 10m Comp.", fullName: "Plataforma Tesoura Elétrica 10m Compacta", description: "Versão compacta com 10 metros de alcance, perfeita para áreas internas com espaço limitado.", category: "tesoura", image: "/frota/plataforma-tesoura-10m-compacta.jpg", cardSpecs: { "Altura Trab.": "10m", "Alc. Horiz.": "0,9m", "Capacidade": "250kg", "Peso": "1850kg", "Dimensões": "0,81x2,32x2,15m" } },
+    { name: "Tesoura 10m", fullName: "Plataforma Tesoura Elétrica 10m", description: "Plataforma padrão com 10 metros de altura, capacidade generosa de carga na plataforma de trabalho.", category: "tesoura", image: "/frota/plataforma-tesoura-10m.jpg", cardSpecs: { "Altura Trab.": "10m", "Alc. Horiz.": "1,27m", "Capacidade": "450kg", "Peso": "2150kg", "Dimensões": "1,18x2,40x1,97m" } },
+    { name: "Tesoura 12m", fullName: "Plataforma Tesoura Elétrica 12m", description: "Alcance de 12 metros com plataforma espaçosa. Excelente para instalações industriais e pintura de fachadas.", category: "tesoura", image: "/frota/plataforma-tesoura-12m.jpg", cardSpecs: { "Altura Trab.": "12m", "Alc. Horiz.": "0,9m", "Capacidade": "320kg", "Peso": "2600kg", "Dimensões": "1,22x2,40x2,41m" } },
+    { name: "Tesoura 14m", fullName: "Plataforma Tesoura Elétrica 14m", description: "Plataforma tesoura com 14 metros de altura para trabalhos internos que exigem maior alcance vertical.", category: "tesoura", image: "/frota/plataforma-tesoura-14m.jpg", cardSpecs: { "Altura Trab.": "14m", "Alc. Horiz.": "0,91m", "Capacidade": "320kg", "Peso": "3500kg", "Dimensões": "1,14x2,71x2,53m" } },
+    { name: "Tesoura 14m TT", fullName: "Plataforma Tesoura 14m Todo Terreno", description: "Tesoura todo terreno com 14 metros de alcance, projetada para uso externo em pisos irregulares e canteiros.", category: "tesoura", image: "/frota/plataforma-tesoura-14m-todo-terreno.jpg", cardSpecs: { "Altura Trab.": "14m", "Alc. Horiz.": "0,91m", "Capacidade": "360kg", "Peso": "4500kg", "Dimensões": "1,75x3,15x2,83m" } },
+    { name: "Articulada Diesel 12m", fullName: "Plataforma Articulada Diesel 12,5m", description: "Plataforma elevatória articulada a diesel com 12,50 metros de altura de trabalho para ambientes externos.", category: "articulada", image: "/frota/plataforma-articulada-diesel-12m.jpg", cardSpecs: { "Altura Trab.": "12,5m", "Alc. Horiz.": "6,78m", "Capacidade": "227kg", "Peso": "4990kg", "Dimensões": "1,85x5,66x2,06m" } },
+    { name: "Articulada Diesel 16m", fullName: "Plataforma Articulada Diesel 4x4 16m", description: "Tração 4x4 com 16 metros de alcance para terrenos irregulares e trabalhos pesados em altura.", category: "articulada", image: "/frota/plataforma-articulada-diesel-16m.jpg", cardSpecs: { "Altura Trab.": "16m", "Alc. Horiz.": "9,1m", "Capacidade": "227kg", "Peso": "7000kg", "Dimensões": "2,40x6,80x2,20m" } },
+    { name: "Articulada Diesel 20m", fullName: "Plataforma Articulada Diesel 4x4 20m", description: "Alto alcance de 20 metros com tração 4x4. Ideal para manutenção industrial, construção e montagem.", category: "articulada", image: "/frota/plataforma-articulada-diesel-20m.jpg", cardSpecs: { "Altura Trab.": "20m", "Alc. Horiz.": "12,2m", "Capacidade": "227kg", "Peso": "10500kg", "Dimensões": "2,44x8,83x2,54m" } },
+    { name: "Articulada Elétrica 12m", fullName: "Plataforma Articulada Elétrica 12m", description: "Operação silenciosa e zero emissão para ambientes internos, com 12 metros de altura de trabalho.", category: "articulada", image: "/frota/plataforma-articulada-eletrica-12m.jpg", cardSpecs: { "Altura Trab.": "12m", "Alc. Horiz.": "4,57m", "Capacidade": "200kg", "Peso": "3671kg", "Dimensões": "1,50x4,17x1,98m" } },
+    { name: "Articulada Elétrica 15m", fullName: "Plataforma Articulada Elétrica 15m", description: "Alcance de 15 metros com motor elétrico. Perfeita para galpões, shoppings e áreas com restrição de ruído.", category: "articulada", image: "/frota/plataforma-articulada-eletrica-15m.jpg", cardSpecs: { "Altura Trab.": "15m", "Alc. Horiz.": "8,65m", "Capacidade": "227kg", "Peso": "7000kg", "Dimensões": "1,50x6,65x2,10m" } },
+    { name: "Articulada Elétrica 17m", fullName: "Plataforma Articulada Elétrica 17m", description: "A maior articulada elétrica da frota com 17 metros de alcance, combinando potência e operação limpa.", category: "articulada", image: "/frota/plataforma-articulada-eletrica-17m.jpg", cardSpecs: { "Altura Trab.": "17m", "Alc. Horiz.": "9,43m", "Capacidade": "230kg", "Peso": "7130kg", "Dimensões": "1,70x6,90x2,10m" } },
+    { name: "Telescópica 28m", fullName: "Plataforma Telescópica Diesel 28m", description: "Maior alcance da frota com 28 metros. Para trabalhos em grande altura: torres, fachadas e estruturas elevadas.", category: "articulada", image: "/frota/plataforma-telescopica-diesel-28m.png", cardSpecs: { "Altura Trab.": "28m", "Alc. Horiz.": "22,9m", "Capacidade": "227kg", "Peso": "16732kg", "Dimensões": "2,49x12,19x3,05m" } },
 ];
 
 const TABS = [
@@ -89,12 +96,12 @@ export default function PlataformasLP() {
 
                     <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
-                        Alugue plataformas<br />elevatórias <span className="text-primary">em SC.</span>
+                        Aluguel de plataformas<br />elevatórias <span className="text-primary">em SC.</span>
                     </motion.h1>
 
                     <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
                         className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed text-gray-400">
-                        Tesoura, articulada e telescópica. De 6 a 28 metros de altura. Entrega rápida em todo o estado de Santa Catarina.
+                        Plataformas Tesouras, articuladas e telescópicas. De 6 a 28 metros de altura. Entrega rápida em todo o estado de Santa Catarina.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
@@ -182,26 +189,62 @@ export default function PlataformasLP() {
                         ))}
                     </motion.div>
 
-                    <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-left">
+                    <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <AnimatePresence mode="popLayout">
                             {filtered.map((m) => (
                                 <motion.div key={m.name} layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.35 }}
-                                    className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                    <div className="relative h-52 overflow-hidden bg-white">
-                                        <Image src={m.image} alt={`Locação de ${m.fullName} em Santa Catarina`} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
-                                        <div className="absolute top-3 right-3 px-3 py-1.5 text-white text-xs font-bold rounded-lg bg-primary shadow-lg">{m.height}</div>
+                                    className="group rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col">
+                                    {/* Image */}
+                                    <div className="relative aspect-[4/3] w-full bg-white flex items-center justify-center p-4 border-b border-gray-100">
+                                        <Image src={m.image} alt={`Locação de ${m.fullName} em Santa Catarina`} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
                                     </div>
-                                    <div className="p-5">
-                                        <h3 className="text-base font-bold text-gray-900 mb-1.5">{m.fullName}</h3>
-                                        <span className="inline-block px-3 py-1 text-[10px] font-semibold rounded-full mb-4 capitalize text-primary-dark bg-primary/10">{m.category} · {m.application}</span>
-                                        <div className="flex items-center gap-3 mb-4 text-xs text-gray-500">
-                                            <span>📏 {m.height}</span>
-                                            <span>⚖️ {m.capacity}</span>
+
+                                    {/* Content */}
+                                    <div className="p-5 flex flex-col flex-grow">
+                                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                            {m.category === 'tesoura' ? 'Plataformas Tesoura' : 'Plataformas Articuladas'}
+                                        </span>
+                                        <h3 className="text-base font-bold text-gray-900 mt-1 group-hover:text-primary transition-colors duration-300">{m.fullName}</h3>
+                                        <p className="text-gray-500 text-xs leading-relaxed mt-2 mb-4 flex-grow">{m.description}</p>
+
+                                        {/* Specs Grid */}
+                                        <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-3">
+                                            <div className="grid grid-cols-2 gap-2">
+                                                {Object.entries(m.cardSpecs)
+                                                    .filter(([key]) => key !== 'Dimensões')
+                                                    .map(([key, value]) => (
+                                                        <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
+                                                            <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
+                                                            <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
+                                                        </div>
+                                                    ))}
+                                            </div>
+
+                                            {/* Dimensions */}
+                                            {m.cardSpecs['Dimensões'] && (
+                                                <div className="flex flex-col bg-gray-50 p-3 rounded-md border border-gray-100 mt-1">
+                                                    <span className="text-[9px] text-gray-400 font-semibold uppercase text-center mb-2">Dimensões (m)</span>
+                                                    <div className="flex justify-between items-center text-center">
+                                                        {m.cardSpecs['Dimensões'].replace('m', '').split('x').map((val, idx) => {
+                                                            const labels = ['Largura', 'Comp.', 'Altura'];
+                                                            return (
+                                                                <div key={idx} className="flex flex-col flex-1">
+                                                                    <span className="text-[8px] text-gray-400 uppercase">{labels[idx]}</span>
+                                                                    <span className="text-xs text-gray-800 font-bold">{val}</span>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* WhatsApp Button */}
+                                            <a href={`${WA}Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20${encodeURIComponent(m.fullName)}`}
+                                                target="_blank" rel="noopener noreferrer"
+                                                className="mt-3 w-full bg-[#25D366] hover:bg-[#1ebd5c] text-white flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-sm">
+                                                <WaIcon size={18} /> Orçar Pelo WhatsApp
+                                            </a>
                                         </div>
-                                        <a href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.fullName)}.`} target="_blank" rel="noopener noreferrer"
-                                            className="block py-3 text-center text-sm font-semibold text-white rounded-full bg-primary hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-                                            <span className="flex items-center justify-center gap-2"><WaIcon size={14} /> Pedir Orçamento</span>
-                                        </a>
                                     </div>
                                 </motion.div>
                             ))}
