@@ -113,7 +113,7 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-sm md:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
           >
-            Especialistas em locação de plataformas elevatórias (articuladas e tesoura) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
+            Especialistas em locação de plataformas elevatórias (articuladas e tesouras) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
 
           <motion.div
