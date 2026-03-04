@@ -344,8 +344,8 @@ export const products: Product[] = [
     },
     {
         id: "esc-8t",
-        name: "Escavadeira 8 Toneladas",
-        brand: "XCMG",
+        name: "Escavadeira 8 Toneladas Yanmar VIO80",
+        brand: "Yanmar",
         category: "Escavadeiras",
         description: "Escavadeira compacta de 8 toneladas, ideal para obras urbanas e espaços reduzidos com alta produtividade.",
         image: "/frota/escavadeira-8t.jpg",
@@ -505,9 +505,9 @@ export const products: Product[] = [
         slug: "manipulador-12m",
         cardSpecs: {
             "Altura Trab.": "12,8m",
-            "Capacidade": "11500kg",
+            "Capacidade": "3800kg",
             "Dimensões": "2,52x5,64x2,52m",
-            "Peso": "3800kg"
+            "Peso": "11500kg"
         },
     },
     {
@@ -520,9 +520,9 @@ export const products: Product[] = [
         slug: "manipulador-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
-            "Capacidade": "12400kg",
+            "Capacidade": "4500kg",
             "Dimensões": "2,59x6,06x2,54m",
-            "Peso": "4500kg"
+            "Peso": "12400kg"
         },
     },
 
@@ -538,9 +538,8 @@ export const products: Product[] = [
         image: "/frota/rolo-compactador-1.5t.jpg",
         slug: "rolo-compactador-1-5t",
         cardSpecs: {
-            "Capacidade": "1500kg",
             "Dimensões": "0,98x2,13x2,33m",
-            "Peso": "2796kg"
+            "Peso": "1500kg"
         },
     },
 ];
