@@ -26,7 +26,7 @@ interface Model {
 }
 
 const MODELS: Model[] = [
-    { name: "Tesoura 6,6m", fullName: "Plataforma Tesoura Elétrica 6,6m Compacta", description: "Ultra compacta para trabalhos internos com 6,6 metros de altura. Passa por portas e corredores estreitos.", category: "tesoura", image: "/frota/plataforma-tesoura-6.6m-compacta.jpg", cardSpecs: { "Altura Trab.": "6,3m", "Alc. Horiz.": "0,6m", "Capacidade": "227kg", "Peso": "900kg", "Dimensões": "0,81x1,40x1,88m" } },
+    { name: "Tesoura 6,3m", fullName: "Plataforma Tesoura Elétrica 6,3m Compacta", description: "Ultra compacta para trabalhos internos com 6,3 metros de altura. Passa por portas e corredores estreitos.", category: "tesoura", image: "/frota/plataforma-tesoura-6.6m-compacta.jpg", cardSpecs: { "Altura Trab.": "6,3m", "Alc. Horiz.": "0,6m", "Capacidade": "227kg", "Peso": "900kg", "Dimensões": "0,81x1,40x1,88m" } },
     { name: "Tesoura 8m", fullName: "Plataforma Tesoura Elétrica 8m", description: "Plataforma tesoura com 8 metros de altura de trabalho. Ideal para manutenção predial e instalações elétricas.", category: "tesoura", image: "/frota/plataforma-tesoura-8m.jpg", cardSpecs: { "Altura Trab.": "8m", "Alc. Horiz.": "0,7m", "Capacidade": "227kg", "Peso": "1500kg", "Dimensões": "0,81x2,07x2,02m" } },
     { name: "Tesoura 10m Comp.", fullName: "Plataforma Tesoura Elétrica 10m Compacta", description: "Versão compacta com 10 metros de alcance, perfeita para áreas internas com espaço limitado.", category: "tesoura", image: "/frota/plataforma-tesoura-10m-compacta.jpg", cardSpecs: { "Altura Trab.": "10m", "Alc. Horiz.": "0,9m", "Capacidade": "250kg", "Peso": "1850kg", "Dimensões": "0,81x2,32x2,15m" } },
     { name: "Tesoura 10m", fullName: "Plataforma Tesoura Elétrica 10m", description: "Plataforma padrão com 10 metros de altura, capacidade generosa de carga na plataforma de trabalho.", category: "tesoura", image: "/frota/plataforma-tesoura-10m.jpg", cardSpecs: { "Altura Trab.": "10m", "Alc. Horiz.": "1,27m", "Capacidade": "450kg", "Peso": "2150kg", "Dimensões": "1,18x2,40x1,97m" } },
@@ -101,7 +101,7 @@ export default function PlataformasLP() {
 
                     <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
                         className="text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed text-gray-400">
-                        Plataformas Tesouras, articuladas e telescópicas. De 6 a 28 metros de altura. Entrega rápida em todo o estado de Santa Catarina.
+                        Plataformas Tesouras, articuladas e telescópicas. De 6,3 a 28 metros de altura. Entrega rápida em todo o estado de Santa Catarina.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}>
@@ -177,7 +177,7 @@ export default function PlataformasLP() {
                     <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
                         className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Plataformas para<br />todo tipo de trabalho</motion.h2>
                     <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.6 }}
-                        className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">De 6,6m a 28m de altura. Tesoura, articulada e telescópica.</motion.p>
+                        className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">De 6,3m a 28m de altura. Tesoura, articulada e telescópica.</motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.5 }}
                         className="flex flex-wrap justify-center gap-3 mb-10">
