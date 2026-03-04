@@ -7,7 +7,7 @@ import { useState } from 'react';
    DATA
    ═══════════════════════════════════════ */
 
-const WA = "https://wa.me/5548999250605?text=";
+const WA = "https://wa.me/554899250605?text=";
 const WA_DEFAULT = WA + "Olá!%20Preciso%20de%20um%20orçamento%20para%20locação%20de%20máquinas%20pesadas.";
 
 const HERO_MACHINES = [
@@ -198,7 +198,7 @@ export default function MaquinarioLP() {
                             <a key={m.name} href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.name)}.`} target="_blank" rel="noopener noreferrer"
                                 className="flex-shrink-0 w-[240px] sm:w-[260px] rounded-3xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-white/10">
                                 <div className="relative h-[200px] sm:h-[220px] overflow-hidden bg-white">
-                                    <Image src={m.image} alt={m.name} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-105" sizes="260px" />
+                                    <Image src={m.image} alt={`Locação de ${m.name} em Santa Catarina`} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-105" sizes="260px" />
                                 </div>
                                 <div className="px-5 py-4 bg-white/[0.06]">
                                     <h3 className="text-base font-bold text-white mb-1">{m.name}</h3>

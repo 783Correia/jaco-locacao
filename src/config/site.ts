@@ -2,14 +2,14 @@ export const siteConfig = {
     name: "Jacó Locação",
     description: "Locação de máquinas pesadas e equipamentos",
     url: "https://jacolocacao.com.br",
-    whatsapp: "5511900000000",
+    whatsapp: "554899250605",
     links: {
-        instagram: "https://instagram.com/jacolocacaomaquinas",
+        instagram: "https://instagram.com/jacolocacao",
         facebook: "https://facebook.com/jacolocacao",
     },
     contact: {
-        email: "contato@jacolocacao.com.br",
-        phone: "(11) 90000-0000",
-        address: "São Paulo, SP",
+        email: "contato@jacolocadora.com.br",
+        phone: "(48) 9925-0605",
+        address: "Br 101 km 213 s/n - Centro - Palhoça - SC",
     },
 };

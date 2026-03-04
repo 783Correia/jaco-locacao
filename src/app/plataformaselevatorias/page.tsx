@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const WA = "https://wa.me/5548999250605?text=";
+const WA = "https://wa.me/554899250605?text=";
 const WA_DEFAULT = WA + "Olá!%20Preciso%20de%20um%20orçamento%20para%20locação%20de%20plataforma%20elevatória.";
 
 const HERO_MACHINES = [
@@ -115,7 +115,7 @@ export default function PlataformasLP() {
                             <a key={m.name} href={`${WA}Olá!%20Tenho%20interesse%20na%20${encodeURIComponent(m.name)}.`} target="_blank" rel="noopener noreferrer"
                                 className="flex-shrink-0 w-[240px] sm:w-[260px] rounded-3xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-white/10">
                                 <div className="relative h-[200px] sm:h-[220px] overflow-hidden bg-white">
-                                    <Image src={m.image} alt={m.name} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-110" sizes="260px" />
+                                    <Image src={m.image} alt={`Locação de ${m.name} em Santa Catarina`} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-110" sizes="260px" />
                                 </div>
                                 <div className="px-5 py-4 bg-white/[0.06]">
                                     <h3 className="text-base font-bold text-white mb-1">{m.name}</h3>
@@ -188,7 +188,7 @@ export default function PlataformasLP() {
                                 <motion.div key={m.name} layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.35 }}
                                     className="group rounded-3xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div className="relative h-52 overflow-hidden bg-white">
-                                        <Image src={m.image} alt={m.fullName} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
+                                        <Image src={m.image} alt={`Locação de ${m.fullName} em Santa Catarina`} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-700" sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw" />
                                         <div className="absolute top-3 right-3 px-3 py-1.5 text-white text-xs font-bold rounded-lg bg-primary shadow-lg">{m.height}</div>
                                     </div>
                                     <div className="p-5">

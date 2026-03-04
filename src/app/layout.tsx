@@ -18,13 +18,13 @@ const anosAtuacao = new Date().getFullYear() - 2010;
 
 export const metadata: Metadata = {
   title: {
-    default: "Jacó Locação | Locação de Máquinas Pesadas e Equipamentos",
+    default: "Locação de Plataforma Elevatória em SC e Itajaí | Jacó Locação",
     template: "%s | Jacó Locação",
   },
   description:
-    `Força e Confiabilidade para a sua obra. Há ${anosAtuacao} anos oferecendo locação de retroescavadeiras, escavadeiras, pás carregadeiras e plataformas elevatórias.`,
+    `Aluguel de plataformas elevatórias articuladas e tesoura em Santa Catarina. Frota nova, entrega rápida em Itajaí e região. Solicite um orçamento rápido!`,
   keywords:
-    "locação de máquinas pesadas, retroescavadeira, escavadeira hidráulica, plataformas elevatórias, bobcat, locação de equipamentos para construção, Jacó locação",
+    "locação de plataforma elevatória em itajaí, aluguel de plataforma elevatória em santa catarina, locação de plataforma articulada, locação de máquinas pesadas, retroescavadeira, escavadeira hidráulica, Jacó locação",
   metadataBase: new URL("https://jacolocacao.com.br"),
   openGraph: {
     type: "website",

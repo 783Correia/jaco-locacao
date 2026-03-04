@@ -86,7 +86,7 @@ function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="block"
             >
-              Locação de máquinas pesadas
+              Locação de Plataformas Elevatórias e
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="text-lime inline-block relative"
             >
-              e equipamentos.
+              Máquinas Pesadas em SC.
               <motion.svg
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.4 }}
@@ -123,7 +123,7 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-xs md:text-base text-white/80 max-w-lg mx-auto leading-relaxed mb-6 font-normal px-2"
           >
-            Frota nova e atualizada. Locação de retroescavadeiras, escavadeiras hidráulicas, pás carregadeiras e plataformas elevatórias com suporte ágil e manutenção em dia.
+            Especialistas em locação de plataformas elevatórias (articuladas e tesoura) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
 
           {/* CTA — buttons enter from below with spring */}
@@ -245,7 +245,7 @@ function SolucaoCard({ sol }: { sol: { title: string; subtitle: string; href: st
         ) : (
           <Image
             src={sol.image || ""}
-            alt={sol.title}
+            alt={`Locação de ${sol.title} em Santa Catarina`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"
             sizes="340px"
@@ -320,9 +320,9 @@ function Solucoes() {
       <StatsBar />
       <div className="container-main relative pt-10 md:pt-14">
         <SectionHeading
-          tag="Frota de Máquinas Pesadas"
-          title="Equipamentos modernos para o sucesso da sua obra"
-          description="Oferecemos locação das melhores marcas do mercado mundial com suporte de especialistas."
+          tag="Nossa Frota Completa"
+          title="Plataformas Elevatórias e Máquinas Pesadas em Itajaí e SC"
+          description="Locação das melhores marcas de tesouras, articuladas e linha amarela mundial com entrega rápida para todo o estado."
         />
       </div>
 
@@ -520,7 +520,7 @@ function ProdutosDestaque() {
                 </Link>
               )}
               <a
-                href={`https://wa.me/5548999250605?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
+                href={`https://wa.me/554899250605?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-lime text-center whitespace-nowrap"
@@ -579,7 +579,7 @@ function Diferenciais() {
       <div className="container-main relative">
         <SectionHeading
           tag="Por que a Jacó Locação"
-          title="Diferenciais que garantem o andamento da sua obra"
+          title="Diferenciais para Aluguel de Plataformas e Máquinas"
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -638,8 +638,8 @@ function MissaoVisaoValores() {
               <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
                 Institucional
               </span>
-              <h2 className="text-heading text-gray-900">
-                Missão, Visão & Valores
+              <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-extrabold text-gray-900 tracking-tight leading-tight pt-2">
+                Por que alugar sua máquina ou plataforma com a Jacó Locação?
               </h2>
             </motion.div>
 

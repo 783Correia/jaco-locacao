@@ -17,7 +17,7 @@ function ProductCard({ product }: ProductCardProps) {
             <div className="relative aspect-[4/3] w-full bg-white flex items-center justify-center p-4 border-b border-gray-100">
                 <Image
                     src={product.image}
-                    alt={product.name}
+                    alt={`Locação de ${product.name} em Santa Catarina`}
                     fill
                     className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
