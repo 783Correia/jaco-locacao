@@ -28,13 +28,13 @@ function ProductCard({ product }: ProductCardProps) {
             {/* Content */}
             <div className="p-5 flex flex-col flex-grow">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                    {product.brand}
+                    {product.brand === "Diversos" ? product.category : product.brand}
                 </span>
-                <h3 className="text-base font-bold text-gray-900 mt-1 group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                <h3 className="text-base font-bold text-gray-900 mt-1 group-hover:text-primary transition-colors duration-300">
                     {product.name}
                 </h3>
 
-                <p className="text-gray-500 text-xs leading-relaxed mt-2 mb-4 flex-grow line-clamp-2">
+                <p className="text-gray-500 text-xs leading-relaxed mt-2 mb-4 flex-grow">
                     {product.description}
                 </p>
 
