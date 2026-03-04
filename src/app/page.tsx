@@ -126,11 +126,10 @@ function Hero() {
             Especialistas em locação de plataformas elevatórias (articuladas e tesoura) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
 
-          {/* CTA — buttons enter from below with spring */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.9, type: "spring", stiffness: 150 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <a
@@ -170,9 +169,9 @@ function StatsBar() {
   return (
     <div className="relative z-40 -mt-20 md:-mt-24 px-4">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
         className="container-main"
       >
@@ -574,19 +573,17 @@ function Diferenciais() {
           title="Diferenciais para Aluguel de Plataformas e Máquinas"
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {items.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: i * 0.12, duration: 0.5, type: "spring", stiffness: 120 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               className="bg-white rounded-3xl border border-gray-100 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 p-7 text-center group"
             >
               <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.15 }}
-                transition={{ duration: 0.5 }}
                 className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-400"
               >
                 <item.icon size={22} />
@@ -623,9 +620,9 @@ function MissaoVisaoValores() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
                 Institucional
@@ -636,10 +633,10 @@ function MissaoVisaoValores() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               className="mt-10 space-y-8"
             >
               <div className="border-l-4 border-primary pl-6">
@@ -658,10 +655,10 @@ function MissaoVisaoValores() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             className="bg-gray-50 rounded-3xl border border-gray-100 p-10"
           >
             <h3 className="font-bold text-gray-900 text-lg mb-8">Nossos Valores</h3>
@@ -669,9 +666,9 @@ function MissaoVisaoValores() {
               {valores.map((v, i) => (
                 <motion.div
                   key={v}
-                  initial={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, x: 15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
                   className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                 >
@@ -727,10 +724,10 @@ function Depoimentos() {
 
             <motion.div
               key={active}
-              initial={{ opacity: 0, x: 40, filter: "blur(4px)" }}
-              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, x: -40, filter: "blur(4px)" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="relative"
             >
               <p className="text-gray-600 text-lg md:text-xl leading-relaxed italic">
@@ -739,9 +736,9 @@ function Depoimentos() {
               <div className="mt-8 flex items-center gap-4">
                 <motion.div
                   key={`avatar-${active}`}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
                   className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-extrabold"
                 >
                   {depoimentos[active].name[0]}
