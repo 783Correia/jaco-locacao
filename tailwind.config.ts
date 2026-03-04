@@ -80,7 +80,7 @@ const config: Config = {
         },
         "solucoes-scroll": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         "scroll-light": {
           "0%": { top: "-12px", opacity: "0" },

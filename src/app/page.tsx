@@ -317,14 +317,25 @@ function Solucoes() {
 
       {/* ── Carousel container ── */}
       <div
-        className="relative overflow-x-auto group/carousel cursor-grab active:cursor-grabbing scrollbar-hide pl-4 md:pl-0"
-        style={{ WebkitOverflowScrolling: "touch" }}
+        className="relative overflow-hidden group/carousel pl-4 md:pl-0 flex"
       >
-        {/* Scrolling track */}
+        {/* Track 1 */}
         <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2">
-          {allCards.map((sol, i) => (
+          {cards.map((sol, i) => (
             <div
-              key={`${sol.title}-${i}`}
+              key={`track1-${sol.title}-${i}`}
+              className="relative overflow-hidden cursor-pointer shrink-0 w-[240px] md:w-[340px] h-[320px] md:h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
+            >
+              <SolucaoCard sol={sol} />
+            </div>
+          ))}
+        </div>
+
+        {/* Track 2 (Duplicate for seamless loop) */}
+        <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2" aria-hidden="true">
+          {cards.map((sol, i) => (
+            <div
+              key={`track2-${sol.title}-${i}`}
               className="relative overflow-hidden cursor-pointer shrink-0 w-[240px] md:w-[340px] h-[320px] md:h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
             >
               <SolucaoCard sol={sol} />
