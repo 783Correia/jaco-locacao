@@ -111,22 +111,22 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="tel:+5548999250605"
+                    href="tel:+554830939355"
                     className="flex items-center gap-2.5 text-white/40 hover:text-lime text-sm transition-colors"
                   >
                     <FaPhoneAlt className="text-lime text-xs" />
-                    (48) 99925-0605
+                    (48) 3093-9355
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/5548988054958"
+                    href="https://wa.me/5548999250605"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 text-white/40 hover:text-lime text-sm transition-colors"
                   >
                     <FaWhatsapp className="text-lime text-xs" />
-                    (48) 98805-4958
+                    (48) 99925-0605
                   </a>
                 </li>
                 <li>
