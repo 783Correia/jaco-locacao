@@ -132,10 +132,9 @@ function Hero() {
             </a>
             <Link
               href="/frota"
-              className="group bg-[#31a346] text-white px-6 py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#258536] flex items-center justify-center gap-2 shadow-lg shadow-[#31a346]/20 z-20 relative w-fit uppercase tracking-wide"
+              className="px-5 py-3 rounded-full font-bold text-sm md:text-base text-white border border-white/20 hover:bg-white/10 transition-all z-20 relative"
             >
-              Ver frota completa
-              <FaArrowRight className="text-lg group-hover:translate-x-1 transition-transform" />
+              Ver Nossa Frota
             </Link>
           </motion.div>
         </div>
@@ -339,11 +338,14 @@ function Solucoes() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mt-12"
+          className="text-center mt-12 flex justify-center w-full"
         >
-          <Link href="/frota" className="btn-lime">
-            Explorar Catálogo de Frota
-            <FaArrowRight className="text-xs" />
+          <Link
+            href="/frota"
+            className="group bg-[#31a346] text-white px-8 py-3.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#258536] flex items-center justify-center gap-2 shadow-lg shadow-[#31a346]/20 uppercase tracking-widest"
+          >
+            Ver frota completa
+            <FaArrowRight className="text-lg group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
       </div>
