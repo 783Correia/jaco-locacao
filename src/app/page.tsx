@@ -65,21 +65,21 @@ function Hero() {
       <div className="hidden md:block absolute top-20 left-20 w-96 h-96 bg-lime/20 rounded-full blur-[100px] z-10 opacity-60" />
       <div className="hidden md:block absolute bottom-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] z-10 opacity-50" />
 
-      <div className="container-main relative z-20 text-center pt-24 md:pt-20">
+      <div className="container-main relative z-20 text-center pt-32 pb-12 md:pt-20 md:pb-0">
         <div className="w-full max-w-6xl mx-auto px-2">
           {/* Tag */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-5"
+            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 md:mb-6"
           >
             <div className="w-2 h-2 rounded-full bg-lime animate-pulse" />
             <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white">Força e Confiabilidade para a Sua Obra</span>
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(1.8rem,4vw,3.8rem)] font-extrabold text-white leading-[1.3] tracking-normal mb-6 drop-shadow-2xl py-2 w-full mx-auto">
+          <h1 className="text-[clamp(1.8rem,4vw,3.8rem)] font-extrabold text-white leading-[1.3] tracking-normal mb-8 md:mb-6 drop-shadow-2xl py-2 w-full mx-auto">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-sm md:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
+            className="text-sm md:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed mb-10 md:mb-8 font-medium px-4 md:px-2 drop-shadow-md"
           >
             Especialistas em locação de plataformas elevatórias (articuladas e tesouras) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
@@ -120,19 +120,19 @@ function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-3"
           >
             <a
               href={getWhatsAppLink("Olá! Gostaria de falar com um especialista sobre locação de máquinas.")}
               target="_blank"
-              className="group bg-[#25D366] text-white border border-[#25D366] px-5 py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#1ebd5c] hover:border-[#1ebd5c] flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 z-20 relative w-fit"
+              className="group bg-[#25D366] text-white border border-[#25D366] px-6 py-3 md:px-5 md:py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#1ebd5c] hover:border-[#1ebd5c] flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 z-20 relative w-fit"
             >
               <FaWhatsapp className="text-xl" />
               Nos chame agora
             </a>
             <Link
               href="/frota"
-              className="px-5 py-3 rounded-full font-bold text-sm md:text-base text-white border border-white/20 hover:bg-white/10 transition-all z-20 relative"
+              className="px-6 py-3 md:px-5 md:py-3 rounded-full font-bold text-sm md:text-base text-white border border-white/20 hover:bg-white/10 transition-all z-20 relative"
             >
               Ver Nossa Frota
             </Link>
@@ -302,10 +302,17 @@ function Solucoes() {
     },
   ];
 
+  const [containerRef, setContainerRef] = useState<HTMLDivElement | null>(null);
+  const [width, setWidth] = useState(0);
 
+  useEffect(() => {
+    if (containerRef) {
+      setWidth(containerRef.scrollWidth - containerRef.offsetWidth);
+    }
+  }, [containerRef]);
 
   return (
-    <section className="pt-10 md:pt-14 pb-20 md:pb-28 relative bg-white">
+    <section className="pt-10 md:pt-14 pb-20 md:pb-28 relative bg-white overflow-hidden">
       <StatsBar />
       <div className="container-main relative pt-10 md:pt-14">
         <SectionHeading
@@ -316,31 +323,59 @@ function Solucoes() {
       </div>
 
       {/* ── Carousel container ── */}
-      <div
-        className="relative overflow-hidden group/carousel pl-4 md:pl-0 flex"
-      >
-        {/* Track 1 */}
-        <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2">
-          {cards.map((sol, i) => (
-            <div
-              key={`track1-${sol.title}-${i}`}
-              className="relative overflow-hidden cursor-pointer shrink-0 w-[240px] md:w-[340px] h-[320px] md:h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
-            >
-              <SolucaoCard sol={sol} />
-            </div>
-          ))}
+      <div className="relative mt-8 md:mt-12">
+        {/* Desktop: Infinite Auto-scroll */}
+        <div className="hidden md:flex relative overflow-hidden group/carousel pl-4 md:pl-0">
+          <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2">
+            {cards.map((sol, i) => (
+              <div
+                key={`track1-${sol.title}-${i}`}
+                className="relative overflow-hidden cursor-pointer shrink-0 w-[340px] h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
+              >
+                <SolucaoCard sol={sol} />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2" aria-hidden="true">
+            {cards.map((sol, i) => (
+              <div
+                key={`track2-${sol.title}-${i}`}
+                className="relative overflow-hidden cursor-pointer shrink-0 w-[340px] h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
+              >
+                <SolucaoCard sol={sol} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Track 2 (Duplicate for seamless loop) */}
-        <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2" aria-hidden="true">
-          {cards.map((sol, i) => (
-            <div
-              key={`track2-${sol.title}-${i}`}
-              className="relative overflow-hidden cursor-pointer shrink-0 w-[240px] md:w-[340px] h-[320px] md:h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]"
+        {/* Mobile: Draggable Carousel */}
+        <div className="md:hidden">
+          <motion.div
+            ref={setContainerRef}
+            className="flex px-4 cursor-grab active:cursor-grabbing overflow-hidden"
+          >
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              className="flex gap-4 py-2"
             >
-              <SolucaoCard sol={sol} />
-            </div>
-          ))}
+              {cards.map((sol, i) => (
+                <div
+                  key={`mobile-${sol.title}-${i}`}
+                  className="relative overflow-hidden shrink-0 w-[280px] h-[380px] rounded-[20px] shadow-lg"
+                >
+                  <SolucaoCard sol={sol} />
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+          {/* Visual Indicator for swiping */}
+          <div className="flex justify-center gap-1.5 mt-8 items-center text-gray-400 text-[10px] uppercase tracking-widest font-bold">
+            <FaArrowLeft className="text-[10px]" />
+            Arraste para o lado
+            <FaArrowRight className="text-[10px]" />
+          </div>
         </div>
       </div>
 
