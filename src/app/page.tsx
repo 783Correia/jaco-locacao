@@ -135,7 +135,7 @@ function Hero() {
             <a
               href={getWhatsAppLink("Olá! Gostaria de falar com um especialista sobre locação de máquinas.")}
               target="_blank"
-              className="group bg-lime text-forest border border-lime px-5 py-3 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-lime/90 flex items-center gap-2 shadow-xl shadow-lime/20 z-20 relative"
+              className="group bg-[#25D366] text-white border border-[#25D366] px-5 py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#1ebd5c] hover:border-[#1ebd5c] flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 z-20 relative w-fit"
             >
               <FaWhatsapp className="text-xl" />
               Nos chame agora
@@ -180,7 +180,7 @@ function StatsBar() {
             {[
               { target: 15, suffix: "+", label: "Marcas Parceiras" },
               { target: 100, suffix: "%", label: "Equipamentos Revisados" },
-              { target: 1000, suffix: "+", label: "Obras Atendidas" },
+              { target: 2000, suffix: "+", label: "Clientes" },
             ].map((stat, index) => (
               <div key={index} className="flex-1 text-center md:text-left md:border-r last:border-0 border-gray-200 md:pr-8 last:pr-0">
                 <div className="text-xl md:text-2xl font-extrabold text-primary mb-0.5">
@@ -832,7 +832,7 @@ export default function Home() {
             <div className="flex-1 text-center relative z-10 max-w-xl mx-auto">
               <div className="inline-flex items-center gap-2 bg-forest/[0.06] rounded-full px-5 py-2 mb-8">
                 <div className="w-1.5 h-1.5 bg-lime rounded-full" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-forest/70">35 anos de história · Palhoça, Santa Catarina</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-forest/70">31 anos de história · Palhoça, Santa Catarina</span>
               </div>
 
               <h2 className="text-[2rem] sm:text-[2.5rem] md:text-[3.2rem] leading-[1.05] font-bold text-dark tracking-tight">

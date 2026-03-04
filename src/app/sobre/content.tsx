@@ -47,7 +47,7 @@ export default function SobreContent() {
           >
             {[
               { number: "15+", label: "Marcas Parceiras" },
-              { number: "1000+", label: "Obras Atendidas" },
+              { number: "2000+", label: "Clientes Atendidos" },
               { number: "100%", label: "Equipamentos Revisados" },
               { number: "24h", label: "Suporte Técnico" },
             ].map((stat, i) => (
