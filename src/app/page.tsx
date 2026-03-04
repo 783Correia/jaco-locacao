@@ -137,8 +137,8 @@ function Hero() {
               target="_blank"
               className="group bg-lime text-forest border border-lime px-5 py-3 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-lime/90 flex items-center gap-2 shadow-xl shadow-lime/20 z-20 relative"
             >
-              Fale com um Especialista
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <FaWhatsapp className="text-xl" />
+              Nos chame agora
             </a>
             <Link
               href="/frota"
@@ -158,7 +158,7 @@ function Hero() {
         <span className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-medium mt-1 [writing-mode:vertical-rl] rotate-180">scroll</span>
       </div>
 
-    </section>
+    </section >
   );
 }
 
