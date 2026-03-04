@@ -301,8 +301,7 @@ function Solucoes() {
     },
   ];
 
-  // Duplicate for seamless loop
-  const allCards = [...cards, ...cards];
+
 
   return (
     <section className="pt-10 md:pt-14 pb-20 md:pb-28 relative bg-white">

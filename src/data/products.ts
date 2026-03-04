@@ -538,6 +538,7 @@ export const products: Product[] = [
         image: "/frota/rolo-compactador-1.5t.jpg",
         slug: "rolo-compactador-1-5t",
         cardSpecs: {
+            "Capacidade": "1500kg",
             "Dimensões": "0,98x2,13x2,33m",
             "Peso": "1500kg"
         },
