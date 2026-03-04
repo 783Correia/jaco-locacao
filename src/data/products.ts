@@ -501,7 +501,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Manipuladores",
         description: "Alcance de 12,8 metros para movimentação de cargas em altura. Ideal para construção civil e logística de canteiro.",
-        image: "/frota/manipulador-12m.jpg",
+        image: "/frota/manipulador-17m.jpg",
         slug: "manipulador-12m",
         cardSpecs: {
             "Altura Trab.": "12,8m",
@@ -516,7 +516,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Manipuladores",
         description: "Alcance de 17 metros para operações em grandes alturas. Perfeito para obras de grande porte e montagens industriais.",
-        image: "/frota/manipulador-17m.jpg",
+        image: "/frota/manipulador-12m.jpg",
         slug: "manipulador-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
