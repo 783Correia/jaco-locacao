@@ -56,7 +56,7 @@ function Hero() {
           src="/hero-video.mp4"
         />
         {/* Darker overlay to guarantee perfect text readability against the video */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/80 via-black/60 to-forest-dark/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/95 via-black/75 to-forest-dark/100" />
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
       </div>
@@ -79,27 +79,27 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(1.8rem,5vw,4rem)] font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+          <h1 className="text-[clamp(1.8rem,5vw,4.5rem)] font-extrabold text-white leading-[1.15] tracking-tight mb-6 drop-shadow-2xl py-2 max-w-5xl mx-auto">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="block pb-1"
+              className="block"
             >
-              Locação de Plataformas Elevatórias e
+              Locação de Plataformas Elevatórias
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="text-lime inline-block relative pb-2"
+              className="inline-block relative mt-1 md:mt-3"
             >
-              Máquinas Pesadas em SC.
+              e <span className="text-lime">Máquinas Pesadas em SC.</span>
               <motion.svg
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="absolute w-full h-2 bottom-0 left-0 text-lime"
+                className="absolute w-full h-2 -bottom-1 left-0 text-lime"
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
