@@ -79,7 +79,7 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4rem] font-bold text-white leading-[1.2] tracking-tight mb-6 drop-shadow-2xl py-2 max-w-4xl mx-auto">
+          <h1 className="text-[clamp(1.8rem,4.5vw,3.8rem)] font-extrabold text-white leading-[1.35] tracking-normal mb-6 drop-shadow-2xl py-2 max-w-5xl mx-auto">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
