@@ -544,7 +544,7 @@ function Diferenciais() {
     {
       icon: FaAward,
       title: "Marcas Oficiais",
-      description: "Frota composta pelas líderes mundiais de mercado: Caterpillar, JCB, Case, Bobcat e Hyundai.",
+      description: "Frota composta pelas líderes mundiais de mercado: JLG, Genie, Haulotte, Manitou, Skyjack, Hangcha, Bobcat, Yanmar, Caterpillar, Skytrack e JCB.",
     },
     {
       icon: FaMapMarkedAlt,
