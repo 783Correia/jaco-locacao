@@ -445,27 +445,6 @@ export const products: Product[] = [
         },
     },
 
-    // ═══════════════════════════════════════
-    //  RETROESCAVADEIRAS E PÁS CARREGADEIRAS
-    // ═══════════════════════════════════════
-    {
-        id: "retro-case-580n",
-        name: "Retroescavadeira Case 580N",
-        brand: "CASE",
-        category: "Retroescavadeiras",
-        description: "Equipamento versátil líder de mercado, proporcionando ciclos rápidos de carregamento e elevação.",
-        image: "/frota/retroescavadeira-case-580n.jpg",
-        slug: "retroescavadeira-case-580n",
-    },
-    {
-        id: "pa-hyundai-hl757",
-        name: "Pá Carregadeira Hyundai HL757",
-        brand: "Hyundai",
-        category: "Pás Carregadeiras",
-        description: "Força e agilidade em um único equipamento. Motor potente para os terrenos mais desafiadores.",
-        image: "/frota/pa-carregadeira-hyundai-hl757.jpg",
-        slug: "pa-carregadeira-hyundai-hl757",
-    },
 
     // ═══════════════════════════════════════
     //  MINI CARREGADEIRAS

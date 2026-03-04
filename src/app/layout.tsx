@@ -18,19 +18,19 @@ const anosAtuacao = new Date().getFullYear() - 2010;
 
 export const metadata: Metadata = {
   title: {
-    default: "Locação de Plataforma Elevatória em SC e Itajaí | Jacó Locação",
-    template: "%s | Jacó Locação",
+    default: "Locação de Plataforma Elevatória em SC e Itajaí | Jaco Locação",
+    template: "%s | Jaco Locação",
   },
   description:
     `Aluguel de plataformas elevatórias articuladas e tesoura em Santa Catarina. Frota nova, entrega rápida em Itajaí e região. Solicite um orçamento rápido!`,
   keywords:
-    "locação de plataforma elevatória em itajaí, aluguel de plataforma elevatória em santa catarina, locação de plataforma articulada, locação de máquinas pesadas, retroescavadeira, escavadeira hidráulica, Jacó locação",
+    "locação de plataforma elevatória em itajaí, aluguel de plataforma elevatória em santa catarina, locação de plataforma articulada, locação de máquinas pesadas, escavadeira hidráulica, Jaco locação",
   metadataBase: new URL("https://jacolocacao.com.br"),
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    siteName: "Jacó Locação",
-    title: "Jacó Locação | Força e Confiabilidade para sua Obra",
+    siteName: "Jaco Locação",
+    title: "Jaco Locação | Força e Confiabilidade para sua Obra",
     description:
       `Locação de máquinas pesadas de alto desempenho com suporte ágil e frota atualizada.`,
   },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Jacó Locação",
+  name: "Jaco Locação",
   image: "https://jacolocacao.com.br/logos/LOGO%20JACÓ%20LOCAÇÃO.png",
   url: "https://jacolocacao.com.br",
   telephone: "+55-11-90000-0000",

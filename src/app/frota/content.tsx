@@ -15,8 +15,7 @@ export default function ProdutosContent() {
     "Plataformas Tesoura",
     "Escavadeiras",
     "Mini Escavadeiras",
-    "Retroescavadeiras",
-    "Pás Carregadeiras",
+
     "Mini Carregadeiras",
     "Manipuladores",
     "Rolos Compactadores",

@@ -75,9 +75,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {[
-                  { href: "/frota#retroescavadeiras", label: "Retroescavadeiras" },
                   { href: "/frota#escavadeiras", label: "Escavadeiras" },
-                  { href: "/frota#pas-carregadeiras", label: "Pás Carregadeiras" },
                   { href: "/frota#plataformas", label: "Plataformas Elevatórias" },
                   { href: "/frota#rolos", label: "Rolos Compactadores" },
                 ].map((item) => (
@@ -136,7 +134,7 @@ export default function Footer() {
         <div className="border-t border-white/[0.05]">
           <div className="container-main py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-white/15 text-xs">
-              &copy; {new Date().getFullYear()} Jacó Locação. Todos os
+              &copy; {new Date().getFullYear()} Jaco Locação. Todos os
               direitos reservados.
             </p>
             <p className="text-white/15 text-xs">

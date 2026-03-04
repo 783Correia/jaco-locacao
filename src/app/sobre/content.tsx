@@ -28,14 +28,14 @@ export default function SobreContent() {
           <motion.div {...fadeUp}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 text-[10px] font-bold uppercase tracking-widest text-white/80">
               <div className="w-2 h-2 rounded-full bg-lime animate-pulse" />
-              Sobre a Jacó Locação
+              Sobre a Jaco Locação
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
               Força e tradição no<br className="hidden sm:block" />
               <span className="text-lime">mercado de locação</span>
             </h1>
             <p className="text-white/60 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">
-              Com grande tradição no mercado de locação de máquinas pesadas, a Jacó Locação é garantia de agilidade, segurança e profissionalismo para sua empresa.
+              Com grande tradição no mercado de locação de máquinas pesadas, a Jaco Locação é garantia de agilidade, segurança e profissionalismo para sua empresa.
             </p>
           </motion.div>
 
@@ -202,7 +202,7 @@ export default function SobreContent() {
                 <div className="w-12 h-12 rounded-full bg-lime flex items-center justify-center text-forest font-extrabold text-lg">J</div>
                 <div>
                   <p className="text-white font-bold text-sm">Direção Executiva</p>
-                  <p className="text-white/40 text-xs">Jacó Locação de Máquinas</p>
+                  <p className="text-white/40 text-xs">Jaco Locação de Máquinas</p>
                 </div>
               </div>
             </motion.div>
@@ -220,7 +220,7 @@ export default function SobreContent() {
               Pronto para sua próxima obra?
             </h2>
             <p className="text-gray-500 max-w-lg mx-auto mb-8 text-sm md:text-base">
-              Entre em contato com nossos especialistas e descubra como a Jacó Locação pode impulsionar a produtividade do seu projeto.
+              Entre em contato com nossos especialistas e descubra como a Jaco Locação pode impulsionar a produtividade do seu projeto.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contato" className="btn-lime">

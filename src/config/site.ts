@@ -1,5 +1,5 @@
 export const siteConfig = {
-    name: "Jacó Locação",
+    name: "Jaco Locação",
     description: "Locação de máquinas pesadas e equipamentos",
     url: "https://jacolocacao.com.br",
     whatsapp: "554899250605",

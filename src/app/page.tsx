@@ -367,15 +367,7 @@ function Solucoes() {
 function ProdutosDestaque() {
   const [active, setActive] = useState(0);
   const destaques = [
-    {
-      name: "Retroescavadeira Case 580N",
-      brand: "CASE",
-      description:
-        "Equipamento versátil com a força líder de mercado, proporcionando ciclos rápidos de carregamento e elevação de classe mundial. Excelente para espaços reduzidos.",
-      image: "/frota/bobcat-s650.jpg",
-      badge: "Mais Locada",
-      slug: "retroescavadeira-case-580n",
-    },
+
     {
       name: "Escavadeira Cat 320",
       brand: "Caterpillar",
@@ -578,7 +570,7 @@ function Diferenciais() {
     <section className="section-padding relative overflow-hidden bg-gray-50">
       <div className="container-main relative">
         <SectionHeading
-          tag="Por que a Jacó Locação"
+          tag="Por que a Jaco Locação"
           title="Diferenciais para Aluguel de Plataformas e Máquinas"
         />
 
@@ -639,7 +631,7 @@ function MissaoVisaoValores() {
                 Institucional
               </span>
               <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-extrabold text-gray-900 tracking-tight leading-tight pt-2">
-                Por que alugar sua máquina ou plataforma com a Jacó Locação?
+                Por que alugar sua máquina ou plataforma com a Jaco Locação?
               </h2>
             </motion.div>
 
@@ -706,12 +698,12 @@ function Depoimentos() {
     {
       name: "Carlos Mendes",
       role: "Engenheiro — Construtora Alfa",
-      text: "A Jacó Locação sempre nos atendeu com agilidade e máquinas impecáveis. A consultoria deles faz toda a diferença para dimensionarmos corretamente as obras.",
+      text: "A Jaco Locação sempre nos atendeu com agilidade e máquinas impecáveis. A consultoria deles faz toda a diferença para dimensionarmos corretamente as obras.",
     },
     {
       name: "Ana Paula Silva",
       role: "Gerente de Engenharia — Via Rápida",
-      text: "Trabalhamos com a Jacó Locação há mais de 5 anos. A confiança na qualidade da frota e no rápido atendimento técnico é o que nos mantém parceiros.",
+      text: "Trabalhamos com a Jaco Locação há mais de 5 anos. A confiança na qualidade da frota e no rápido atendimento técnico é o que nos mantém parceiros.",
     },
     {
       name: "Roberto Ferreira",
@@ -727,7 +719,7 @@ function Depoimentos() {
   return (
     <section className="section-padding relative overflow-hidden bg-gray-50">
       <div className="container-main">
-        <SectionHeading tag="Depoimentos de Parceiros" title="Quem constrói com a Jacó recomenda" />
+        <SectionHeading tag="Depoimentos de Parceiros" title="Quem constrói com a Jaco recomenda" />
 
         <div className="max-w-3xl mx-auto relative">
           <div className="bg-white rounded-3xl border border-gray-100 shadow-card p-10 md:p-14 relative overflow-hidden">

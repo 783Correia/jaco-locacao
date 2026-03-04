@@ -226,9 +226,7 @@ export default function ContatoContent() {
                           className={inputClass}
                         >
                           <option value="">Selecione...</option>
-                          <option value="Retroescavadeira">Retroescavadeira</option>
                           <option value="Escavadeira Hidráulica">Escavadeira Hidráulica</option>
-                          <option value="Pá Carregadeira">Pá Carregadeira</option>
                           <option value="Plataforma Elevatória">Plataforma Elevatória</option>
                           <option value="Rolo Compactador">Rolo Compactador</option>
                           <option value="Outro">Outro</option>
