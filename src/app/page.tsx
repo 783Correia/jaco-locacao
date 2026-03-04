@@ -84,34 +84,25 @@ function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="block"
             >
-              Locação de Plataformas Elevatórias e{' '}
+              Locação de <span className="text-lime">Plataformas Elevatórias</span>
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="text-lime relative whitespace-nowrap"
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="block text-lime"
             >
-              Máquinas Pesadas em SC.
-              <motion.svg
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.4 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                className="absolute w-full h-2 bottom-0 left-0 text-lime"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <motion.path
-                  d="M0 5 Q 50 10 100 5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                />
-              </motion.svg>
+              Máquinas para Terraplanagem
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="block"
+            >
+              <span className="text-lime">e Construção</span> em SC.
             </motion.span>
           </h1>
 
