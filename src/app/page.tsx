@@ -393,7 +393,6 @@ function ProdutosDestaque() {
       description:
         "Compactação eficiente de solos e asfalto com tecnologia de amortecimento otimizada. Rendimento impecável para grandes áreas e obras rodoviárias.",
       image: "/frota/rolo-compactador-1.5t.jpg",
-      video: "/frota/rolo-compactador-video.mp4",
       badge: "Eficiência",
       slug: "rolo-compactador-1-5t",
     },
@@ -426,25 +425,14 @@ function ProdutosDestaque() {
               transition={{ duration: 0.6 }}
               className="relative rounded-3xl overflow-hidden aspect-[16/10] md:aspect-[4/3]"
             >
-              {current.video ? (
-                <video
-                  src={current.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : (
-                <Image
-                  src={current.image}
-                  alt={current.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  unoptimized
-                />
-              )}
+              <Image
+                src={current.image}
+                alt={current.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 60vw"
+                unoptimized
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
 
               <div className="absolute top-4 left-4 md:top-6 md:left-6">
@@ -498,11 +486,6 @@ function ProdutosDestaque() {
             </motion.div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-8">
-              {current.slug && (
-                <Link href={`/frota/${current.slug}`} className="btn-outline text-center whitespace-nowrap">
-                  Ver Mais Detalhes
-                </Link>
-              )}
               <a
                 href={`https://wa.me/554899250605?text=Olá! Tenho interesse na locação da máquina ${current.name} (${current.brand}). Gostaria de saber disponibilidade e valores.`}
                 target="_blank"
