@@ -76,13 +76,13 @@ export default function SobreContent() {
               </h2>
               <div className="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed">
                 <p>
-                  A Jaco Locação chegou para resolver os problemas de sua empresa. Com grande tradição no mercado de locação de máquinas e serviços, a Jaco Locação é garantia de agilidade e segurança para sua empresa.
+                  A Jaco Locação é uma empresa consolidada no mercado de locação de máquinas, reconhecida pela tradição, agilidade e segurança. <strong className="text-gray-900 font-bold">Com estrutura moderna e tecnologia de ponta, atuamos em toda a região Sul do Brasil,</strong> oferecendo soluções completas que acompanham nossos clientes do planejamento à execução.
                 </p>
                 <p>
-                  Sejam nos serviços de locação de máquinas ou na prestação de serviços de mão de obra, a Jaco Locação conta com infraestrutura e tecnologia necessárias para atingir máxima precisão e garantir a eficiência operacional.
+                  Nossa missão é gerar resultados duradouros, com produtividade, inovação e melhoria contínua, sempre guiados por seriedade, confiança e dedicação.
                 </p>
-                <p className="font-medium text-gray-800">
-                  Se sua empresa procura o melhor desempenho com maior rentabilidade, ela precisa dos serviços da Jaco Locação.
+                <p>
+                  Mais do que máquinas, entregamos parcerias sólidas, construindo relações de longo prazo baseadas na transparência e no comprometimento. Com experiência comprovada e foco na satisfação, estamos prontos para elevar o nível da sua obra.
                 </p>
               </div>
             </motion.div>
@@ -138,24 +138,24 @@ export default function SobreContent() {
                   <div className="w-12 h-1 bg-primary rounded-full mt-1" />
                 </div>
               </div>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed md:text-justify">
-                &ldquo;Atingir êxitos duradouros em nossos negócios e empreendimentos, assegurando a máxima eficiência no uso dos recursos e a satisfação de nossos clientes, funcionários e a sociedade onde desenvolvemos nossas atividades. A conscientização de todo pessoal próprio e contratado sobre a prevenção de riscos, as operações de acordo com o ambiente, sistema de qualidade e os cuidados e remediação do meio ambiente.&rdquo;
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed md:text-justify max-w-lg">
+                Atuar como parceiro estratégico na locação de equipamentos, entregando soluções com performance e confiança para os setores da construção, indústria e infraestrutura.
               </p>
             </motion.div>
 
-            {/* Compromisso */}
+            {/* Visão */}
             <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-500">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
                   <FaHandshake className="text-primary text-2xl" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Compromisso</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Visão</h3>
                   <div className="w-12 h-1 bg-primary rounded-full mt-1" />
                 </div>
               </div>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed md:text-justify">
-                Oferecer serviço imediato às necessidades de nossos clientes, colaborando desde o início de seu planejamento de investimentos. Prestar serviços ao cliente com qualidade, segurança e preservando o meio ambiente.
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed md:text-justify max-w-lg">
+                Ser a primeira escolha em locação de equipamentos na nossa região, reconhecida pela agilidade e confiabilidade.
               </p>
             </motion.div>
           </div>

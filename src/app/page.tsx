@@ -607,11 +607,13 @@ function Diferenciais() {
    ═══════════════════════════════════════════════ */
 function MissaoVisaoValores() {
   const valores = [
-    "Ética",
-    "Credibilidade",
-    "Transparência",
-    "Respeito ao Meio Ambiente",
-    "Valorização das Pessoas",
+    { title: "Agilidade no atendimento", desc: "Resolvemos rápido porque entendemos que obra parada é prejuízo." },
+    { title: "Compromisso e pontualidade", desc: "Cumprimos prazos com seriedade e responsabilidade em cada entrega." },
+    { title: "Confiabilidade operacional", desc: "Equipamentos prontos, revisados e com suporte técnico sempre que necessário." },
+    { title: "Segurança em primeiro lugar", desc: "Protegemos pessoas, operações e patrimônio em todas as etapas." },
+    { title: "Respeito às pessoas", desc: "Valorizamos quem constrói junto: nossos colaboradores, clientes e parceiros." },
+    { title: "Aderência às normas técnicas", desc: "Atuamos dentro dos padrões exigidos, com responsabilidade e excelência." },
+    { title: "Simplicidade com eficiência", desc: "Processos objetivos, comunicação clara e foco em resultado." }
   ];
 
   return (
@@ -641,14 +643,14 @@ function MissaoVisaoValores() {
             >
               <div className="border-l-4 border-primary pl-6">
                 <h3 className="font-bold text-gray-900 text-lg mb-2">Missão</h3>
-                <p className="text-gray-500 leading-relaxed">
-                  Oferecer máquinas pesadas modernas e seguras, aliados a um suporte técnico impecável, garantindo o sucesso das obras de nossos parceiros comerciais.
+                <p className="text-gray-500 leading-relaxed md:text-justify max-w-lg">
+                  Atuar como parceiro estratégico na locação de equipamentos, entregando soluções com performance e confiança para os setores da construção, indústria e infraestrutura.
                 </p>
               </div>
               <div className="border-l-4 border-gray-200 pl-6">
                 <h3 className="font-bold text-gray-900 text-lg mb-2">Visão</h3>
-                <p className="text-gray-500 leading-relaxed">
-                  Ser referência nacional em locação de equipamentos pesados, reconhecida pela qualidade da frota, agilidade no atendimento e compromisso inegociável com a segurança.
+                <p className="text-gray-500 leading-relaxed md:text-justify max-w-lg">
+                  Ser a primeira escolha em locação de equipamentos na nossa região, reconhecida pela agilidade e confiabilidade.
                 </p>
               </div>
             </motion.div>
@@ -665,17 +667,20 @@ function MissaoVisaoValores() {
             <div className="space-y-3">
               {valores.map((v, i) => (
                 <motion.div
-                  key={v}
+                  key={v.title}
                   initial={{ opacity: 0, x: 15 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
-                  className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary font-extrabold text-sm shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <span className="font-medium text-gray-800">{v}</span>
+                  <div className="flex flex-col">
+                    <span className="font-bold text-gray-900">{v.title}</span>
+                    <span className="text-sm text-gray-500 mt-1">{v.desc}</span>
+                  </div>
                 </motion.div>
               ))}
             </div>
