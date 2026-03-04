@@ -55,8 +55,8 @@ function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
           src="/hero-video.mp4"
         />
-        {/* Subtle overlay to guarantee text readability without hiding the video */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/60 via-black/30 to-forest-dark/80" />
+        {/* Darker overlay to guarantee perfect text readability against the video */}
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/80 via-black/60 to-forest-dark/95" />
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} />
       </div>
@@ -79,12 +79,12 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(1.6rem,5vw,3.8rem)] font-bold text-white leading-[1.1] tracking-tight mb-4">
+          <h1 className="text-[clamp(1.8rem,5vw,4rem)] font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="block"
+              className="block pb-1"
             >
               Locação de Plataformas Elevatórias e
             </motion.span>
@@ -92,14 +92,14 @@ function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="text-lime inline-block relative"
+              className="text-lime inline-block relative pb-2"
             >
               Máquinas Pesadas em SC.
               <motion.svg
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="absolute w-full h-2 -bottom-0.5 left-0 text-lime"
+                className="absolute w-full h-2 bottom-0 left-0 text-lime"
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
@@ -121,7 +121,7 @@ function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-xs md:text-base text-white/80 max-w-lg mx-auto leading-relaxed mb-6 font-normal px-2"
+            className="text-sm md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
           >
             Especialistas em locação de plataformas elevatórias (articuladas e tesoura) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
           </motion.p>
