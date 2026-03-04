@@ -79,27 +79,26 @@ function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(1.8rem,5vw,4.5rem)] font-extrabold text-white leading-[1.15] tracking-tight mb-6 drop-shadow-2xl py-2 max-w-5xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4rem] font-bold text-white leading-[1.2] tracking-tight mb-6 drop-shadow-2xl py-2 max-w-4xl mx-auto">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="block"
             >
-              Locação de Plataformas Elevatórias
+              Locação de Plataformas Elevatórias e{' '}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              className="inline-block relative mt-1 md:mt-3"
+              className="text-lime relative whitespace-nowrap"
             >
-              e <span className="text-lime">Máquinas Pesadas em SC.</span>
+              Máquinas Pesadas em SC.
               <motion.svg
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.4 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="absolute w-full h-2 -bottom-1 left-0 text-lime"
+                className="absolute w-full h-2 bottom-0 left-0 text-lime"
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
