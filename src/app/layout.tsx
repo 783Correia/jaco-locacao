@@ -14,7 +14,6 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const anosAtuacao = new Date().getFullYear() - 2010;
 
 export const metadata: Metadata = {
   title: {
