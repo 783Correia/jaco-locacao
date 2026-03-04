@@ -150,13 +150,13 @@ export const products: Product[] = [
     //  PLATAFORMAS TESOURA
     // ═══════════════════════════════════════
     {
-        id: "plat-tes-6.6m",
-        name: "Plataforma Tesoura Elétrica 6,6m Compacta",
+        id: "plat-tes-6.3m",
+        name: "Plataforma Tesoura Elétrica 6,3m Compacta",
         brand: "Diversos",
         category: "Plataformas Tesoura",
-        description: "Ultra compacta para trabalhos internos com 6,6 metros de altura. Passa por portas e corredores estreitos.",
+        description: "Ultra compacta para trabalhos internos com 6,3 metros de altura. Passa por portas e corredores estreitos.",
         image: "/frota/plataforma-tesoura-6.6m-compacta.jpg",
-        slug: "plataforma-tesoura-6-6m",
+        slug: "plataforma-tesoura-6-3m",
         cardSpecs: {
             "Altura Trab.": "6,3m",
             "Alc. Horiz.": "0,6m",
@@ -505,9 +505,9 @@ export const products: Product[] = [
         slug: "manipulador-12m",
         cardSpecs: {
             "Altura Trab.": "12,8m",
-            "Capacidade": "4500kg",
-            "Dimensões": "2,59x6,06x2,54m",
-            "Peso": "12400kg"
+            "Capacidade": "11500kg",
+            "Dimensões": "2,52x5,64x2,52m",
+            "Peso": "3800kg"
         },
     },
     {
@@ -520,9 +520,9 @@ export const products: Product[] = [
         slug: "manipulador-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
-            "Capacidade": "3800kg",
-            "Dimensões": "2,52x5,64x2,52m",
-            "Peso": "11500kg"
+            "Capacidade": "12400kg",
+            "Dimensões": "2,59x6,06x2,54m",
+            "Peso": "4500kg"
         },
     },
 
@@ -538,9 +538,9 @@ export const products: Product[] = [
         image: "/frota/rolo-compactador-1.5t.jpg",
         slug: "rolo-compactador-1-5t",
         cardSpecs: {
-            "Capacidade": "1500kg",
             "Dimensões": "0,98x2,13x2,33m",
-            "Peso": "1500kg"
+            "Peso": "2796kg",
+            "Capacidade": "1500kg"
         },
     },
 ];

@@ -285,6 +285,7 @@ function Solucoes() {
       title: "Plataformas Articuladas",
       subtitle: "Diesel e Elétricas",
       href: "/frota",
+      image: "/frota/plataforma-articulada-diesel-16m.jpg",
       video: "/frota/plataforma-telescopica-video.mp4",
     },
     {
