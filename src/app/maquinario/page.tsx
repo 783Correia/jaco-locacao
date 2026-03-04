@@ -17,7 +17,7 @@ const HERO_MACHINES = [
     { name: "Escavadeira 8t", type: "Escavadeira", weight: "8t", image: "/frota/escavadeira-8t.jpg" },
     { name: "Bobcat S-650", type: "Mini Carregadeira", weight: "650kg", image: "/frota/bobcat-s650.jpg" },
     { name: "Manitou 1650R", type: "Mini Carregadeira", weight: "1650kg", image: "/frota/manitou-1650r.jpg" },
-    { name: "Telescópico 12,8m", type: "Manipulador", weight: "3.5t", image: "/frota/manipulador-12m.jpg" },
+    { name: "Telescópico 12,8m", type: "Manipulador", weight: "11.5t", image: "/frota/manipulador-12m.jpg" },
 ];
 
 interface Model {
