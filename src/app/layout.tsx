@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     `Aluguel de plataformas elevatórias articuladas e tesouras em Santa Catarina. Frota nova, entrega rápida em Itajaí e região. Solicite um orçamento rápido!`,
   keywords:
     "locação de plataforma elevatória em itajaí, aluguel de plataforma elevatória em santa catarina, locação de plataforma articulada, locação de máquinas pesadas, escavadeira hidráulica, Jaco locação",
+  icons: {
+    icon: "/logos/LOGO JACÓ LOCAÇÃO.png",
+  },
   metadataBase: new URL("https://jacolocacao.com.br"),
   openGraph: {
     type: "website",
