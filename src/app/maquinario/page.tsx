@@ -2,6 +2,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { products } from '@/data/products';
+import ProductCard from '@/components/ProductCard';
 
 /* ═══════════════════════════════════════
    DATA
@@ -20,41 +22,15 @@ const HERO_MACHINES = [
     { name: "Telescópico 12,8m", type: "Manipulador", weight: "11.5t", image: "/frota/manipulador-12m.jpg" },
 ];
 
-interface Model {
-    name: string;
-    fullName: string;
-    description: string;
-    application: string;
-    category: string;
-    image: string;
-    cardSpecs: Record<string, string>;
-}
-
-const MODELS: Model[] = [
-    { name: "CAT 320", fullName: "Escavadeira Caterpillar 320", description: "Escavadeira robusta da classe de 20 toneladas. Alta capacidade de carga, escavação profunda e força de desagregação ideal para infraestrutura pesada.", application: "Escavações de grande porte", category: "escavadeira", image: "/frota/cat-320.jpg", cardSpecs: { "Profundidade": "6,72m", "Caçamba": "1,19m³", "Peso": "22500kg", "Dimensões": "3,18x9,53x3,13m" } },
-    { name: "XCMG XE150BR", fullName: "Escavadeira XCMG XE150BR", description: "Escavadeira de 15 toneladas fabricada no Brasil, com excelente custo-benefício e peças de reposição acessíveis.", application: "Escavações médias", category: "escavadeira", image: "/frota/xe150br.jpg", cardSpecs: { "Profundidade": "5,54m", "Dimensões": "2,59x7,82x2,87m", "Peso": "14500kg" } },
-    { name: "CAT 313D2L", fullName: "Escavadeira Caterpillar 313D2L", description: "Escavadeira de 13 toneladas com excelente desempenho em escavação, abertura de valas e manuseio de materiais.", application: "Versatilidade em obras", category: "escavadeira", image: "/frota/cat-313d2l.jpg", cardSpecs: { "Profundidade": "5,55m", "Dimensões": "2,59x7,62x2,83m", "Peso": "13900kg" } },
-    { name: "Escavadeira 8t", fullName: "Escavadeira 8 Toneladas Yanmar VIO80", description: "Escavadeira compacta de 8 toneladas, ideal para obras urbanas e espaços reduzidos com alta produtividade.", application: "Obras compactas", category: "escavadeira", image: "/frota/escavadeira-8t.jpg", cardSpecs: { "Profundidade": "4,40m", "Dimensões": "2,27x6,46x2,68m", "Peso": "8285kg" } },
-    { name: "Mini Escav. 1t", fullName: "Mini Escavadeira 1 Tonelada", description: "A menor da categoria, perfeita para trabalhos em espaços internos, jardins e áreas confinadas.", application: "Espaços ultra confinados", category: "mini-escavadeira", image: "/frota/mini-escavadeira-1t.jpg", cardSpecs: { "Profundidade": "1,82m", "Dimensões": "0,71x2,75x2,00m", "Peso": "1150kg" } },
-    { name: "Mini Escav. 2t", fullName: "Mini Escavadeira 2 Toneladas", description: "Compacta e ágil, ideal para escavação leve em áreas urbanas, paisagismo e pequenas fundações.", application: "Obras residenciais", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2t.jpg", cardSpecs: { "Profundidade": "2,20m", "Dimensões": "0,95x3,45x2,30m", "Peso": "1740kg" } },
-    { name: "Mini Escav. 2,7t", fullName: "Mini Escavadeira 2,7 Toneladas", description: "Equilíbrio entre compacidade e força, excelente para saneamento, drenagem e obras residenciais.", application: "Escavações leves", category: "mini-escavadeira", image: "/frota/mini-escavadeira-2.7t.jpg", cardSpecs: { "Profundidade": "2,54m", "Dimensões": "1,50x4,10x2,53m", "Peso": "2735kg" } },
-    { name: "Mini Escav. 3t", fullName: "Mini Escavadeira 3 Toneladas", description: "Versátil e potente para seu tamanho, perfeita para instalações hidráulicas e elétricas subterrâneas.", application: "Obras e terraplanagem", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3t.jpg", cardSpecs: { "Profundidade": "2,97m", "Dimensões": "1,55x4,47x2,50m", "Peso": "3415kg" } },
-    { name: "Mini Escav. 3,5t", fullName: "Mini Escavadeira 3,5 Toneladas", description: "Força de escavação superior em formato compacto, ideal para obras civis e terraplanagem leve.", application: "Fundações e valas", category: "mini-escavadeira", image: "/frota/mini-escavadeira-3.5t.jpg", cardSpecs: { "Profundidade": "3,41m", "Dimensões": "1,75x4,82x2,42m", "Peso": "3398kg" } },
-    { name: "Mini Escav. 5,5t", fullName: "Mini Escavadeira 5,5 Toneladas", description: "A maior da linha mini, com capacidade próxima de uma escavadeira convencional e acesso a espaços restritos.", application: "Obras de médio porte", category: "mini-escavadeira", image: "/frota/mini-escavadeira-5.5t.jpg", cardSpecs: { "Profundidade": "3,60m", "Dimensões": "1,96x5,55x2,53m", "Peso": "4840kg" } },
-    { name: "Bobcat S-650", fullName: "Mini Carregadeira Bobcat S-650", description: "Cabinada, com excelente capacidade de carga e versatilidade para movimentação de materiais em canteiros de obra.", application: "Carregamento e remoção", category: "mini-carregadeira", image: "/frota/bobcat-s650.jpg", cardSpecs: { "Capacidade": "1791kg", "Dimensões": "1,88x3,47x2,65m", "Peso": "4550kg" } },
-    { name: "Manitou 1650R", fullName: "Mini Carregadeira Manitou 1650R", description: "Cabinada, robusta e ergonômica, projetada para alta produtividade em operações de carga e descarga.", application: "Carregamento pesado", category: "mini-carregadeira", image: "/frota/manitou-1650r.jpg", cardSpecs: { "Capacidade": "748kg", "Dimensões": "1,55x3,10x1,95m", "Peso": "2796kg" } },
-    { name: "Telescópico 12,8m", fullName: "Manipulador Telescópico 12,8m", description: "Alcance de 12,8 metros para movimentação de cargas em altura. Ideal para construção civil e logística de canteiro.", application: "Movimentação em altura", category: "manipulador", image: "/frota/manipulador-17m.jpg", cardSpecs: { "Altura Trab.": "12,8m", "Capacidade": "3800kg", "Dimensões": "2,52x5,64x2,52m", "Peso": "11500kg" } },
-    { name: "Telescópico 17m", fullName: "Manipulador Telescópico 17m", description: "Alcance de 17 metros para operações em grandes alturas. Perfeito para obras de grande porte e montagens industriais.", application: "Grandes alturas", category: "manipulador", image: "/frota/manipulador-12m.jpg", cardSpecs: { "Altura Trab.": "17m", "Capacidade": "4500kg", "Dimensões": "2,59x6,06x2,54m", "Peso": "12400kg" } },
-    { name: "Rolo 1,5t Liso", fullName: "Rolo Compactador 1,5 Ton Liso", description: "Rolo compactador liso de 1,5 tonelada para compactação de solos em valas, calçadas e áreas de acesso restrito.", application: "Compactação de solo", category: "rolo", image: "/frota/rolo-compactador-1.5t.jpg", cardSpecs: { "Dimensões": "0,98x2,13x2,33m", "Peso": "2796kg", "Capacidade": "1500kg" } },
-];
+const HEAVY_MACHINES = products.filter(p => !p.category.includes('Plataformas'));
 
 const TABS = [
     { label: 'Todas', value: 'all' },
-    { label: 'Escavadeira', value: 'escavadeira' },
-    { label: 'Mini Escavadeira', value: 'mini-escavadeira' },
-    { label: 'Mini Carregadeira', value: 'mini-carregadeira' },
-    { label: 'Manipulador', value: 'manipulador' },
-    { label: 'Rolo', value: 'rolo' },
+    { label: 'Escavadeiras', value: 'Escavadeiras' },
+    { label: 'Mini Escavadeiras', value: 'Mini Escavadeiras' },
+    { label: 'Mini Carregadeiras', value: 'Mini Carregadeiras' },
+    { label: 'Manipuladores', value: 'Manipuladores' },
+    { label: 'Rolos', value: 'Rolos Compactadores' },
 ];
 
 const STEPS = [
@@ -86,81 +62,12 @@ const WaIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 /* ═══════════════════════════════════════
-   COMPONENTS
-   ═══════════════════════════════════════ */
-
-const MachineCard = ({ m }: { m: Model }) => {
-    return (
-        <motion.div layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.35 }}
-            className="group rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full">
-
-            {/* Edge-to-edge Image Container */}
-            <div className="relative aspect-[4/3] w-full bg-white flex items-center justify-center p-4 border-b border-gray-100">
-                <Image
-                    src={m.image}
-                    alt={m.fullName}
-                    fill
-                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,25vw"
-                />
-            </div>
-
-            <div className="p-5 flex flex-col flex-grow">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                    {m.category.replace(/-/g, ' ')}
-                </span>
-                <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">{m.fullName}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed mt-2 mb-4 flex-grow">{m.description}</p>
-
-                {/* Specs Grid */}
-                <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-3">
-                    <div className="grid grid-cols-2 gap-2">
-                        {Object.entries(m.cardSpecs)
-                            .filter(([key]) => key !== 'Dimensões')
-                            .map(([key, value]) => (
-                                <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
-                                    <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
-                                    <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
-                                </div>
-                            ))}
-                    </div>
-
-                    {/* Dimensions */}
-                    {m.cardSpecs['Dimensões'] && m.cardSpecs['Dimensões'] !== 'n/a' && (
-                        <div className="flex flex-col bg-gray-50 p-3 rounded-md border border-gray-100 mt-1">
-                            <span className="text-[9px] text-gray-400 font-semibold uppercase text-center mb-2">Dimensões (m)</span>
-                            <div className="flex justify-between items-center text-center">
-                                {m.cardSpecs['Dimensões'].replace('m', '').split('x').map((val, idx) => {
-                                    const labels = ['Largura', 'Comp.', 'Altura'];
-                                    return (
-                                        <div key={idx} className="flex flex-col flex-1">
-                                            <span className="text-[8px] text-gray-400 uppercase">{labels[idx]}</span>
-                                            <span className="text-xs text-gray-800 font-bold">{val}</span>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    )}
-
-                    {/* WhatsApp Button */}
-                    <a href={`${WA}Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20${encodeURIComponent(m.fullName)}`} target="_blank" rel="noopener noreferrer"
-                        className="mt-3 w-full bg-[#25D366] hover:bg-[#1ebd5c] text-white flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-sm">
-                        <WaIcon size={18} /> Orçar Pelo WhatsApp
-                    </a>
-                </div>
-            </div>
-        </motion.div>
-    );
-};
-
-/* ═══════════════════════════════════════
    PAGE
    ═══════════════════════════════════════ */
 
 export default function MaquinarioLP() {
     const [active, setActive] = useState('all');
-    const filtered = active === 'all' ? MODELS : MODELS.filter(m => m.category === active);
+    const filtered = active === 'all' ? HEAVY_MACHINES : HEAVY_MACHINES.filter(m => m.category === active);
 
     return (
         <main className="min-h-screen bg-[#0a0a0a] text-white font-sans antialiased overflow-x-hidden">
@@ -261,7 +168,9 @@ export default function MaquinarioLP() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-left">
                         <AnimatePresence mode="popLayout">
                             {filtered.map((m) => (
-                                <MachineCard key={m.name} m={m} />
+                                <motion.div key={m.id} layout initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.35 }} className="h-full">
+                                    <ProductCard product={m} />
+                                </motion.div>
                             ))}
                         </AnimatePresence>
                     </div>
