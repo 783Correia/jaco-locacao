@@ -505,9 +505,9 @@ export const products: Product[] = [
         slug: "manipulador-12m",
         cardSpecs: {
             "Altura Trab.": "12,8m",
-            "Capacidade": "11500kg",
+            "Capacidade": "3800kg",
             "Dimensões": "2,52x5,64x2,52m",
-            "Peso": "3800kg"
+            "Peso": "11500kg"
         },
     },
     {
@@ -520,9 +520,9 @@ export const products: Product[] = [
         slug: "manipulador-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
-            "Capacidade": "12400kg",
+            "Capacidade": "4500kg",
             "Dimensões": "2,59x6,06x2,54m",
-            "Peso": "4500kg"
+            "Peso": "12400kg"
         },
     },
 
