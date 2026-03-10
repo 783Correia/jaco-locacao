@@ -39,7 +39,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Articuladas",
         description: "Plataforma elevatória articulada a diesel com 12,50 metros de altura de trabalho para ambientes externos.",
-        image: "/frota/real/articulada-12-5m-diesel.jpeg",
+        image: "/frota/plataforma-articulada-diesel-12m.jpg",
         slug: "plataforma-articulada-diesel-12m",
         cardSpecs: {
             "Altura Trab.": "12,5m",
@@ -55,7 +55,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Articuladas",
         description: "Tração 4x4 com 16 metros de alcance para terrenos irregulares e trabalhos pesados em altura.",
-        image: "/frota/real/articulada-16m-diesel.jpeg",
+        image: "/frota/plataforma-articulada-diesel-16m.jpg",
         slug: "plataforma-articulada-diesel-16m",
         cardSpecs: {
             "Altura Trab.": "16m",
@@ -71,7 +71,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Articuladas",
         description: "Alto alcance de 20 metros com tração 4x4. Ideal para manutenção industrial, construção e montagem.",
-        image: "/frota/real/articulada-20m-diesel.jpeg",
+        image: "/frota/plataforma-articulada-diesel-20m.jpg",
         slug: "plataforma-articulada-diesel-20m",
         cardSpecs: {
             "Altura Trab.": "20m",
@@ -87,7 +87,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Articuladas",
         description: "Operação silenciosa e zero emissão para ambientes internos, com 12 metros de altura de trabalho.",
-        image: "/frota/real/articulada-12m-eletrica.jpeg",
+        image: "/frota/plataforma-articulada-eletrica-12m.jpg",
         slug: "plataforma-articulada-eletrica-12m",
         cardSpecs: {
             "Altura Trab.": "12m",
@@ -155,7 +155,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Tesoura",
         description: "Ultra compacta para trabalhos internos com 6,3 metros de altura. Passa por portas e corredores estreitos.",
-        image: "/frota/real/tesoura-6-3m.jpeg",
+        image: "/frota/plataforma-tesoura-6.6m-compacta.jpg",
         slug: "plataforma-tesoura-6-3m",
         cardSpecs: {
             "Altura Trab.": "6,3m",
@@ -187,7 +187,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Tesoura",
         description: "Versão compacta com 10 metros de alcance, perfeita para áreas internas com espaço limitado.",
-        image: "/frota/real/tesoura-10m-compacta.jpeg",
+        image: "/frota/plataforma-tesoura-10m-compacta.jpg",
         slug: "plataforma-tesoura-10m-compacta",
         cardSpecs: {
             "Altura Trab.": "10m",
@@ -219,7 +219,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Plataformas Tesoura",
         description: "Alcance de 12 metros com plataforma espaçosa. Excelente para instalações industriais e pintura de fachadas.",
-        image: "/frota/real/tesoura-12m.jpeg",
+        image: "/frota/plataforma-tesoura-12m.jpg",
         slug: "plataforma-tesoura-12m",
         cardSpecs: {
             "Altura Trab.": "12m",
@@ -362,7 +362,7 @@ export const products: Product[] = [
         brand: "XCMG",
         category: "Escavadeiras",
         description: "Escavadeira de 15 toneladas fabricada no Brasil, com excelente custo-benefício e peças de reposição acessíveis.",
-        image: "/frota/real/escavadeira-15t-xcmg-xe150br.jpeg",
+        image: "/frota/xe150br.jpg",
         slug: "xe150br",
         cardSpecs: {
             "Profundidade": "5,54m",
@@ -380,7 +380,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Mini Escavadeiras",
         description: "A menor da categoria, perfeita para trabalhos em espaços internos, jardins e áreas confinadas.",
-        image: "/frota/real/mini-escavadeira-1t.jpeg",
+        image: "/frota/mini-escavadeira-1t.jpg",
         slug: "mini-escavadeira-1t",
         cardSpecs: {
             "Profundidade": "1,82m",
@@ -394,7 +394,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Mini Escavadeiras",
         description: "Compacta e ágil, ideal para escavação leve em áreas urbanas, paisagismo e pequenas fundações.",
-        image: "/frota/real/mini-escavadeira-2t.jpeg",
+        image: "/frota/mini-escavadeira-2t.jpg",
         slug: "mini-escavadeira-2t",
         cardSpecs: {
             "Profundidade": "2,20m",
@@ -436,7 +436,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Mini Escavadeiras",
         description: "Força de escavação superior em formato compacto, ideal para obras civis e terraplanagem leve.",
-        image: "/frota/real/mini-escavadeira-3-5t.jpeg",
+        image: "/frota/mini-escavadeira-3.5t.jpg",
         slug: "mini-escavadeira-3-5t",
         cardSpecs: {
             "Profundidade": "3,41m",
@@ -483,7 +483,7 @@ export const products: Product[] = [
         brand: "Manitou",
         category: "Mini Carregadeiras",
         description: "Cabinada, robusta e ergonômica, projetada para alta produtividade em operações de carga e descarga.",
-        image: "/frota/real/mini-carregadeira-manitou-1650r.jpeg",
+        image: "/frota/manitou-1650r.jpg",
         slug: "manitou-1650r",
         cardSpecs: {
             "Capacidade": "748kg",
@@ -516,7 +516,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Manipuladores",
         description: "Alcance de 17 metros para operações em grandes alturas. Perfeito para obras de grande porte e montagens industriais.",
-        image: "/frota/real/manipulador-telescopico-17m.jpeg",
+        image: "/frota/manipulador-12m.jpg",
         slug: "manipulador-17m",
         cardSpecs: {
             "Altura Trab.": "17m",
@@ -535,7 +535,7 @@ export const products: Product[] = [
         brand: "Diversos",
         category: "Rolos Compactadores",
         description: "Rolo compactador liso de 1,5 tonelada para compactação de solos em valas, calçadas e áreas de acesso restrito.",
-        image: "/frota/real/rolo-compactador-1-5t.jpeg",
+        image: "/frota/rolo-compactador-1.5t.jpg",
         slug: "rolo-compactador-1-5t",
         cardSpecs: {
             "Dimensões": "0,98x2,13x2,33m",
