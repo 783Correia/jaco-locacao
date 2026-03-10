@@ -16,12 +16,23 @@ function ProductCard({ product }: ProductCardProps) {
             className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full w-full"
         >
             {/* Image */}
-            <div className={`relative aspect-square w-full overflow-hidden border-b border-gray-100 ${isRealPhoto ? 'bg-neutral-800' : 'bg-white'}`}>
+            <div className={`relative w-full overflow-hidden border-b border-gray-100 ${isRealPhoto ? 'aspect-[4/5]' : 'aspect-[4/3] bg-white'}`}>
+                {isRealPhoto && (
+                    <Image
+                        src={product.image}
+                        alt=""
+                        fill
+                        className="object-cover scale-110 blur-2xl opacity-60"
+                        sizes="33vw"
+                        unoptimized
+                        aria-hidden
+                    />
+                )}
                 <Image
                     src={product.image}
                     alt={`Locação de ${product.name} em Santa Catarina`}
                     fill
-                    className={`${isRealPhoto ? 'object-contain' : 'object-contain p-6'} group-hover:scale-105 transition-transform duration-500`}
+                    className={`${isRealPhoto ? 'object-contain drop-shadow-lg' : 'object-contain p-6'} relative z-10 group-hover:scale-105 transition-transform duration-500`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     unoptimized
                 />
