@@ -3,7 +3,6 @@
 import { memo } from "react";
 import { Product } from "@/data/products";
 import Image from "next/image";
-import Link from "next/link";
 
 interface ProductCardProps {
     product: Product;
@@ -11,9 +10,8 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
     return (
-        <Link
-            href={`/frota/${product.slug}`}
-            className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full w-full hover:shadow-md transition-shadow"
+        <div
+            className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full w-full"
         >
             {/* Image */}
             <div className="relative aspect-[4/3] w-full bg-white flex items-center justify-center p-4 border-b border-gray-100">
@@ -90,20 +88,18 @@ function ProductCard({ product }: ProductCardProps) {
                     )}
 
                     {/* WhatsApp Button */}
-                    <span
-                        onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            window.open(`https://wa.me/554899250605?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20máquina%20${encodeURIComponent(product.name)}`, '_blank');
-                        }}
-                        className="mt-3 w-full bg-[#25D366] hover:bg-[#1ebd5c] text-white flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-sm cursor-pointer"
+                    <a
+                        href={`https://wa.me/554899250605?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20a%20máquina%20${encodeURIComponent(product.name)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 w-full bg-[#25D366] hover:bg-[#1ebd5c] text-white flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-sm"
                     >
-                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="css-i6dzq1"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                         Orçar Pelo WhatsApp
-                    </span>
+                    </a>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
 
