@@ -9,17 +9,19 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
+    const isRealPhoto = product.image.includes("/real/");
+
     return (
         <div
             className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm flex flex-col h-full w-full"
         >
             {/* Image */}
-            <div className="relative aspect-[4/3] w-full bg-white flex items-center justify-center p-4 border-b border-gray-100">
+            <div className={`relative aspect-[4/3] w-full flex items-center justify-center border-b border-gray-100 ${isRealPhoto ? 'bg-gray-100' : 'bg-white p-4'}`}>
                 <Image
                     src={product.image}
                     alt={`Locação de ${product.name} em Santa Catarina`}
                     fill
-                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                    className={`${isRealPhoto ? 'object-cover' : 'object-contain p-4'} group-hover:scale-105 transition-transform duration-500`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     unoptimized
                 />
