@@ -16,6 +16,8 @@ import {
   FaChevronRight,
   FaWrench,
   FaInstagram,
+  FaTag,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
@@ -586,6 +588,72 @@ function Diferenciais() {
 }
 
 /* ═══════════════════════════════════════════════
+   MÁQUINAS À VENDA — CTA para emestoque
+   ═══════════════════════════════════════════════ */
+function MaquinasAVenda() {
+  return (
+    <section className="section-padding relative overflow-hidden bg-forest">
+      {/* Decorative blurs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-[15%] w-[400px] h-[400px] bg-lime/10 rounded-full blur-[120px] -translate-y-1/2" />
+        <div className="absolute top-1/2 right-[10%] w-[350px] h-[350px] bg-primary/10 rounded-full blur-[100px] -translate-y-1/2" />
+      </div>
+
+      <div className="container-main relative">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime/10 border border-lime/20 mb-6">
+              <FaTag className="text-lime text-xs" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">Oportunidade</span>
+            </span>
+
+            <h2 className="text-[clamp(1.6rem,3.5vw,3rem)] font-extrabold text-white tracking-tight leading-tight">
+              Máquinas <span className="text-lime">à Venda</span>
+            </h2>
+
+            <p className="text-white/70 mt-4 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+              Além da locação, temos máquinas e equipamentos disponíveis para compra. Confira nosso estoque atualizado com condições especiais.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="https://www.emestoque.com.br/jacolocacao/estoque?ordenar=destaques"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-lime text-forest font-bold px-8 py-4 rounded-full text-sm md:text-base transition-all hover:scale-105 hover:shadow-glow-lime flex items-center gap-3 uppercase tracking-wider"
+            >
+              Ver Estoque Disponível
+              <FaExternalLinkAlt className="text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+            <a
+              href={getWhatsAppLink("Olá! Vi que vocês têm máquinas à venda e gostaria de saber mais.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-white/20 text-white font-bold px-8 py-4 rounded-full text-sm md:text-base transition-all hover:scale-105 hover:bg-white/10 flex items-center gap-3"
+            >
+              <FaWhatsapp className="text-lg text-[#25D366]" />
+              Falar com Vendas
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
    MISSÃO VISÃO VALORES — Locked
    ═══════════════════════════════════════════════ */
 function MissaoVisaoValores() {
@@ -781,6 +849,7 @@ export default function Home() {
       <Solucoes />
       <ProdutosDestaque />
       <Diferenciais />
+      <MaquinasAVenda />
       <MissaoVisaoValores />
       <Depoimentos />
       {/* ═══ Instagram Section ═══ */}

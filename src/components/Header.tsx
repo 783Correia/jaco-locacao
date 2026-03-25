@@ -15,6 +15,7 @@ import { getWhatsAppLink } from "@/utils/whatsapp";
 const navLinks = [
   { href: "/", label: "Início" },
   { href: "/frota", label: "Nossa Frota" },
+  { href: "https://www.emestoque.com.br/jacolocacao/estoque?ordenar=destaques", label: "À Venda", external: true },
   { href: "/sobre", label: "Sobre" },
   { href: "/contato", label: "Contato" },
 ];
@@ -49,11 +50,16 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = !link.external && pathname === link.href;
+              const LinkTag = link.external ? "a" : Link;
+              const extraProps = link.external
+                ? { target: "_blank" as const, rel: "noopener noreferrer" }
+                : {};
               return (
-                <Link
+                <LinkTag
                   key={link.href}
                   href={link.href}
+                  {...extraProps}
                   className="relative px-4 py-2 text-[13px] font-medium transition-colors duration-300 group"
                 >
                   <span
@@ -71,7 +77,7 @@ export default function Header() {
                   ) : (
                     <div className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-lime/0 rounded-full group-hover:bg-white/20 transition-colors duration-300" />
                   )}
-                </Link>
+                </LinkTag>
               );
             })}
           </nav>
@@ -108,19 +114,24 @@ export default function Header() {
           >
             <div className="bg-forest-dark/95 backdrop-blur-2xl border border-white/[0.08] rounded-3xl p-5 mt-2 shadow-float">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = !link.external && pathname === link.href;
+                const LinkTag = link.external ? "a" : Link;
+                const extraProps = link.external
+                  ? { target: "_blank" as const, rel: "noopener noreferrer" }
+                  : {};
                 return (
-                  <Link
+                  <LinkTag
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
+                    {...extraProps}
                     className={`block px-4 py-3 rounded-xl font-medium transition-all duration-200 ${isActive
                       ? "text-lime bg-white/[0.06]"
                       : "text-white/60 hover:text-white hover:bg-white/[0.04]"
                       }`}
                   >
                     {link.label}
-                  </Link>
+                  </LinkTag>
                 );
               })}
 
