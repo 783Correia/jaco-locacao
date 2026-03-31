@@ -17,6 +17,7 @@ const navLinks = [
   { href: "/frota", label: "Nossa Frota" },
   { href: "https://www.emestoque.com.br/jacolocacao/estoque?ordenar=destaques", label: "À Venda", external: true },
   { href: "/sobre", label: "Sobre" },
+  { href: "/blog", label: "Blog" },
   { href: "/contato", label: "Contato" },
 ];
 
