@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaArrowLeft,
   FaCalendarAlt,
@@ -35,8 +36,18 @@ export default function BlogPostContent({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-block bg-lime/10 text-lime text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-5">
-                {post.category}
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm mb-6 transition-colors"
+              >
+                <FaArrowLeft className="text-xs" />
+                Voltar ao Blog
+              </Link>
+
+              <span className="block">
+                <span className="inline-block bg-lime/10 text-lime text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-5">
+                  {post.category}
+                </span>
               </span>
 
               <h1 className="text-display-sm text-white">{post.title}</h1>
@@ -60,16 +71,28 @@ export default function BlogPostContent({
         </div>
       </section>
 
-      {/* Imagem Hero Placeholder */}
+      {/* Imagem Hero */}
       <div className="container-main -mt-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-dark-light relative">
+            {post.image ? (
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
+                unoptimized
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-white/10 text-[8rem] font-extrabold leading-none">
+                  {String(post.id).padStart(2, "0")}
+                </span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/10 text-[8rem] font-extrabold leading-none">
-                {String(post.id).padStart(2, "0")}
-              </span>
-            </div>
           </div>
         </div>
       </div>
@@ -101,9 +124,14 @@ export default function BlogPostContent({
                 <h2 className="text-heading-sm text-gray-900 mb-4">
                   {section.heading}
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                  {section.body}
-                </p>
+                {section.body.split("\n\n").map((paragraph, j) => (
+                  <p
+                    key={j}
+                    className="text-gray-600 leading-relaxed text-base md:text-lg mb-4 last:mb-0"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </motion.div>
             ))}
 
@@ -126,17 +154,26 @@ export default function BlogPostContent({
                   orçamento sem compromisso para o equipamento ideal para a sua
                   obra.
                 </p>
-                <a
-                  href={getWhatsAppLink(
-                    `Olá! Li o artigo "${post.title}" e gostaria de saber mais sobre locação deste equipamento.`
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-full text-sm hover:scale-105 hover:bg-[#1ebd5c] transition-all duration-300 shadow-lg shadow-[#25D366]/20 uppercase tracking-wider"
-                >
-                  <FaWhatsapp className="text-lg" />
-                  Pedir Orçamento
-                </a>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href={getWhatsAppLink(
+                      `Olá! Li o artigo "${post.title}" e gostaria de saber mais sobre locação deste equipamento.`
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold px-8 py-4 rounded-full text-sm hover:scale-105 hover:bg-[#1ebd5c] transition-all duration-300 shadow-lg shadow-[#25D366]/20 uppercase tracking-wider"
+                  >
+                    <FaWhatsapp className="text-lg" />
+                    Pedir Orçamento
+                  </a>
+                  <Link
+                    href="/frota"
+                    className="inline-flex items-center gap-2 border border-white/20 text-white font-bold px-8 py-4 rounded-full text-sm hover:scale-105 hover:bg-white/10 transition-all duration-300 uppercase tracking-wider"
+                  >
+                    Ver Nossa Frota
+                    <FaArrowRight className="text-xs" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
 
@@ -166,11 +203,23 @@ export default function BlogPostContent({
                     className="group block"
                   >
                     <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-dark-light mb-4 relative">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/20 text-4xl font-extrabold">
-                          {String(r.id).padStart(2, "0")}
-                        </span>
-                      </div>
+                      {r.image ? (
+                        <Image
+                          src={r.image}
+                          alt={r.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, 33vw"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-white/20 text-4xl font-extrabold">
+                            {String(r.id).padStart(2, "0")}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                       <div className="absolute top-2 left-2">
                         <span className="bg-primary text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
                           {r.category}

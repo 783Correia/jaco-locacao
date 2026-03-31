@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-28",
     readTime: "7 min",
-    image: "",
+    image: "/frota/manipulador-17m.jpg",
     category: "Equipamentos",
   },
   {
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-20",
     readTime: "5 min",
-    image: "",
+    image: "/frota/plataforma-tesoura-8m.jpg",
     category: "Equipamentos",
   },
   {
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-12",
     readTime: "4 min",
-    image: "",
+    image: "/frota/cat-320.jpg",
     category: "Dicas",
   },
   {
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-05",
     readTime: "4 min",
-    image: "",
+    image: "/frota/xe150br.jpg",
     category: "Segurança",
   },
   {
@@ -129,7 +129,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-02-25",
     readTime: "4 min",
-    image: "",
+    image: "/frota/bobcat-s650.jpg",
     category: "Equipamentos",
   },
   {
@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-02-18",
     readTime: "5 min",
-    image: "",
+    image: "/frota/rolo-compactador-1.5t.jpg",
     category: "Equipamentos",
   },
   {
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-31",
     readTime: "12 min",
-    image: "",
+    image: "/frota/plataforma-tesoura-8m.jpg",
     category: "Equipamentos",
   },
   {
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     ],
     date: "2026-03-31",
     readTime: "10 min",
-    image: "",
+    image: "/frota/plataforma-articulada-eletrica-15m.jpg",
     category: "Equipamentos",
   },
 ];
