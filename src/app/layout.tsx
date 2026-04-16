@@ -65,7 +65,7 @@ const localBusinessSchema = {
 };
 
 // LP routes that should NOT show the main site header/footer
-const LP_ROUTES = ["/maquinario", "/plataformaselevatorias"];
+const LP_ROUTES = ["/maquinario", "/plataformaselevatorias", "/admin"];
 
 export default async function RootLayout({
   children,
