@@ -1,28 +1,21 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import {
-  FaArrowLeft,
-  FaCalendarAlt,
-  FaClock,
-  FaWhatsapp,
-  FaArrowRight,
-} from "react-icons/fa";
-import { getWhatsAppLink } from "@/utils/whatsapp";
-import { BlogPost } from "@/data/blog-posts";
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
+import { FaArrowLeft, FaCalendarAlt, FaClock, FaWhatsapp, FaArrowRight } from 'react-icons/fa'
+import { getWhatsAppLink } from '@/utils/whatsapp'
+import { BlogPost } from '@/types/blog'
 
 export default function BlogPostContent({
   post,
   related,
 }: {
-  post: BlogPost;
-  related: BlogPost[];
+  post: BlogPost
+  related: BlogPost[]
 }) {
   return (
     <main className="font-sans antialiased text-dark">
-      {/* Header do Artigo */}
       <section className="bg-forest pt-36 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-[15%] w-[400px] h-[400px] bg-lime/10 rounded-full blur-[120px] -translate-y-1/2" />
@@ -55,15 +48,15 @@ export default function BlogPostContent({
               <div className="flex items-center justify-center gap-6 mt-6 text-white/50 text-sm">
                 <span className="flex items-center gap-2">
                   <FaCalendarAlt className="text-lime/60" />
-                  {new Date(post.date).toLocaleDateString("pt-BR", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
+                  {new Date(post.date).toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
                   })}
                 </span>
                 <span className="flex items-center gap-2">
                   <FaClock className="text-lime/60" />
-                  {post.readTime} de leitura
+                  {post.read_time} de leitura
                 </span>
               </div>
             </motion.div>
@@ -71,13 +64,12 @@ export default function BlogPostContent({
         </div>
       </section>
 
-      {/* Imagem Hero */}
       <div className="container-main -mt-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-dark-light relative">
-            {post.image ? (
+            {post.image_url ? (
               <Image
-                src={post.image}
+                src={post.image_url}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -86,22 +78,16 @@ export default function BlogPostContent({
                 unoptimized
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white/10 text-[8rem] font-extrabold leading-none">
-                  {String(post.id).padStart(2, "0")}
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
         </div>
       </div>
 
-      {/* Conteúdo */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container-main">
           <div className="max-w-4xl mx-auto">
-            {/* Intro */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -111,20 +97,17 @@ export default function BlogPostContent({
               {post.excerpt}
             </motion.p>
 
-            {/* Seções */}
             {post.content.map((section, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: 0.05, duration: 0.5 }}
                 className="mb-10"
               >
-                <h2 className="text-heading-sm text-gray-900 mb-4">
-                  {section.heading}
-                </h2>
-                {section.body.split("\n\n").map((paragraph, j) => (
+                <h2 className="text-heading-sm text-gray-900 mb-4">{section.heading}</h2>
+                {section.body.split('\n\n').map((paragraph, j) => (
                   <p
                     key={j}
                     className="text-gray-600 leading-relaxed text-base md:text-lg mb-4 last:mb-0"
@@ -135,7 +118,6 @@ export default function BlogPostContent({
               </motion.div>
             ))}
 
-            {/* CTA WhatsApp */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -146,13 +128,10 @@ export default function BlogPostContent({
                 <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-lime/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
               </div>
               <div className="relative">
-                <h3 className="text-heading-sm text-white mb-3">
-                  Precisa deste equipamento?
-                </h3>
+                <h3 className="text-heading-sm text-white mb-3">Precisa deste equipamento?</h3>
                 <p className="text-white/60 max-w-lg mx-auto mb-8">
-                  Fale com um especialista da Jaco Locação e receba um
-                  orçamento sem compromisso para o equipamento ideal para a sua
-                  obra.
+                  Fale com um especialista da Jaco Locação e receba um orçamento sem compromisso
+                  para o equipamento ideal para a sua obra.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
@@ -177,7 +156,6 @@ export default function BlogPostContent({
               </div>
             </motion.div>
 
-            {/* Voltar ao Blog */}
             <div className="mt-12">
               <Link
                 href="/blog"
@@ -189,23 +167,16 @@ export default function BlogPostContent({
             </div>
           </div>
 
-          {/* Posts Relacionados */}
           {related.length > 0 && (
             <div className="max-w-4xl mx-auto mt-20 pt-16 border-t border-gray-100">
-              <h3 className="text-heading-sm text-gray-900 mb-8">
-                Artigos Relacionados
-              </h3>
+              <h3 className="text-heading-sm text-gray-900 mb-8">Artigos Relacionados</h3>
               <div className="grid sm:grid-cols-3 gap-6">
-                {related.map((r) => (
-                  <Link
-                    key={r.id}
-                    href={`/blog/${r.slug}`}
-                    className="group block"
-                  >
+                {related.map(r => (
+                  <Link key={r.id} href={`/blog/${r.slug}`} className="group block">
                     <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-dark-light mb-4 relative">
-                      {r.image ? (
+                      {r.image_url ? (
                         <Image
-                          src={r.image}
+                          src={r.image_url}
                           alt={r.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -213,11 +184,7 @@ export default function BlogPostContent({
                           unoptimized
                         />
                       ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-white/20 text-4xl font-extrabold">
-                            {String(r.id).padStart(2, "0")}
-                          </span>
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                       <div className="absolute top-2 left-2">
@@ -241,5 +208,5 @@ export default function BlogPostContent({
         </div>
       </section>
     </main>
-  );
+  )
 }
