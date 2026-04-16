@@ -40,6 +40,25 @@ export default function PostForm({ post }: { post?: BlogPost }) {
   const [metaDescManual, setMetaDescManual] = useState(isEditing && !!post?.meta_description)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [uploading, setUploading] = useState(false)
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    setError('')
+    const fd = new FormData()
+    fd.append('file', file)
+    const res = await fetch('/api/admin/upload', { method: 'POST', body: fd })
+    const data = await res.json()
+    if (!res.ok) {
+      setError(data.error || 'Erro no upload')
+    } else {
+      setImageUrl(data.url)
+    }
+    setUploading(false)
+    e.target.value = ''
+  }
 
   useEffect(() => {
     if (!slugManual) setSlug(generateSlug(title))
@@ -172,19 +191,37 @@ export default function PostForm({ post }: { post?: BlogPost }) {
       {/* Imagem de Capa */}
       <section className="bg-gray-900 rounded-2xl p-6 space-y-4 border border-gray-800">
         <h2 className="text-white font-bold">Imagem de Capa</h2>
-        <div>
-          <label className="text-gray-400 text-sm mb-1.5 block">URL da Imagem</label>
-          <input
-            value={imageUrl}
-            onChange={e => setImageUrl(e.target.value)}
-            placeholder="https://... ou /frota/nome-da-imagem.jpg"
-            className="w-full bg-gray-800 text-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-lime-400 font-mono"
-          />
-        </div>
-        {imageUrl && (
-          <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-gray-800">
+        <p className="text-gray-600 text-xs -mt-2">JPG, PNG ou WebP · máx. 5MB · recomendado 1920×1080px</p>
+
+        {imageUrl ? (
+          <div className="relative aspect-[21/9] rounded-xl overflow-hidden bg-gray-800 group">
             <img src={imageUrl} alt="Preview" className="w-full h-full object-cover" />
+            <button
+              type="button"
+              onClick={() => setImageUrl('')}
+              className="absolute top-2 right-2 bg-black/60 hover:bg-red-500 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
+            >
+              Remover
+            </button>
           </div>
+        ) : (
+          <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl py-10 cursor-pointer transition-colors ${uploading ? 'border-lime-400/50 bg-lime-400/5' : 'border-gray-700 hover:border-lime-400/50 hover:bg-gray-800/50'}`}>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              onChange={handleImageUpload}
+              disabled={uploading}
+            />
+            {uploading ? (
+              <p className="text-lime-400 text-sm font-medium">Enviando...</p>
+            ) : (
+              <>
+                <p className="text-gray-400 text-sm font-medium">Clique para fazer upload</p>
+                <p className="text-gray-600 text-xs mt-1">ou arraste a imagem aqui</p>
+              </>
+            )}
+          </label>
         )}
       </section>
 
