@@ -252,7 +252,6 @@ function SolucaoCard({ sol }: { sol: { title: string; subtitle: string; href: st
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"
             sizes="340px"
-            unoptimized
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -455,7 +454,6 @@ function ProdutosDestaque() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 60vw"
-                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
 
@@ -807,7 +805,6 @@ function BlogSection() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          unoptimized
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
