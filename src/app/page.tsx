@@ -45,20 +45,34 @@ const heroBrands = [
 const carouselBrands = [...heroBrands, ...heroBrands];
 
 function Hero() {
+  const [showVideo, setShowVideo] = useState(false)
+  useEffect(() => { if (window.innerWidth >= 768) setShowVideo(true) }, [])
+
   return (
     <section
       className="relative min-h-[85vh] md:min-h-[92vh] flex flex-col justify-center overflow-hidden bg-forest"
     >
       {/* Background with video */}
       <div className="absolute inset-0 z-0 bg-forest-dark">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/hero-video.mp4"
+        {/* Poster image — always visible, garante LCP rápido */}
+        <Image
+          src="/excavator-hero.png"
+          alt="Jaco Locação — Locação de máquinas pesadas em Santa Catarina"
+          fill
+          priority
+          className="object-cover"
         />
+        {/* Vídeo só carrega no desktop */}
+        {showVideo && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/hero-video.mp4"
+          />
+        )}
         {/* Darker overlay to guarantee perfect text readability against the video */}
         <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/95 via-black/75 to-forest-dark/100" />
         {/* Decorative pattern */}
@@ -261,7 +275,7 @@ function Solucoes() {
       title: "Escavadeiras",
       subtitle: "8 a 21 toneladas",
       href: "/frota",
-      video: "/frota/escavadeiras-video.mp4",
+      image: "/frota/escavadeira-8t.jpg",
     },
     {
       title: "Mini Escavadeiras",
@@ -286,19 +300,18 @@ function Solucoes() {
       subtitle: "Diesel e Elétricas",
       href: "/frota",
       image: "/frota/plataforma-articulada-diesel-16m.jpg",
-      video: "/frota/plataforma-telescopica-video.mp4",
     },
     {
       title: "Plataformas Tesoura",
-      subtitle: "Veja em ação",
+      subtitle: "6,6 a 14 metros",
       href: "/frota",
-      video: "/frota/plataforma-tesoura-video.mp4",
+      image: "/frota/plataforma-tesoura-10m.jpg",
     },
     {
       title: "Rolos Compactadores",
-      subtitle: "Veja em ação",
+      subtitle: "1,5 toneladas",
       href: "/frota",
-      video: "/frota/rolo-compactador-video.mp4",
+      image: "/frota/rolo-compactador-1.5t.jpg",
     },
   ];
 
@@ -1050,15 +1063,6 @@ export default function Home() {
                 @jacolocacao
               </a>
 
-              {/* Mobile videos — shown only on mobile */}
-              <div className="flex md:hidden gap-4 mt-10">
-                <div className="flex-1 aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
-                  <video src="/subfooter-esquerdo.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-                <div className="flex-1 aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
-                  <video src="/subfooter-direito.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                </div>
-              </div>
             </div>
 
             {/* Right Video Card */}
