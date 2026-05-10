@@ -25,6 +25,7 @@ import SectionHeading from "@/components/SectionHeading";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import Image from "next/image";
 import { blogPosts } from "@/data/blog-posts";
+import LazyVideo from "@/components/LazyVideo";
 
 /* ═══════════════════════════════════════════════
    HERO — Rutivo Style (Wide/Clean/Centered)
@@ -204,7 +205,7 @@ function StatsBar() {
               <div className="flex animate-infinite-scroll w-max hover:[animation-play-state:paused] items-center transform-gpu">
                 {carouselBrands.map((brand, index) => (
                   <div key={`${brand.name}-${index}`} className="flex items-center justify-center mx-8 shrink-0 opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-                    <Image src={brand.src} alt={brand.name} width={120} height={50} unoptimized className="h-10 w-auto object-contain" />
+                    <Image src={brand.src} alt={brand.name} width={120} height={50} className="h-10 w-auto object-contain" />
                   </div>
                 ))}
               </div>
@@ -216,7 +217,7 @@ function StatsBar() {
             <div className="flex animate-infinite-scroll w-max items-center transform-gpu">
               {carouselBrands.map((brand, index) => (
                 <div key={`mob-${brand.name}-${index}`} className="flex items-center justify-center mx-5 shrink-0 opacity-50 grayscale">
-                  <Image src={brand.src} alt={brand.name} width={80} height={32} unoptimized className="h-7 w-auto object-contain" />
+                  <Image src={brand.src} alt={brand.name} width={80} height={32} className="h-7 w-auto object-contain" />
                 </div>
               ))}
             </div>
@@ -1024,7 +1025,7 @@ export default function Home() {
               <div className="relative group">
                 <div className="absolute -inset-3 bg-lime/15 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="aspect-[9/16] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04]">
-                  <video
+                  <LazyVideo
                     src="/subfooter-esquerdo.mp4"
                     autoPlay
                     muted
@@ -1069,7 +1070,7 @@ export default function Home() {
               <div className="relative group">
                 <div className="absolute -inset-3 bg-forest/10 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="aspect-[9/16] rounded-[2rem] overflow-hidden relative shadow-xl ring-1 ring-black/[0.04]">
-                  <video
+                  <LazyVideo
                     src="/subfooter-direito.mp4"
                     autoPlay
                     muted
