@@ -1,7 +1,7 @@
 "use client";
 
 import { getWhatsAppLink } from "@/utils/whatsapp";
-import { motion, LazyMotion, domAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import {
   FaHandshake,
@@ -999,7 +999,6 @@ function Depoimentos() {
 
 export default function Home() {
   return (
-    <LazyMotion features={domAnimation} strict>
     <main className="font-sans antialiased text-dark">
       <Hero />
       <Solucoes />
@@ -1088,6 +1087,5 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </section>
     </main>
-    </LazyMotion>
   );
 }
