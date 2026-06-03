@@ -32,7 +32,7 @@ export default function PostActions({ post }: { post: BlogPost }) {
         {post.published ? 'Despublicar' : 'Publicar'}
       </button>
       <Link
-        href={`/admin/posts/${post.id}/edit`}
+        href={`/seoblog/posts/${post.id}/edit`}
         className="bg-gray-800 text-gray-400 hover:text-white text-xs px-3 py-1.5 rounded-lg transition-colors"
       >
         Editar

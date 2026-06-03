@@ -18,6 +18,57 @@ function generateSlug(title: string): string {
     .replace(/-+/g, '-')
 }
 
+function parseGoogleDocs(raw: string): { title: string; sections: Section[] } {
+  const lines = raw.split('\n')
+
+  const titleIdx = lines.findIndex(l => l.trim().length > 0)
+  if (titleIdx === -1) return { title: '', sections: [{ heading: '', body: '' }] }
+
+  const title = lines[titleIdx].replace(/^##\s*/, '').trim()
+  const bodyLines = lines.slice(titleIdx + 1)
+
+  const sections: Section[] = []
+  let currentHeading = ''
+  let currentParas: string[] = []
+  let currentPara = ''
+
+  const flushPara = () => {
+    if (currentPara.trim()) { currentParas.push(currentPara.trim()); currentPara = '' }
+  }
+  const flushSection = () => {
+    flushPara()
+    if (currentHeading || currentParas.length > 0) {
+      sections.push({ heading: currentHeading, body: currentParas.join('\n\n') })
+    }
+    currentHeading = ''; currentParas = []; currentPara = ''
+  }
+
+  for (let i = 0; i < bodyLines.length; i++) {
+    const line = bodyLines[i].trim()
+    const next = bodyLines[i + 1]?.trim() ?? ''
+
+    if (!line) { flushPara(); continue }
+
+    const isMarkdown = line.startsWith('## ')
+    const isHeuristic =
+      line.length < 80 &&
+      !line.match(/[.!?,;:]$/) &&
+      line.split(' ').length <= 12 &&
+      (next === '' || next.startsWith('## '))
+
+    if (isMarkdown || isHeuristic) {
+      flushSection()
+      currentHeading = isMarkdown ? line.slice(3).trim() : line
+    } else {
+      currentPara += (currentPara ? ' ' : '') + line
+    }
+  }
+
+  flushSection()
+
+  return { title, sections: sections.length ? sections : [{ heading: '', body: '' }] }
+}
+
 export default function PostForm({ post }: { post?: BlogPost }) {
   const router = useRouter()
   const isEditing = !!post
@@ -41,6 +92,8 @@ export default function PostForm({ post }: { post?: BlogPost }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [uploading, setUploading] = useState(false)
+  const [showImport, setShowImport] = useState(false)
+  const [importText, setImportText] = useState('')
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -71,6 +124,14 @@ export default function PostForm({ post }: { post?: BlogPost }) {
   useEffect(() => {
     if (!metaDescManual) setMetaDescription(excerpt.slice(0, 160))
   }, [excerpt, metaDescManual])
+
+  function handleImport() {
+    const parsed = parseGoogleDocs(importText)
+    if (parsed.title) { setTitle(parsed.title); setSlugManual(false) }
+    setSections(parsed.sections)
+    setImportText('')
+    setShowImport(false)
+  }
 
   function addSection() {
     setSections(prev => [...prev, { heading: '', body: '' }])
@@ -112,7 +173,7 @@ export default function PostForm({ post }: { post?: BlogPost }) {
       } else {
         await createPost(data)
       }
-      router.push('/admin/posts')
+      router.push('/seoblog/posts')
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Erro ao salvar')
       setLoading(false)
@@ -281,6 +342,54 @@ export default function PostForm({ post }: { post?: BlogPost }) {
           rows={4}
           className="w-full bg-gray-800 text-white rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-lime-400 resize-none"
         />
+      </section>
+
+      {/* Importar do Google Docs */}
+      <section className="bg-gray-900 rounded-2xl p-6 space-y-4 border border-gray-800">
+        <button
+          type="button"
+          onClick={() => setShowImport(prev => !prev)}
+          className="flex items-center gap-2 w-full text-left group"
+        >
+          <span className="text-base font-bold text-white">Importar do Google Docs</span>
+          <span className="ml-auto text-xs text-gray-500 group-hover:text-lime-400 transition-colors">
+            {showImport ? '▲ fechar' : '▼ abrir'}
+          </span>
+        </button>
+
+        {showImport && (
+          <div className="space-y-3">
+            <p className="text-gray-500 text-xs leading-relaxed">
+              Abra o Google Docs, pressione <kbd className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded text-[11px]">Ctrl+A</kbd> depois <kbd className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded text-[11px]">Ctrl+C</kbd> e cole aqui.
+              A <strong className="text-gray-300">primeira linha</strong> vira o título. Linhas curtas sem pontuação no final viram títulos de seção (H2).
+              Escreva <code className="bg-gray-800 text-lime-400 px-1 rounded">## Minha seção</code> no Docs para garantir.
+            </p>
+            <textarea
+              value={importText}
+              onChange={e => setImportText(e.target.value)}
+              placeholder="Cole o conteúdo do Google Docs aqui..."
+              rows={12}
+              className="w-full bg-gray-800 text-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-lime-400 resize-y font-mono leading-relaxed"
+            />
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={handleImport}
+                disabled={!importText.trim()}
+                className="bg-lime-400 hover:bg-lime-300 text-gray-950 font-bold px-6 py-3 rounded-xl transition-colors disabled:opacity-40 text-sm"
+              >
+                Importar conteúdo
+              </button>
+              <button
+                type="button"
+                onClick={() => { setImportText(''); setShowImport(false) }}
+                className="text-gray-500 hover:text-gray-300 text-sm px-4 py-3 transition-colors"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Conteúdo */}

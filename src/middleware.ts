@@ -4,10 +4,10 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+  if (pathname.startsWith('/seoblog') && !pathname.startsWith('/seoblog/login')) {
     const session = request.cookies.get('jaco-admin');
     if (!session || session.value !== process.env.ADMIN_SECRET) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+      return NextResponse.redirect(new URL('/seoblog/login', request.url));
     }
   }
 

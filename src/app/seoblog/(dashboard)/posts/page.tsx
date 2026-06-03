@@ -19,7 +19,7 @@ export default async function PostsPage() {
           <p className="text-gray-500 text-sm mt-0.5">{posts?.length ?? 0} posts no total</p>
         </div>
         <Link
-          href="/admin/posts/new"
+          href="/seoblog/posts/new"
           className="bg-lime-400 text-gray-950 font-bold px-5 py-2.5 rounded-xl hover:bg-lime-300 transition-colors text-sm"
         >
           + Novo Post

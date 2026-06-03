@@ -10,12 +10,12 @@ export default function AdminSidebar() {
 
   async function handleLogout() {
     await fetch('/api/admin/logout', { method: 'POST' })
-    router.push('/admin/login')
+    router.push('/seoblog/login')
   }
 
   const links = [
-    { href: '/admin/posts', label: 'Posts', icon: FiFileText },
-    { href: '/admin/posts/new', label: 'Novo Post', icon: FiPlusCircle },
+    { href: '/seoblog/posts', label: 'Posts', icon: FiFileText },
+    { href: '/seoblog/posts/new', label: 'Novo Post', icon: FiPlusCircle },
   ]
 
   return (
@@ -34,7 +34,7 @@ export default function AdminSidebar() {
 
       <nav className="flex-1 px-3 py-4 space-y-1">
         {links.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href || (href !== '/admin/posts/new' && pathname.startsWith(href) && pathname !== '/admin/posts/new')
+          const active = pathname === href || (href !== '/seoblog/posts/new' && pathname.startsWith(href) && pathname !== '/seoblog/posts/new')
           return (
             <Link
               key={href}

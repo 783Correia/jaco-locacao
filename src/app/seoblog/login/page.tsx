@@ -21,7 +21,7 @@ export default function LoginPage() {
     })
 
     if (res.ok) {
-      router.push('/admin/posts')
+      router.push('/seoblog/posts')
     } else {
       const data = await res.json()
       setError(data.error || 'Erro ao entrar')

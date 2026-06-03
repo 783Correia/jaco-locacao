@@ -22,21 +22,21 @@ export async function createPost(data: PostData) {
   const { error } = await supabaseAdmin.from('blog_posts').insert(data)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
-  revalidatePath('/admin/posts')
+  revalidatePath('/seoblog/posts')
 }
 
 export async function updatePost(id: string, data: Partial<PostData>) {
   const { error } = await supabaseAdmin.from('blog_posts').update(data).eq('id', id)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
-  revalidatePath('/admin/posts')
+  revalidatePath('/seoblog/posts')
 }
 
 export async function deletePost(id: string) {
   const { error } = await supabaseAdmin.from('blog_posts').delete().eq('id', id)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
-  revalidatePath('/admin/posts')
+  revalidatePath('/seoblog/posts')
 }
 
 export async function togglePublish(id: string, published: boolean) {
@@ -46,7 +46,7 @@ export async function togglePublish(id: string, published: boolean) {
     .eq('id', id)
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
-  revalidatePath('/admin/posts')
+  revalidatePath('/seoblog/posts')
 }
 
 export async function seedExistingPosts() {
@@ -73,5 +73,5 @@ export async function seedExistingPosts() {
 
   if (error) throw new Error(error.message)
   revalidatePath('/blog')
-  revalidatePath('/admin/posts')
+  revalidatePath('/seoblog/posts')
 }

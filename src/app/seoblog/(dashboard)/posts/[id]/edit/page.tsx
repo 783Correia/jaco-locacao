@@ -24,7 +24,7 @@ export default async function EditPostPage({ params }: Props) {
     <div className="p-6">
       <div className="flex items-center gap-3 mb-6">
         <Link
-          href="/admin/posts"
+          href="/seoblog/posts"
           className="text-gray-500 hover:text-white transition-colors"
         >
           <FiArrowLeft className="text-lg" />
