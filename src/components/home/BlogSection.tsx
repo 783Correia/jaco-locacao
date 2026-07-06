@@ -62,7 +62,7 @@ export default function BlogSection() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
+                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
                         <span className="flex items-center gap-1.5">
                           <FaCalendarAlt className="text-primary/60" />
                           {new Date(post.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })}
@@ -85,7 +85,7 @@ export default function BlogSection() {
               onClick={prev}
               disabled={active === 0}
               aria-label="Posts anteriores"
-              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105 disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-gray-400 disabled:hover:border-gray-200 disabled:hover:scale-100"
+              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105 disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-gray-500 disabled:hover:border-gray-200 disabled:hover:scale-100"
             >
               <FaChevronLeft size={12} aria-hidden />
             </button>
@@ -98,7 +98,7 @@ export default function BlogSection() {
               onClick={next}
               disabled={active === maxIndex}
               aria-label="Próximos posts"
-              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105 disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-gray-400 disabled:hover:border-gray-200 disabled:hover:scale-100"
+              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105 disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-gray-500 disabled:hover:border-gray-200 disabled:hover:scale-100"
             >
               <FaChevronRight size={12} aria-hidden />
             </button>

@@ -87,9 +87,9 @@ export default function ProdutosDestaqueSection() {
           </div>
 
           <div className="lg:col-span-2">
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-6">Destaques</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary-dark bg-primary/10 px-4 py-1.5 rounded-full mb-6">Destaques</span>
             <motion.div key={active} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">{current.brand}</p>
+              <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">{current.brand}</p>
               <h3 className="text-heading text-dark mt-1">{current.name}</h3>
               <p className="text-gray-500 mt-4 leading-relaxed">{current.description}</p>
             </motion.div>

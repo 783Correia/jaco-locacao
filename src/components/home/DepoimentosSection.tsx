@@ -56,7 +56,7 @@ export default function DepoimentosSection() {
                 </motion.div>
                 <div>
                   <p className="font-bold text-gray-900">{depoimentos[active].name}</p>
-                  <p className="text-gray-400 text-sm">{depoimentos[active].role}</p>
+                  <p className="text-gray-500 text-sm">{depoimentos[active].role}</p>
                 </div>
                 <div className="ml-auto flex gap-1">
                   {[...Array(5)].map((_, i) => <FaStar key={i} className="text-yellow-400 text-xs" />)}
@@ -66,7 +66,7 @@ export default function DepoimentosSection() {
           </div>
 
           <div className="flex items-center justify-center gap-4 mt-8">
-            <button onClick={prev} aria-label="Depoimento anterior" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
+            <button onClick={prev} aria-label="Depoimento anterior" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
               <FaChevronLeft size={12} aria-hidden />
             </button>
             <div className="flex gap-2">
@@ -74,7 +74,7 @@ export default function DepoimentosSection() {
                 <button key={i} onClick={() => setActive(i)} aria-label={`Ver depoimento ${i + 1}`} aria-current={active === i} className={`h-1.5 rounded-full transition-all duration-500 ${active === i ? "bg-primary w-8" : "bg-gray-300 w-2"}`} />
               ))}
             </div>
-            <button onClick={next} aria-label="Próximo depoimento" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
+            <button onClick={next} aria-label="Próximo depoimento" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
               <FaChevronRight size={12} aria-hidden />
             </button>
           </div>

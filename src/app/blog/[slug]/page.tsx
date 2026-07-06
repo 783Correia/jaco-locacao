@@ -21,7 +21,7 @@ interface Props {
 }
 
 const BASE_URL = 'https://www.jacolocadora.com.br'
-const LOGO_URL = `${BASE_URL}/logos/LOGO%20JAC%C3%93%20LOCA%C3%87%C3%83O.png`
+const LOGO_URL = `${BASE_URL}/logos/logo-jaco.png`
 
 function resolveImageUrl(imageUrl: string | null | undefined): string {
   if (!imageUrl) return LOGO_URL

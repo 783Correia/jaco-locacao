@@ -46,7 +46,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "EquipmentRental",
   name: "Jaco Locação",
-  image: "https://www.jacolocadora.com.br/logos/LOGO%20JAC%C3%93%20LOCA%C3%87%C3%83O.png",
+  image: "https://www.jacolocadora.com.br/logos/logo-jaco.png",
   url: "https://www.jacolocadora.com.br",
   telephone: "+55-48-99250605",
   email: "contato@jacolocadora.com.br",

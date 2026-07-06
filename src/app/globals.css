@@ -59,7 +59,8 @@ body {
 
   /* ─── Buttons ─── */
   .btn-lime {
-    @apply bg-primary text-white font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2 text-xs md:text-sm tracking-wide uppercase hover:scale-[1.03] active:scale-[0.98] hover:bg-primary-dark;
+    /* #1e7e33 mantém o verde vivo com contraste AA (5:1) pro texto branco */
+    @apply bg-[#1e7e33] text-white font-bold px-6 py-3 md:px-8 md:py-4 rounded-full hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2 text-xs md:text-sm tracking-wide uppercase hover:scale-[1.03] active:scale-[0.98] hover:bg-primary-dark;
   }
 
   .btn-outline {

@@ -27,7 +27,7 @@ function ProductCard({ product }: ProductCardProps) {
 
             {/* Content */}
             <div className="p-5 flex flex-col flex-grow">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
                     {product.brand === "Diversos" ? product.category : product.brand}
                 </span>
                 <h3 className="text-base font-bold text-gray-900 mt-1 group-hover:text-primary transition-colors duration-300">
@@ -40,7 +40,7 @@ function ProductCard({ product }: ProductCardProps) {
 
                 {/* Footer and Specs */}
                 <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-3">
-                    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+                    <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
                         {product.category}
                     </span>
 
@@ -53,7 +53,7 @@ function ProductCard({ product }: ProductCardProps) {
                                     .filter(([key]) => key !== "Dimensões")
                                     .map(([key, value]) => (
                                         <div key={key} className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100">
-                                            <span className="text-[9px] text-gray-400 font-semibold uppercase">{key}</span>
+                                            <span className="text-[9px] text-gray-500 font-semibold uppercase">{key}</span>
                                             <span className="text-xs text-gray-800 font-bold mt-0.5">{value}</span>
                                         </div>
                                     ))}
@@ -62,14 +62,14 @@ function ProductCard({ product }: ProductCardProps) {
                             {/* Dimensions Expanded Box */}
                             {product.cardSpecs["Dimensões"] && product.cardSpecs["Dimensões"] !== "n/a" && product.cardSpecs["Dimensões"] !== "-" && (
                                 <div className="flex flex-col bg-gray-50 p-3 rounded-md border border-gray-100 mt-1">
-                                    <span className="text-[9px] text-gray-400 font-semibold uppercase text-center mb-2">Dimensões (m)</span>
+                                    <span className="text-[9px] text-gray-500 font-semibold uppercase text-center mb-2">Dimensões (m)</span>
                                     <div className="flex justify-between items-center text-center">
                                         {/* Parse format: 0,81x1,40x1,88m */}
                                         {product.cardSpecs["Dimensões"].replace("m", "").split("x").map((val, idx) => {
                                             const labels = ["Largura", "Comp.", "Altura"];
                                             return (
                                                 <div key={idx} className="flex flex-col flex-1">
-                                                    <span className="text-[8px] text-gray-400 uppercase">{labels[idx]}</span>
+                                                    <span className="text-[8px] text-gray-500 uppercase">{labels[idx]}</span>
                                                     <span className="text-xs text-gray-800 font-bold">{val}</span>
                                                 </div>
                                             )
@@ -80,7 +80,7 @@ function ProductCard({ product }: ProductCardProps) {
 
                             {product.cardSpecs["Dimensões"] && (product.cardSpecs["Dimensões"] === "n/a" || product.cardSpecs["Dimensões"] === "-") && (
                                 <div className="flex flex-col bg-gray-50 p-2 rounded-md border border-gray-100 mt-1 text-center">
-                                    <span className="text-[9px] text-gray-400 font-semibold uppercase">Dimensões</span>
+                                    <span className="text-[9px] text-gray-500 font-semibold uppercase">Dimensões</span>
                                     <span className="text-xs text-gray-800 font-bold mt-0.5">Sob Consulta</span>
                                 </div>
                             )}

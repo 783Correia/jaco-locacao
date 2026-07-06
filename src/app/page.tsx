@@ -107,7 +107,7 @@ function MissaoVisaoValoresSection() {
       <div className="container-main relative">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">Institucional</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary-dark bg-primary/10 px-4 py-1.5 rounded-full mb-4">Institucional</span>
             <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-extrabold text-gray-900 tracking-tight leading-tight pt-2">
               Por que alugar sua máquina ou plataforma com a Jaco Locação?
             </h2>
@@ -131,7 +131,7 @@ function MissaoVisaoValoresSection() {
             <div className="space-y-3">
               {valores.map((v, i) => (
                 <div key={v.title} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary font-extrabold text-sm shrink-0">
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary-dark font-extrabold text-sm shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="flex flex-col">
@@ -220,7 +220,7 @@ const heroVideoSchema = {
   description:
     "Vídeo institucional da Jaco Locação mostrando a frota de escavadeiras, plataformas elevatórias e máquinas pesadas disponíveis para locação em Santa Catarina.",
   contentUrl: "https://www.jacolocadora.com.br/hero-video.mp4",
-  thumbnailUrl: "https://www.jacolocadora.com.br/logos/LOGO%20JAC%C3%93%20LOCA%C3%87%C3%83O.png",
+  thumbnailUrl: "https://www.jacolocadora.com.br/logos/logo-jaco.png",
   uploadDate: "2026-05-01",
   inLanguage: "pt-BR",
   publisher: {

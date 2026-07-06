@@ -93,7 +93,7 @@ export default function HeroSection() {
             <a
               href={getWhatsAppLink("Olá! Gostaria de falar com um especialista sobre locação de máquinas.")}
               target="_blank"
-              className="group bg-[#25D366] text-white border border-[#25D366] px-5 py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#1ebd5c] hover:border-[#1ebd5c] flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 z-20 relative w-fit"
+              className="group bg-[#25D366] text-[#06381d] border border-[#25D366] px-5 py-2.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#1ebd5c] hover:border-[#1ebd5c] flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 z-20 relative w-fit"
             >
               <FaWhatsapp className="text-xl" />
               Nos chame agora

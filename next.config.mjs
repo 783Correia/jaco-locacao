@@ -9,13 +9,15 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
       "media-src 'self' blob: https:",
-      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.supabase.co",
-      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+      // Google Ads (tag AW no GTM) envia conversões pra google.com/ccm e doubleclick —
+      // sem esses domínios o CSP bloqueia e o Ads perde os dados
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://ad.doubleclick.net https://www.google.com https://*.google.com.br https://www.googleadservices.com https://*.supabase.co",
+      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://td.doubleclick.net https://www.googletagmanager.com",
       "frame-ancestors 'self'",
     ].join('; ')
   },

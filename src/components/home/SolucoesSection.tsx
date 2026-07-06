@@ -32,9 +32,9 @@ const cards = [
   { title: "Rolos Compactadores", subtitle: "1,5 toneladas", href: "/frota", image: "/frota/rolo-compactador-1.5t.jpg" },
 ]
 
-function SolucaoCard({ sol }: { sol: typeof cards[number] }) {
+function SolucaoCard({ sol, focusable = true }: { sol: typeof cards[number]; focusable?: boolean }) {
   return (
-    <Link href={sol.href} className="block h-full group">
+    <Link href={sol.href} className="block h-full group" tabIndex={focusable ? undefined : -1}>
       <div className="absolute inset-0">
         <Image
           src={sol.image}
@@ -126,7 +126,7 @@ export default function SolucoesSection() {
         <div className="flex w-max animate-solucoes-scroll group-hover/carousel:[animation-play-state:paused] items-stretch py-2" aria-hidden="true">
           {cards.map((sol, i) => (
             <div key={`track2-${sol.title}-${i}`} className="relative overflow-hidden cursor-pointer shrink-0 w-[240px] md:w-[340px] h-[320px] md:h-[420px] mx-2 hover:scale-[1.02] transition-transform duration-300 rounded-[20px]">
-              <SolucaoCard sol={sol} />
+              <SolucaoCard sol={sol} focusable={false} />
             </div>
           ))}
         </div>
@@ -136,7 +136,7 @@ export default function SolucoesSection() {
         <div className="text-center mt-12 flex justify-center w-full">
           <Link
             href="/frota"
-            className="group bg-[#31a346] text-white px-8 py-3.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#258536] flex items-center justify-center gap-2 shadow-lg shadow-[#31a346]/20 uppercase tracking-widest"
+            className="group bg-[#1e7e33] text-white px-8 py-3.5 rounded-full font-bold text-sm md:text-base transition-all hover:scale-105 hover:bg-[#17662a] flex items-center justify-center gap-2 shadow-lg shadow-[#1e7e33]/20 uppercase tracking-widest"
           >
             Ver frota completa
             <FaArrowRight className="text-lg group-hover:translate-x-1 transition-transform" />

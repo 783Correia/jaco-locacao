@@ -19,7 +19,7 @@ export default function SectionHeading({
         <span
           className={`inline-block text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-4 ${light
               ? "text-lime bg-lime/10"
-              : "text-primary bg-primary/10"
+              : "text-primary-dark bg-primary/10"
             }`}
         >
           {tag}

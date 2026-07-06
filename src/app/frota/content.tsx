@@ -61,7 +61,7 @@ export default function ProdutosContent() {
           {/* Mobile: horizontal search + category pills */}
           <div className="lg:hidden mb-8 space-y-4">
             <div className="relative flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all shadow-sm">
-              <FaSearch className="ml-4 text-gray-400" />
+              <FaSearch className="ml-4 text-gray-500" />
               <input
                 type="text"
                 placeholder="Buscar equipamento..."
@@ -94,7 +94,7 @@ export default function ProdutosContent() {
                 {/* Search */}
                 <div className="relative mb-8">
                   <div className="relative flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all shadow-sm">
-                    <FaSearch className="ml-4 text-gray-400" />
+                    <FaSearch className="ml-4 text-gray-500" />
                     <input
                       type="text"
                       placeholder="Buscar..."
@@ -135,7 +135,7 @@ export default function ProdutosContent() {
                 <h2 className="text-2xl font-bold text-gray-900">
                   {activeCategory === "Todos" ? "Todos os Produtos" : activeCategory}
                 </h2>
-                <span className="text-gray-400 text-sm">
+                <span className="text-gray-500 text-sm">
                   {filteredProducts.length} resultado(s)
                 </span>
               </div>
@@ -154,7 +154,7 @@ export default function ProdutosContent() {
                     <FaSearch className="text-gray-300 text-2xl" />
                   </div>
                   <h3 className="text-gray-900 text-lg font-bold mb-2">Sem resultados</h3>
-                  <p className="text-gray-400 mb-6 max-w-xs text-center">
+                  <p className="text-gray-500 mb-6 max-w-xs text-center">
                     Não encontramos produtos para esta busca.
                   </p>
                   <button

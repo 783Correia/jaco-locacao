@@ -37,7 +37,7 @@ export default function NewsletterSection() {
                                 <span className="text-forest/40 text-xs font-bold uppercase tracking-wider">Obras</span>
                             </div>
                         </div>
-                        <p className="text-[11px] text-gray-400 text-center tracking-wide uppercase font-medium">Obras de Infraestrutura</p>
+                        <p className="text-[11px] text-gray-500 text-center tracking-wide uppercase font-medium">Obras de Infraestrutura</p>
                     </div>
 
                     {/* Center Content */}
@@ -82,7 +82,7 @@ export default function NewsletterSection() {
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="seu@email.com"
                                         autoComplete="email"
-                                        className="w-full bg-white border border-gray-200 rounded-2xl pl-11 pr-5 py-4 text-dark text-sm placeholder:text-gray-400 outline-none focus:border-forest focus:ring-4 focus:ring-forest/[0.06] transition-all shadow-sm"
+                                        className="w-full bg-white border border-gray-200 rounded-2xl pl-11 pr-5 py-4 text-dark text-sm placeholder:text-gray-500 outline-none focus:border-forest focus:ring-4 focus:ring-forest/[0.06] transition-all shadow-sm"
                                     />
                                 </div>
                                 <button
@@ -96,7 +96,7 @@ export default function NewsletterSection() {
                         )}
 
                         {/* Social proof */}
-                        <div className="mt-8 flex items-center justify-center gap-6 text-gray-400">
+                        <div className="mt-8 flex items-center justify-center gap-6 text-gray-500">
                             <span className="text-xs">Sem spam. Cancele quando quiser.</span>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export default function NewsletterSection() {
                                 <span className="text-amber-700/40 text-xs font-bold uppercase tracking-wider">Operações</span>
                             </div>
                         </div>
-                        <p className="text-[11px] text-gray-400 text-center tracking-wide uppercase font-medium">Operações Pesadas</p>
+                        <p className="text-[11px] text-gray-500 text-center tracking-wide uppercase font-medium">Operações Pesadas</p>
                     </div>
 
                 </div>

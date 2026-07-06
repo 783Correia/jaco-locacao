@@ -18,7 +18,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
   return (
     <Link href="/" className={`group inline-flex items-center shrink-0 ${className}`}>
       <Image
-        src="/logos/LOGO JACÓ LOCAÇÃO.png"
+        src="/logos/logo-jaco.png"
         alt="Jaco Locação"
         width={s.w}
         height={s.h}

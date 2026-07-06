@@ -57,7 +57,7 @@ export default function ContatoContent() {
   const inputClass =
     "w-full px-4 py-3.5 rounded-xl bg-gray-50 border-0 focus:ring-2 focus:ring-lime/30 outline-none transition-all text-sm";
   const labelClass =
-    "block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2";
+    "block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2";
 
   return (
     <>
@@ -93,7 +93,7 @@ export default function ContatoContent() {
                 <h2 className="text-2xl font-extrabold text-dark tracking-tight mb-2">
                   Envie sua mensagem
                 </h2>
-                <p className="text-gray-400 text-sm mb-8">
+                <p className="text-gray-500 text-sm mb-8">
                   Preencha o formulário e entraremos em contato via WhatsApp.
                 </p>
 
@@ -318,7 +318,7 @@ export default function ContatoContent() {
                         <item.icon size={16} />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-400 font-medium">
+                        <p className="text-xs text-gray-500 font-medium">
                           {item.label}
                         </p>
                         {item.href ? (
