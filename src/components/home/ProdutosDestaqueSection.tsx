@@ -106,9 +106,11 @@ export default function ProdutosDestaqueSection() {
               </a>
             </div>
 
-            <div className="flex gap-2 mt-8">
+            <div className="flex gap-0 mt-8">
               {destaques.map((_, i) => (
-                <button key={i} onClick={() => setActive(i)} aria-label={`Ver equipamento ${i + 1}`} aria-current={active === i} className={`h-1.5 rounded-full transition-all duration-500 ${active === i ? "bg-primary w-10" : "bg-gray-200 w-3"}`} />
+                <button key={i} onClick={() => setActive(i)} aria-label={`Ver equipamento ${i + 1}`} aria-current={active === i} className="py-2.5 px-2 flex items-center">
+                  <span className={`h-1.5 rounded-full transition-all duration-500 ${active === i ? "bg-primary w-10" : "bg-gray-200 w-3"}`} />
+                </button>
               ))}
             </div>
           </div>

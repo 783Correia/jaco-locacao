@@ -69,9 +69,11 @@ export default function DepoimentosSection() {
             <button onClick={prev} aria-label="Depoimento anterior" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
               <FaChevronLeft size={12} aria-hidden />
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-0">
               {depoimentos.map((_, i) => (
-                <button key={i} onClick={() => setActive(i)} aria-label={`Ver depoimento ${i + 1}`} aria-current={active === i} className={`h-1.5 rounded-full transition-all duration-500 ${active === i ? "bg-primary w-8" : "bg-gray-300 w-2"}`} />
+                <button key={i} onClick={() => setActive(i)} aria-label={`Ver depoimento ${i + 1}`} aria-current={active === i} className="py-2.5 px-2 flex items-center">
+                  <span className={`h-1.5 rounded-full transition-all duration-500 ${active === i ? "bg-primary w-8" : "bg-gray-300 w-2"}`} />
+                </button>
               ))}
             </div>
             <button onClick={next} aria-label="Próximo depoimento" className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all hover:scale-105">
