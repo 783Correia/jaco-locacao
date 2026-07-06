@@ -66,26 +66,23 @@ export default function HeroSection() {
             <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white">Força e Confiabilidade para a Sua Obra</span>
           </motion.div>
 
+          {/* LCP: o H1 e o parágrafo nunca podem nascer com opacity 0 —
+              texto visível no primeiro paint, sem esperar hidratação */}
           <h1 className="text-[clamp(1.8rem,4vw,3.8rem)] font-extrabold text-white leading-[1.3] tracking-normal mb-6 drop-shadow-2xl py-2 w-full mx-auto">
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="block">
+            <span className="block">
               Locação de <span className="text-lime">Plataformas Elevatórias</span>
-            </motion.span>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }} className="block text-lime">
+            </span>
+            <span className="block text-lime">
               Máquinas para Terraplanagem
-            </motion.span>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="block">
+            </span>
+            <span className="block">
               <span className="text-lime">e Construção</span> em SC.
-            </motion.span>
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-sm md:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md"
-          >
+          <p className="text-sm md:text-lg text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 font-medium px-2 drop-shadow-md">
             Especialistas em locação de plataformas elevatórias (articuladas e tesouras) e linha amarela para o estado de Santa Catarina, com foco ágil em Itajaí, Balneário Camboriú e região.
-          </motion.p>
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
