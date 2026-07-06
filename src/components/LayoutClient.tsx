@@ -15,7 +15,7 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
   return (
     <SmoothScroll>
       {!isLP && <Header />}
-      <main>{children}</main>
+      {children}
       {!isLP && <Footer />}
       {!isLP && <WhatsAppButton />}
     </SmoothScroll>

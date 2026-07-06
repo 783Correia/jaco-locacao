@@ -3,9 +3,20 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaArrowLeft, FaCalendarAlt, FaClock, FaWhatsapp, FaArrowRight } from 'react-icons/fa'
+import { FaArrowLeft, FaCalendarAlt, FaClock, FaWhatsapp, FaArrowRight, FaListUl } from 'react-icons/fa'
 import { getWhatsAppLink } from '@/utils/whatsapp'
 import { BlogPost } from '@/types/blog'
+
+function toAnchorId(heading: string): string {
+  return heading
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
 
 export default function BlogPostContent({
   post,
@@ -29,13 +40,14 @@ export default function BlogPostContent({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm mb-6 transition-colors"
-              >
-                <FaArrowLeft className="text-xs" />
-                Voltar ao Blog
-              </Link>
+              {/* Breadcrumb */}
+              <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-sm text-white/40 mb-6 flex-wrap">
+                <Link href="/" className="hover:text-white/70 transition-colors">Início</Link>
+                <span>/</span>
+                <Link href="/blog" className="hover:text-white/70 transition-colors">Blog</Link>
+                <span>/</span>
+                <span className="text-white/60 truncate max-w-[220px] sm:max-w-xs">{post.category}</span>
+              </nav>
 
               <span className="block">
                 <span className="inline-block bg-lime/10 text-lime text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-5">
@@ -92,29 +104,68 @@ export default function BlogPostContent({
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-lg md:text-xl text-gray-600 leading-relaxed mb-12"
+              className="article-excerpt text-lg md:text-xl text-gray-600 leading-relaxed mb-12"
             >
               {post.excerpt}
             </motion.p>
 
+            {/* Índice de navegação */}
+            {post.content.filter(s => s.heading).length >= 3 && (
+              <motion.nav
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-12 bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                aria-label="Índice do artigo"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <FaListUl className="text-primary text-sm" />
+                  <span className="text-gray-900 font-bold text-sm uppercase tracking-wider">Neste artigo</span>
+                </div>
+                <ol className="space-y-2">
+                  {post.content.filter(s => s.heading).map((section, i) => (
+                    <li key={i} className="flex items-baseline gap-2">
+                      <span className="text-primary font-bold text-xs tabular-nums shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                      <a
+                        href={`#${toAnchorId(section.heading)}`}
+                        className="text-gray-600 hover:text-primary text-sm leading-snug transition-colors hover:underline underline-offset-2"
+                      >
+                        {section.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </motion.nav>
+            )}
+
             {post.content.map((section, i) => (
               <motion.div
                 key={i}
+                id={section.heading ? toAnchorId(section.heading) : undefined}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: 0.05, duration: 0.5 }}
-                className="mb-10"
+                className="mb-10 scroll-mt-24"
               >
-                <h2 className="text-heading-sm text-gray-900 mb-4">{section.heading}</h2>
-                {section.body.split('\n\n').map((paragraph, j) => (
-                  <p
-                    key={j}
-                    className="text-gray-600 leading-relaxed text-base md:text-lg mb-4 last:mb-0"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+                {section.heading && (
+                  <h2 className="text-heading-sm text-gray-900 mb-4">{section.heading}</h2>
+                )}
+                {section.body.includes('<') ? (
+                  <div
+                    className="prose-body"
+                    dangerouslySetInnerHTML={{ __html: section.body }}
+                  />
+                ) : (
+                  section.body.split('\n\n').map((paragraph, j) => (
+                    <p
+                      key={j}
+                      className="text-gray-600 leading-relaxed text-base md:text-lg mb-4 last:mb-0"
+                    >
+                      {paragraph}
+                    </p>
+                  ))
+                )}
               </motion.div>
             ))}
 

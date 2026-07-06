@@ -23,28 +23,25 @@ const navLinks = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="container-main pt-8 pb-2">
-        <div
-          className={`flex items-center justify-between px-6 h-16 max-w-5xl mx-auto rounded-full transition-all duration-500 ${scrolled
-            ? "bg-forest-dark/90 backdrop-blur-2xl shadow-float border border-white/[0.06]"
-            : "bg-forest/80 backdrop-blur-xl border border-white/[0.08]"
-            }`}
-        >
+      <div className="container-main pt-5 pb-2">
+        <div className="flex items-center justify-between px-6 h-16 max-w-5xl mx-auto rounded-full bg-forest-dark/90 backdrop-blur-2xl shadow-float border border-white/[0.06]">
           {/* Logo */}
           <Logo size="sm" />
 
@@ -96,57 +93,89 @@ export default function Header() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden p-2 text-white/70 hover:text-white rounded-lg transition-colors"
-            aria-label="Menu"
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+            {mobileOpen ? <FaTimes size={20} aria-hidden /> : <FaBars size={20} aria-hidden />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile fullscreen overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.25 }}
-            className="lg:hidden mx-3 sm:mx-6"
-          >
-            <div className="bg-forest-dark/95 backdrop-blur-2xl border border-white/[0.08] rounded-3xl p-5 mt-2 shadow-float">
-              {navLinks.map((link) => {
-                const isActive = !link.external && pathname === link.href;
-                const LinkTag = link.external ? "a" : Link;
-                const extraProps = link.external
-                  ? { target: "_blank" as const, rel: "noopener noreferrer" }
-                  : {};
-                return (
-                  <LinkTag
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    {...extraProps}
-                    className={`block px-4 py-3 rounded-xl font-medium transition-all duration-200 ${isActive
-                      ? "text-lime bg-white/[0.06]"
-                      : "text-white/60 hover:text-white hover:bg-white/[0.04]"
-                      }`}
-                  >
-                    {link.label}
-                  </LinkTag>
-                );
-              })}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              onClick={() => setMobileOpen(false)}
+            />
 
-              <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-lime w-full justify-center mt-3 !py-3"
-              >
-                <FaWhatsapp className="text-base" />
-                Fale no WhatsApp
-              </a>
-            </div>
-          </motion.nav>
+            {/* Panel */}
+            <motion.nav
+              initial={{ opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:hidden fixed top-0 left-3 right-3 z-50 mt-[84px]"
+            >
+              <div className="bg-forest-dark border border-white/[0.08] rounded-3xl overflow-hidden shadow-float">
+
+                {/* Links */}
+                <div className="p-3">
+                  {navLinks.map((link, i) => {
+                    const isActive = !link.external && pathname === link.href;
+                    const LinkTag = link.external ? "a" : Link;
+                    const extraProps = link.external
+                      ? { target: "_blank" as const, rel: "noopener noreferrer" }
+                      : {};
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.04, duration: 0.2 }}
+                      >
+                        <LinkTag
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          {...extraProps}
+                          className={`flex items-center justify-between px-4 py-3.5 rounded-2xl font-medium text-[15px] transition-all duration-200 ${
+                            isActive
+                              ? "text-lime bg-white/[0.07]"
+                              : "text-white/60 hover:text-white hover:bg-white/[0.04]"
+                          }`}
+                        >
+                          <span>{link.label}</span>
+                          {isActive && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-lime" />
+                          )}
+                        </LinkTag>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* CTA */}
+                <div className="px-3 pb-3 border-t border-white/[0.06] pt-3">
+                  <a
+                    href={getWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center gap-2.5 w-full bg-lime text-forest font-bold py-3.5 rounded-2xl text-sm tracking-wide uppercase hover:brightness-105 transition-all"
+                  >
+                    <FaWhatsapp className="text-base" />
+                    Fale no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.nav>
+          </>
         )}
       </AnimatePresence>
     </header>

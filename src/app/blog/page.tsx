@@ -2,7 +2,8 @@ import SectionHeading from '@/components/SectionHeading'
 import { supabase } from '@/lib/supabase'
 import PostsGrid from './posts-grid'
 
-export const dynamic = 'force-dynamic'
+// ISR: cache de 5 min — resolve o TTFB de ~2s do force-dynamic
+export const revalidate = 300
 
 export default async function BlogPage() {
   const { data: posts } = await supabase
@@ -20,8 +21,9 @@ export default async function BlogPage() {
         </div>
         <div className="container-main relative text-center">
           <SectionHeading
+            as="h1"
             tag="Blog"
-            title="Nosso Blog"
+            title="Blog da Jaco Locação"
             description="Artigos, dicas e novidades sobre equipamentos, segurança e o mundo da construção."
             light
           />

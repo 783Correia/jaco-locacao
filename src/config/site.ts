@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Jaco Locação",
     description: "Locação de máquinas pesadas e equipamentos",
-    url: "https://jacolocacao.com.br",
+    url: "https://www.jacolocadora.com.br",
     whatsapp: "554899250605",
     links: {
         instagram: "https://instagram.com/jacolocacao",

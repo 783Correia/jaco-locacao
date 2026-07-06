@@ -45,7 +45,7 @@ export default function NewsletterSection() {
                         {/* Trust badge */}
                         <div className="inline-flex items-center gap-2 bg-forest/[0.06] rounded-full px-5 py-2 mb-8">
                             <div className="w-1.5 h-1.5 bg-lime rounded-full"></div>
-                            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-forest/70">Desde 2010 · São Paulo, SP</span>
+                            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-forest/70">Palhoça, SC · Atendemos toda Santa Catarina</span>
                         </div>
 
                         <h2 className="text-[2.5rem] md:text-[3.2rem] leading-[1.05] font-bold text-dark tracking-tight">
@@ -71,12 +71,17 @@ export default function NewsletterSection() {
                             >
                                 <div className="flex-1 relative">
                                     <FaPaperPlane className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-300 text-xs" />
+                                    <label htmlFor="newsletter-email" className="sr-only">
+                                        Seu e-mail
+                                    </label>
                                     <input
+                                        id="newsletter-email"
                                         type="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="seu@email.com"
+                                        autoComplete="email"
                                         className="w-full bg-white border border-gray-200 rounded-2xl pl-11 pr-5 py-4 text-dark text-sm placeholder:text-gray-400 outline-none focus:border-forest focus:ring-4 focus:ring-forest/[0.06] transition-all shadow-sm"
                                     />
                                 </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProdutosContent from "./content";
 
 export const metadata: Metadata = {
-  title: "Nossa Frota de Máquinas Pesadas | Jaco Locação",
+  title: { absolute: "Nossa Frota de Máquinas Pesadas | Jaco Locação" },
   description:
     "Catálogo completo de escavadeiras hidráulicas, plataformas elevatórias e rolos compactadores para locação. Marcas como Bobcat, Case e Cat.",
   keywords:
@@ -15,5 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ProdutosContent />;
+  return (
+    <main className="font-sans antialiased text-dark">
+      <ProdutosContent />
+    </main>
+  );
 }

@@ -10,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ContatoContent />;
+  return (
+    <main className="font-sans antialiased text-dark">
+      <ContatoContent />
+    </main>
+  );
 }

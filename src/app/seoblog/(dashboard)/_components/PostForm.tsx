@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import { BlogPost } from '@/types/blog'
 import { createPost, updatePost } from '../posts/actions'
+
+const RichEditor = dynamic(() => import('@/components/RichEditor'), { ssr: false })
 
 type Section = { heading: string; body: string }
 
@@ -11,62 +14,63 @@ function generateSlug(title: string): string {
   return title
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9\s-]/g, '')
     .trim()
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
 }
 
-function parseGoogleDocs(raw: string): { title: string; sections: Section[] } {
-  const lines = raw.split('\n')
+function calcReadTime(html: string, excerptText: string): string {
+  const text = html.replace(/<[^>]+>/g, ' ') + ' ' + excerptText
+  const words = text.trim().split(/\s+/).filter(Boolean).length
+  const minutes = Math.max(1, Math.ceil(words / 200))
+  return `${minutes} min`
+}
 
-  const titleIdx = lines.findIndex(l => l.trim().length > 0)
-  if (titleIdx === -1) return { title: '', sections: [{ heading: '', body: '' }] }
+function sectionsToHtml(sections: Section[]): string {
+  return sections
+    .map(s => {
+      // If body already contains HTML tags, use as-is; otherwise convert plain text
+      const body = s.body.includes('<')
+        ? s.body
+        : s.body.split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('')
+      return s.heading ? `<h2>${s.heading}</h2>${body}` : body
+    })
+    .join('')
+}
 
-  const title = lines[titleIdx].replace(/^##\s*/, '').trim()
-  const bodyLines = lines.slice(titleIdx + 1)
+function htmlToSections(html: string): Section[] {
+  if (typeof window === 'undefined') return [{ heading: '', body: '' }]
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  const children = Array.from(doc.body.children)
 
   const sections: Section[] = []
   let currentHeading = ''
-  let currentParas: string[] = []
-  let currentPara = ''
+  let currentParts: string[] = []
 
-  const flushPara = () => {
-    if (currentPara.trim()) { currentParas.push(currentPara.trim()); currentPara = '' }
-  }
-  const flushSection = () => {
-    flushPara()
-    if (currentHeading || currentParas.length > 0) {
-      sections.push({ heading: currentHeading, body: currentParas.join('\n\n') })
+  const flush = () => {
+    if (currentHeading || currentParts.length > 0) {
+      sections.push({ heading: currentHeading, body: currentParts.join('\n') })
     }
-    currentHeading = ''; currentParas = []; currentPara = ''
+    currentHeading = ''
+    currentParts = []
   }
 
-  for (let i = 0; i < bodyLines.length; i++) {
-    const line = bodyLines[i].trim()
-    const next = bodyLines[i + 1]?.trim() ?? ''
-
-    if (!line) { flushPara(); continue }
-
-    const isMarkdown = line.startsWith('## ')
-    const isHeuristic =
-      line.length < 80 &&
-      !line.match(/[.!?,;:]$/) &&
-      line.split(' ').length <= 12 &&
-      (next === '' || next.startsWith('## '))
-
-    if (isMarkdown || isHeuristic) {
-      flushSection()
-      currentHeading = isMarkdown ? line.slice(3).trim() : line
+  for (const child of children) {
+    const tag = child.tagName
+    if (tag === 'H2' || tag === 'H1') {
+      flush()
+      currentHeading = child.textContent?.trim() || ''
     } else {
-      currentPara += (currentPara ? ' ' : '') + line
+      // Preserve full HTML so images and formatting survive
+      const outerHtml = child.outerHTML?.trim()
+      if (outerHtml) currentParts.push(outerHtml)
     }
   }
+  flush()
 
-  flushSection()
-
-  return { title, sections: sections.length ? sections : [{ heading: '', body: '' }] }
+  return sections.length ? sections : [{ heading: '', body: '' }]
 }
 
 export default function PostForm({ post }: { post?: BlogPost }) {
@@ -80,11 +84,12 @@ export default function PostForm({ post }: { post?: BlogPost }) {
   const [imageUrl, setImageUrl] = useState(post?.image_url ?? '')
   const [date, setDate] = useState(post?.date ?? new Date().toISOString().split('T')[0])
   const [readTime, setReadTime] = useState(post?.read_time ?? '5 min')
+  const [readTimeManual, setReadTimeManual] = useState(isEditing && !!post?.read_time)
   const [focusKeyword, setFocusKeyword] = useState(post?.focus_keyword ?? '')
   const [metaTitle, setMetaTitle] = useState(post?.meta_title ?? '')
   const [metaDescription, setMetaDescription] = useState(post?.meta_description ?? '')
-  const [sections, setSections] = useState<Section[]>(
-    post?.content?.length ? post.content : [{ heading: '', body: '' }]
+  const [contentHtml, setContentHtml] = useState(
+    post?.content?.length ? sectionsToHtml(post.content) : ''
   )
   const [slugManual, setSlugManual] = useState(isEditing)
   const [metaTitleManual, setMetaTitleManual] = useState(isEditing && !!post?.meta_title)
@@ -92,8 +97,6 @@ export default function PostForm({ post }: { post?: BlogPost }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [uploading, setUploading] = useState(false)
-  const [showImport, setShowImport] = useState(false)
-  const [importText, setImportText] = useState('')
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -125,32 +128,18 @@ export default function PostForm({ post }: { post?: BlogPost }) {
     if (!metaDescManual) setMetaDescription(excerpt.slice(0, 160))
   }, [excerpt, metaDescManual])
 
-  function handleImport() {
-    const parsed = parseGoogleDocs(importText)
-    if (parsed.title) { setTitle(parsed.title); setSlugManual(false) }
-    setSections(parsed.sections)
-    setImportText('')
-    setShowImport(false)
-  }
+  useEffect(() => {
+    if (!readTimeManual) setReadTime(calcReadTime(contentHtml, excerpt))
+  }, [contentHtml, excerpt, readTimeManual])
 
-  function addSection() {
-    setSections(prev => [...prev, { heading: '', body: '' }])
-  }
-
-  function removeSection(i: number) {
-    setSections(prev => prev.filter((_, idx) => idx !== i))
-  }
-
-  function updateSection(i: number, field: 'heading' | 'body', value: string) {
-    setSections(prev => prev.map((s, idx) => (idx === i ? { ...s, [field]: value } : s)))
-  }
-
-  async function handleSubmit(published: boolean) {
+  async function handleSubmit(published: boolean, preview = false) {
     if (!title.trim()) { setError('O título é obrigatório'); return }
     if (!slug.trim()) { setError('O slug é obrigatório'); return }
 
     setLoading(true)
     setError('')
+
+    const sections = htmlToSections(contentHtml)
 
     const data = {
       title: title.trim(),
@@ -168,12 +157,20 @@ export default function PostForm({ post }: { post?: BlogPost }) {
     }
 
     try {
+      let savedSlug: string
       if (isEditing) {
-        await updatePost(post.id, data)
+        const result = await updatePost(post.id, data)
+        savedSlug = result.slug
       } else {
-        await createPost(data)
+        const result = await createPost(data)
+        savedSlug = result.slug
       }
-      router.push('/seoblog/posts')
+      if (preview) {
+        window.open(`/seoblog/preview/${savedSlug}`, '_blank')
+        setLoading(false)
+      } else {
+        router.push('/seoblog/posts')
+      }
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Erro ao salvar')
       setLoading(false)
@@ -238,13 +235,28 @@ export default function PostForm({ post }: { post?: BlogPost }) {
             />
           </div>
           <div>
-            <label className="text-gray-400 text-sm mb-1.5 block">Tempo de Leitura</label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="text-gray-400 text-sm">Tempo de Leitura</label>
+              {!readTimeManual && (
+                <span className="text-xs text-lime-400/70 font-medium">automático</span>
+              )}
+            </div>
             <input
               value={readTime}
-              onChange={e => setReadTime(e.target.value)}
+              onChange={e => { setReadTime(e.target.value); setReadTimeManual(true) }}
+              onFocus={() => setReadTimeManual(true)}
               placeholder="5 min"
               className="w-full bg-gray-800 text-white rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-lime-400"
             />
+            {readTimeManual && (
+              <button
+                type="button"
+                onClick={() => { setReadTimeManual(false); setReadTime(calcReadTime(contentHtml, excerpt)) }}
+                className="text-xs text-gray-500 hover:text-lime-400 mt-1 transition-colors"
+              >
+                ↺ voltar para automático
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -344,103 +356,16 @@ export default function PostForm({ post }: { post?: BlogPost }) {
         />
       </section>
 
-      {/* Importar do Google Docs */}
-      <section className="bg-gray-900 rounded-2xl p-6 space-y-4 border border-gray-800">
-        <button
-          type="button"
-          onClick={() => setShowImport(prev => !prev)}
-          className="flex items-center gap-2 w-full text-left group"
-        >
-          <span className="text-base font-bold text-white">Importar do Google Docs</span>
-          <span className="ml-auto text-xs text-gray-500 group-hover:text-lime-400 transition-colors">
-            {showImport ? '▲ fechar' : '▼ abrir'}
-          </span>
-        </button>
-
-        {showImport && (
-          <div className="space-y-3">
-            <p className="text-gray-500 text-xs leading-relaxed">
-              Abra o Google Docs, pressione <kbd className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded text-[11px]">Ctrl+A</kbd> depois <kbd className="bg-gray-800 text-gray-300 px-1.5 py-0.5 rounded text-[11px]">Ctrl+C</kbd> e cole aqui.
-              A <strong className="text-gray-300">primeira linha</strong> vira o título. Linhas curtas sem pontuação no final viram títulos de seção (H2).
-              Escreva <code className="bg-gray-800 text-lime-400 px-1 rounded">## Minha seção</code> no Docs para garantir.
-            </p>
-            <textarea
-              value={importText}
-              onChange={e => setImportText(e.target.value)}
-              placeholder="Cole o conteúdo do Google Docs aqui..."
-              rows={12}
-              className="w-full bg-gray-800 text-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-lime-400 resize-y font-mono leading-relaxed"
-            />
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={handleImport}
-                disabled={!importText.trim()}
-                className="bg-lime-400 hover:bg-lime-300 text-gray-950 font-bold px-6 py-3 rounded-xl transition-colors disabled:opacity-40 text-sm"
-              >
-                Importar conteúdo
-              </button>
-              <button
-                type="button"
-                onClick={() => { setImportText(''); setShowImport(false) }}
-                className="text-gray-500 hover:text-gray-300 text-sm px-4 py-3 transition-colors"
-              >
-                Cancelar
-              </button>
-            </div>
-          </div>
-        )}
-      </section>
-
       {/* Conteúdo */}
       <section className="bg-gray-900 rounded-2xl p-6 space-y-4 border border-gray-800">
-        <div className="flex items-center justify-between">
+        <div>
           <h2 className="text-white font-bold">Conteúdo do Post</h2>
-          <span className="text-gray-500 text-sm">{sections.length} seção(ões)</span>
+          <p className="text-gray-500 text-xs mt-1">
+            Cole direto do Google Docs — os títulos H2 e formatação são preservados automaticamente.
+            Use o botão <strong className="text-gray-400">H2</strong> na toolbar para marcar seções.
+          </p>
         </div>
-        <p className="text-gray-600 text-xs -mt-2">
-          Cada seção vira um H2. Separe parágrafos com uma linha em branco.
-        </p>
-
-        {sections.map((section, i) => (
-          <div key={i} className="bg-gray-800 rounded-xl p-4 space-y-3 border border-gray-700">
-            <div className="flex items-center gap-2">
-              <span className="text-lime-400 text-xs font-bold bg-lime-400/10 px-2 py-0.5 rounded">
-                H2 — Seção {i + 1}
-              </span>
-              {sections.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeSection(i)}
-                  className="ml-auto text-gray-600 hover:text-red-400 text-xs transition-colors"
-                >
-                  Remover seção
-                </button>
-              )}
-            </div>
-            <input
-              value={section.heading}
-              onChange={e => updateSection(i, 'heading', e.target.value)}
-              placeholder="Título da seção (H2)"
-              className="w-full bg-gray-700 text-white rounded-lg px-4 py-2.5 text-sm font-medium outline-none focus:ring-2 focus:ring-lime-400"
-            />
-            <textarea
-              value={section.body}
-              onChange={e => updateSection(i, 'body', e.target.value)}
-              placeholder="Conteúdo da seção. Use linha em branco para separar parágrafos."
-              rows={8}
-              className="w-full bg-gray-700 text-gray-300 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-lime-400 resize-y leading-relaxed"
-            />
-          </div>
-        ))}
-
-        <button
-          type="button"
-          onClick={addSection}
-          className="w-full border-2 border-dashed border-gray-700 hover:border-lime-400/50 text-gray-500 hover:text-lime-400 rounded-xl py-4 text-sm font-medium transition-colors"
-        >
-          + Adicionar Seção
-        </button>
+        <RichEditor initialHtml={contentHtml} onChange={setContentHtml} />
       </section>
 
       {/* Ações */}
@@ -453,6 +378,14 @@ export default function PostForm({ post }: { post?: BlogPost }) {
             className="flex-1 bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition-colors disabled:opacity-50 text-sm"
           >
             Salvar Rascunho
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSubmit(false, true)}
+            disabled={loading}
+            className="flex-1 border border-gray-700 hover:border-amber-400 text-amber-400 font-bold py-4 rounded-xl transition-colors disabled:opacity-50 text-sm"
+          >
+            Pré-visualizar
           </button>
           <button
             type="button"

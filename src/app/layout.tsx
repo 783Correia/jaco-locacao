@@ -13,14 +13,14 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Locação de Plataforma Elevatória em SC e Itajaí | Jaco Locação",
+    default: "Locação de Plataformas Elevatórias em SC | Jaco Locação",
     template: "%s | Jaco Locação",
   },
   description:
     `Aluguel de plataformas elevatórias articuladas e tesouras em Santa Catarina. Frota nova, entrega rápida em Itajaí e região. Solicite um orçamento rápido!`,
   keywords:
     "locação de plataforma elevatória em itajaí, aluguel de plataforma elevatória em santa catarina, locação de plataforma articulada, locação de máquinas pesadas, escavadeira hidráulica, Jaco locação",
-  metadataBase: new URL("https://jacolocacao.com.br"),
+  metadataBase: new URL("https://www.jacolocadora.com.br"),
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -44,20 +44,40 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "EquipmentRental",
   name: "Jaco Locação",
-  image: "https://jacolocacao.com.br/logos/LOGO%20JACÓ%20LOCAÇÃO.png",
-  url: "https://jacolocacao.com.br",
-  telephone: "+55-11-90000-0000",
+  image: "https://www.jacolocadora.com.br/logos/LOGO%20JAC%C3%93%20LOCA%C3%87%C3%83O.png",
+  url: "https://www.jacolocadora.com.br",
+  telephone: "+55-48-99250605",
+  email: "contato@jacolocadora.com.br",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Endereço da Empresa",
-    addressLocality: "São Paulo",
-    addressRegion: "SP",
-    postalCode: "00000-000",
+    streetAddress: "BR-101, km 213, s/n",
+    addressLocality: "Palhoça",
+    addressRegion: "SC",
     addressCountry: "BR",
   },
-  priceRange: "$$$",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -27.6459,
+    longitude: -48.6697,
+  },
+  areaServed: [
+    { "@type": "State", name: "Santa Catarina" },
+    { "@type": "City", name: "Palhoça" },
+    { "@type": "City", name: "Florianópolis" },
+    { "@type": "City", name: "Itajaí" },
+    { "@type": "City", name: "Balneário Camboriú" },
+    { "@type": "City", name: "Joinville" },
+    { "@type": "City", name: "Brusque" },
+    { "@type": "City", name: "Navegantes" },
+  ],
+  sameAs: [
+    "https://instagram.com/jacolocacao",
+    "https://facebook.com/jacolocacao",
+  ],
+  priceRange: "$$",
+  description: "Locação de plataformas elevatórias articuladas, tesouras e máquinas pesadas em Santa Catarina. Frota nova, entrega rápida, suporte técnico.",
 };
 
 export default function RootLayout({

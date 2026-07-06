@@ -30,17 +30,19 @@ export default function Footer() {
                   href="https://instagram.com/jacolocacaomaquinas"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram da Jaco Locação"
                   className="w-9 h-9 bg-white/[0.05] hover:bg-lime hover:text-forest rounded-xl flex items-center justify-center text-white/30 transition-all duration-300"
                 >
-                  <FaInstagram size={15} />
+                  <FaInstagram size={15} aria-hidden />
                 </a>
                 <a
                   href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Fale pelo WhatsApp"
                   className="w-9 h-9 bg-white/[0.05] hover:bg-lime hover:text-forest rounded-xl flex items-center justify-center text-white/30 transition-all duration-300"
                 >
-                  <FaWhatsapp size={15} />
+                  <FaWhatsapp size={15} aria-hidden />
                 </a>
               </div>
             </div>
@@ -56,6 +58,7 @@ export default function Footer() {
                   { href: "/sobre", label: "Sobre" },
                   { href: "/frota", label: "Nossa Frota" },
                   { href: "/contato", label: "Contato" },
+                  { href: "/politica-de-privacidade", label: "Política de Privacidade" },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link

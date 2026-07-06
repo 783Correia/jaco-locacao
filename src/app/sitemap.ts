@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://jacolocadora.com.br";
+  const baseUrl = "https://www.jacolocadora.com.br";
 
   const { data: posts } = await supabase
     .from("blog_posts")
@@ -48,6 +48,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/politica-de-privacidade`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
     ...blogEntries,
   ];

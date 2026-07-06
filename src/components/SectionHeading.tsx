@@ -1,17 +1,17 @@
-"use client";
-
 export default function SectionHeading({
   tag,
   title,
   description,
   align = "center",
   light = false,
+  as: Heading = "h2",
 }: {
   tag?: string;
   title: string;
   description?: string;
   align?: "center" | "left";
   light?: boolean;
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={`mb-16 ${align === "center" ? "text-center" : ""}`}>
@@ -25,12 +25,12 @@ export default function SectionHeading({
           {tag}
         </span>
       )}
-      <h2
+      <Heading
         className={`text-heading text-balance ${light ? "text-white" : "text-gray-900"
           }`}
       >
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p
           className={`mt-4 text-lg max-w-2xl leading-relaxed ${align === "center" ? "mx-auto" : ""

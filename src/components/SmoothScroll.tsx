@@ -7,6 +7,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let lenis: any;
 
+        if (window.innerWidth < 768) return;
+
         (async () => {
             const Lenis = (await import("lenis")).default;
             lenis = new Lenis({

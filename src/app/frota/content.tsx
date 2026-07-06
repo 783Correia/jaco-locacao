@@ -65,6 +65,7 @@ export default function ProdutosContent() {
               <input
                 type="text"
                 placeholder="Buscar equipamento..."
+                aria-label="Buscar equipamento"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full bg-transparent text-gray-900 placeholder-gray-400 px-3 py-3 focus:outline-none text-sm"
@@ -97,6 +98,7 @@ export default function ProdutosContent() {
                     <input
                       type="text"
                       placeholder="Buscar..."
+                      aria-label="Buscar equipamento"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="w-full bg-transparent text-gray-900 placeholder-gray-400 px-3 py-3 focus:outline-none text-sm"
