@@ -103,21 +103,8 @@ export default function RootLayout({
           }}
         />
         {/* End Google Tag Manager */}
-        {/* Google tag (gtag.js) */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3CDLTLXVP" strategy="lazyOnload" />
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-Z3CDLTLXVP');
-            `,
-          }}
-        />
+        {/* GA4 (G-Z3CDLTLXVP) é carregado PELO GTM — não adicionar gtag.js
+            standalone aqui: duplica 157KiB e conta pageviews em dobro */}
         <Script
           id="schema-local-business"
           type="application/ld+json"
