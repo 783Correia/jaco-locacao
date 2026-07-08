@@ -1,7 +1,11 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Jaco Locação",
+  // default cobre /blog; template garante "| Jaco Locação" nos títulos dos posts
+  title: {
+    default: "Blog | Jaco Locação",
+    template: "%s | Jaco Locação",
+  },
   description:
     "Artigos e dicas sobre locação de plataformas elevatórias, máquinas pesadas e segurança em obras em Santa Catarina.",
   keywords:
