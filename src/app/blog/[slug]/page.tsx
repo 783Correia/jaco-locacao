@@ -35,6 +35,22 @@ function calcWordCount(content: { heading: string; body: string }[]): number {
   }, 0)
 }
 
+// FAQPage só quando o post tem a seção de perguntas visível (formato <h3>pergunta</h3><p>resposta</p>)
+function extractFaq(content: { heading: string; body: string }[]): { q: string; a: string }[] {
+  const faqSection = (content ?? []).find(s => /perguntas frequentes/i.test(s.heading))
+  if (!faqSection) return []
+  const stripTags = (html: string) => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+  const regex = /<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g
+  const faq: { q: string; a: string }[] = []
+  let m: RegExpExecArray | null
+  while ((m = regex.exec(faqSection.body)) !== null) {
+    const q = stripTags(m[1])
+    const a = stripTags(m[2])
+    if (q && a) faq.push({ q, a })
+  }
+  return faq
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const { data: post } = await supabase
@@ -152,6 +168,19 @@ export default async function BlogPostPage({ params }: Props) {
     },
   }
 
+  const faq = extractFaq(post.content ?? [])
+  const faqSchema = faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(f => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -174,6 +203,13 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <Script
+          id={`faq-schema-${post.slug}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <BlogPostContent post={post} related={related ?? []} />
     </>
   )

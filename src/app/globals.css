@@ -172,3 +172,14 @@ body {
   display: block;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
+
+.prose-body a {
+  color: #2c9e4b;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-body a:hover {
+  color: #0a5034;
+}
