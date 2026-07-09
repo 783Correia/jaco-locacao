@@ -22,6 +22,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
         alt="Jaco Locação"
         width={s.w}
         height={s.h}
+        quality={60}
         className="object-contain hover:scale-105 transition-transform duration-300 drop-shadow-lg"
       />
     </Link>
