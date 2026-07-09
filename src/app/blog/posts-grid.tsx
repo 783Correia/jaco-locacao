@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FaArrowRight, FaCalendarAlt, FaClock } from 'react-icons/fa'
 import { BlogPost } from '@/types/blog'
+import { formatDateShort } from '@/utils/format-date'
 
 export default function PostsGrid({ posts }: { posts: BlogPost[] }) {
   if (posts.length === 0) {
@@ -49,11 +50,7 @@ export default function PostsGrid({ posts }: { posts: BlogPost[] }) {
             <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
               <span className="flex items-center gap-1.5">
                 <FaCalendarAlt className="text-primary/60" />
-                {new Date(post.date).toLocaleDateString('pt-BR', {
-                  day: '2-digit',
-                  month: 'short',
-                  year: 'numeric',
-                })}
+                {formatDateShort(post.date, true)}
               </span>
               <span className="flex items-center gap-1.5">
                 <FaClock className="text-primary/60" />

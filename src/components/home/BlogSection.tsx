@@ -7,6 +7,7 @@ import { useState } from "react"
 import { FaArrowRight, FaChevronLeft, FaChevronRight, FaCalendarAlt } from "react-icons/fa"
 import { blogPosts } from "@/data/blog-posts"
 import SectionHeading from "@/components/SectionHeading"
+import { formatDateShort } from "@/utils/format-date"
 
 export default function BlogSection() {
   const [active, setActive] = useState(0)
@@ -65,7 +66,7 @@ export default function BlogSection() {
                       <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
                         <span className="flex items-center gap-1.5">
                           <FaCalendarAlt className="text-primary/60" />
-                          {new Date(post.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" })}
+                          {formatDateShort(post.date)}
                         </span>
                       </div>
                       <h3 className="font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">{post.title}</h3>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FaArrowLeft, FaCalendarAlt, FaClock, FaWhatsapp, FaArrowRight, FaListUl } from 'react-icons/fa'
 import { getWhatsAppLink } from '@/utils/whatsapp'
+import { formatDateLong } from '@/utils/format-date'
 import { BlogPost } from '@/types/blog'
 
 function toAnchorId(heading: string): string {
@@ -60,11 +61,7 @@ export default function BlogPostContent({
               <div className="flex items-center justify-center gap-6 mt-6 text-white/50 text-sm">
                 <span className="flex items-center gap-2">
                   <FaCalendarAlt className="text-lime/60" />
-                  {new Date(post.date).toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
+                  {formatDateLong(post.date)}
                 </span>
                 <span className="flex items-center gap-2">
                   <FaClock className="text-lime/60" />
