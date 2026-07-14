@@ -40,6 +40,23 @@ Variáveis de ambiente (valores entregues por canal seguro, nunca por chat abert
 | `ADMIN_PASSWORD` / `ADMIN_SECRET` | Login do painel `/seoblog` |
 | `CRON_SECRET` | Autoriza o cron de publicação (ver abaixo) |
 
+## Banco de dados — como assumir (sem depender de ninguém)
+
+O blog roda em Postgres (Supabase). A migração é autônoma:
+
+1. Criem um projeto novo (gratuito) em supabase.com na conta de vocês
+2. Abram o **SQL Editor** → colem o conteúdo de **`migracao-banco.sql`**
+   (na raiz deste repositório) → **Run**. Isso cria a tabela, as regras de
+   segurança e importa **todos os 25 posts** (publicados + os agendados do cron)
+3. Criem o bucket de imagens: **Storage → New bucket** → nome `blog-images` →
+   marcar **Public**. (As imagens já existentes estão em `public/blog-images/`
+   e `public/frota/` deste repo — nada a migrar; o bucket é só pros uploads futuros)
+4. Peguem as chaves do projeto de vocês (Settings → API): `URL`, `anon key` e
+   `service_role key` → usar nas variáveis da Vercel (tabela abaixo)
+
+> As chaves do Supabase nas envs da Vercel devem ser **as do projeto de vocês**,
+> não as antigas. `ADMIN_PASSWORD`/`ADMIN_SECRET` podem ser o que vocês definirem.
+
 ## Blog — painel administrativo
 
 - Painel em **`/seoblog`** (senha de administrador já entregue).
